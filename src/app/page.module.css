@@ -3,7 +3,11 @@
 .main {
   display: flex;
   flex-direction: column;
-  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
 }
 
 .navContainer {
@@ -51,28 +55,21 @@
 
 .heroContainer {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   overflow: hidden;
-}
-
-
-
-.heroTitle div {
-  width: 50%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-
-
+  position: relative;
 }
 
 .fistImage {
-  transform: scale(0.5); /* Adjust the scale value as needed */
-  transition: transform 0.3s ease-in-out; /* Optional: Add transition for smooth scaling */
+
+  transition: transform 0.3s ease-in-out;
+  max-width: 762px;
+  height: auto;
+  width: 100%;
 }
 
 .blur {
@@ -80,21 +77,162 @@
   transition: transform 0.3s ease-in-out; /* Optional: Add transition for smooth scaling */
   width: 100%;
   height: auto;
-  position: absolute;
+  position: fixed;
   top: 1rem;
   left: 1rem;
+  z-index: -1;
+}
 
-
+.heroContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .fistContainer {
   width: 50%;
   height: auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
 }
+
+.titleContainer {
+  width: 20%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleContainer h4 {
+  text-align: center;
+  font-family: var(--font-dm-sans);
+}
+
+.titleSubline {
+  font-family: var(--font-rational-tw-display-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+}
+
+.heroVideo {
+  max-width: 300px;
+  min-height: 85px;
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  background-color: black;
+  border: #EDEDED 1px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.playGraphic {
+  max-width: 82px;
+  height: 85px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-right: #EDEDED 1px solid;
+}
+
+.playGraphic span {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-left: 20px solid #EDEDED;
+  border-bottom: 15px solid transparent;
+}
+
+.videoText {
+  font-family: var(--font-dm-sans);
+  max-width: 224px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.productContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.productSlideContainer {
+  width: 500%;
+  height: 100vh;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  -ms-flex-item-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.productSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  position: relative;
+}
+.productSlide:nth-child(odd) {
+  background-color: #f0f0f0; /* Light grey for odd slides */
+}
+
+.productSlide:nth-child(even) {
+  background-color: #d0d0d0; /* Darker grey for even slides */
+}
+
+.statisticsContainer {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 0;
+  background-color: dodgerblue;
+  position: relative;
+}
+
+
+
+
 
 .footer {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 10vh;
+  background-color: red;
+  position: relative;
 }
 
 
