@@ -15,71 +15,56 @@ export default function Home() {
   const [wrap, setWrap] = useState();
   const [windowsize, setWindowsize] = useState();
 
-
-
   const handleNavToggle = useCallback((e) => {
     setSection(e)
   }, [setSection]);
 
   const handleAnimation = useCallback((e) => {
-    // console.log('trigger', e)
     setTrigger(e)
   }, [setTrigger]);
 
-
-
-
   useEffect(() => {
+    // setTimeout(()=> {
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
+      const ctx = gsap.context(() => {
 
-      setWrap(wrapper.current.offsetWidth);
-      setWindowsize(window.innerWidth)
+        const combinedWidth = panel.current.reduce((totalWidth, slide) => {
+          return totalWidth + slide.offsetWidth;
+        }, 0);
 
-      console.log(wrapper.current.offsetWidth)
+        setWrap(combinedWidth);
+        setWindowsize(window.innerWidth)
 
-      // gsap.to(wrapper.current, { autoAlpha: 1, duration: 3, ease: 'power3.inOut'})
+        console.log(wrap, windowsize, panel.current.length)
+        
+        const panels = gsap.utils.toArray(panel.current);
+        gsap.to(panels, {
+          xPercent: -100 * ( panels.length - 1 ),
+          ease: "none",
+          scrollTrigger: {
+            trigger: wrapper.current,
+            pin: true,
+            start: "top top",
+            scrub: 1,
+            markers: true,
+            snap: {
+              snapTo: 1 / (panels.length - 1),
+              inertia: false,
+              duration: {min: 0.1, max: 0.1}
+            },
+            end: () => "+=" + (combinedWidth * (panels.length - 1))
+          }
+        });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapper.current,
-          pin: true,
-          scrub: 1,
-          snap: 1 / (panel.current.length - 1),
-          start: "top top",
-          // end: "+=20000",
-          end: () => "+=" + wrap,
-          invalidateOnRefresh: true,
+
+      }, wrapper.current);
+        return () => {
+          ctx.revert();
+          ScrollTrigger.refresh();
         }
-      })
-
-      tl.to(panel.current, {
-        xPercent: -100 * (panel.current.length - 1),
-        duration: 3,
-        ease: "none"
-      });
-
-      panel.current.forEach((sct, i) => {
-        ScrollTrigger.create({
-          trigger: sct,
-          start: 'top top-=' + (sct.offsetLeft - windowsize/2) * (wrap/(sct.offsetWidth * (panel.current.length - 1))),
-          end: '+=' + sct.offsetWidth * (wrap/(sct.offsetWidth * (panel.current.length - 1))),
-          toggleClass: {targets: sct, className: "setActive"},
-          onToggle: self => self.isActive && handleNavToggle(i),
-          onEnter: self => handleAnimation(i),
-          invalidateOnRefresh: true, 
-          markers: {startColor: "green", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20}
-        })
-      });
-
-    }, wrapper.current);
-      return () => {
-        ctx.revert();
-        ScrollTrigger.refresh();
-      }
-
-  }, [wrap, windowsize]);
+    // }, 1000)
+  },[wrap, windowsize])
 
   return (
     <div className={styles.page}>
@@ -126,24 +111,29 @@ export default function Home() {
         <section className={styles.productContainer}>
           <div className={styles.productSlideContainer} ref={wrapper}>
             <div className={styles.productSlide} ref={(el) => panel.current[0] = el}>
+              <h4>Slide 1</h4>
             </div>
             <div className={styles.productSlide} ref={(el) => panel.current[1] = el}>
+              <h4>Slide 2</h4>
             </div>
             <div className={styles.productSlide} ref={(el) => panel.current[2] = el}>
+              <h4>Slide 3</h4>
             </div>
             <div className={styles.productSlide} ref={(el) => panel.current[3] = el}>
+              <h4>Slide 4</h4>
             </div>
             <div className={styles.productSlide} ref={(el) => panel.current[4] = el}>
+              <h4>Slide 5</h4>
             </div>
           </div>
         </section>
 
         <section className={styles.statisticsContainer}>
         </section>
-
+        <footer className={styles.footer}>
+        </footer>
       </main>
-      <footer className={styles.footer}>
-      </footer>
+
 
     </div>
   );

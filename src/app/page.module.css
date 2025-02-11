@@ -179,14 +179,14 @@
 }
 
 .productSlideContainer {
-  width: 500%;
+  width: 500%!important;
   height: 100vh;
   flex-direction: row;
   display: flex;
   flex-wrap: nowrap;
-  -ms-flex-item-align: center;
   position: relative;
   overflow: hidden;
+  background-color: red; 
 }
 
 .productSlide {
@@ -195,11 +195,18 @@
   align-items: center;
   flex-direction: column;
   min-width: 100%;
-  top: 0;
-  left: 0;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
+
+.productSlide h4 {
+  font-family: var(--font-dm-sans);
+  font-size: 1.5rem;
+  text-align: center;
+  color: darkorchid;
+}
+
 .productSlide:nth-child(odd) {
   background-color: #f0f0f0; /* Light grey for odd slides */
 }
