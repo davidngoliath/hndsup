@@ -1,0 +1,10 @@
+.takeActionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: coral;
+    position: relative;
+    width: 100%;
+    height: 700px;
+}

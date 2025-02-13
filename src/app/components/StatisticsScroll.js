@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from "../styles/page.module.css";
+import statsStyles from "../styles/components/statisticsscroll.module.css";
 import Image from 'next/image';
 import ScrollNav from './ScrollNav';
 
@@ -10,7 +10,6 @@ export default function StatisticsScroll() {
 
   const productNav = useRef();
   const panel = useRef([]);
-
   const wrapper = useRef();
   const [section, setSection] = useState(0);
   const [trigger, setTrigger] = useState(0);
@@ -76,10 +75,8 @@ export default function StatisticsScroll() {
         onEnter: self => handleAnimation(index),
       });
     });
-  
     
     return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
 
   }, []);
       
@@ -89,27 +86,26 @@ export default function StatisticsScroll() {
     }
   }, []);
 
-
     return (
-        <div className={styles.productWrapper}>
-            <section className={styles.statsContainer}>
-            <div className={styles.statsSlideContainer} ref={wrapper}>
-            <div className={styles.statsSlide} ref={addPanel}>
+        <div className={statsStyles.scrollWrapper}>
+            <section className={statsStyles.statsContainer}>
+            <div className={statsStyles.statsSlideContainer} ref={wrapper}>
+            <div className={statsStyles.statsSlide} ref={addPanel}>
                 <h4>Slide 1</h4>
             </div>
-            <div className={styles.statsSlide} ref={addPanel}>
+            <div className={statsStyles.statsSlide} ref={addPanel}>
                 <h4>Slide 2</h4>
             </div>
-            <div className={styles.statsSlide} ref={addPanel}>
+            <div className={statsStyles.statsSlide} ref={addPanel}>
                 <h4>Slide 3</h4>
             </div>
-            <div className={styles.statsSlide} ref={addPanel}>
+            <div className={statsStyles.statsSlide} ref={addPanel}>
                 <h4>Slide 4</h4>
             </div>
-            <div className={styles.statsSlide} ref={addPanel}>
+            <div className={statsStyles.statsSlide} ref={addPanel}>
                 <h4>Slide 5</h4>
             </div>
-            <div className={styles.statsSlide} ref={addPanel}>
+            <div className={statsStyles.statsSlide} ref={addPanel}>
                 <h4>Slide 6</h4>
             </div>
             </div>

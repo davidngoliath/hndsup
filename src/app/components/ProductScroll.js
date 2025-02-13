@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState, useCallback} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from "../styles/page.module.css";
+import productStyles from "../styles/components/productscroll.module.css";
 import Image from 'next/image';
 import ScrollNav from "./ScrollNav";
+import { Data } from "../data.js";
 
 export default function ProductScroll() {
     const productNav = useRef();
     const panel = useRef([]);
-
     const wrapper = useRef();
     const [section, setSection] = useState(0);
     const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
     const [windowsize, setWindowsize] = useState(window.innerWidth);
   
-    
+
+    // const getId = Data[0].panels[e].id;
+    console.log(Data[0]);
+
     const handleNavToggle = useCallback((e) => {
       setSection(e)
     }, [setSection]);
@@ -75,9 +78,7 @@ export default function ProductScroll() {
           });
         });
       
-        
         return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
 
     }, []);
       
@@ -87,27 +88,26 @@ export default function ProductScroll() {
       }
     }, []);
 
-
     return (
-        <div className={styles.productWrapper}>
-          <section className={styles.productContainer}>
-            <div className={styles.productSlideContainer} ref={wrapper}>
-              <div className={styles.productSlide} ref={addPanel}>
+        <div className={productStyles.scrollWrapper}>
+          <section className={productStyles.productContainer}>
+            <div className={productStyles.productSlideContainer} ref={wrapper}>
+              <div className={productStyles.productSlide} ref={addPanel}>
                   <h4>Slide 1</h4>
               </div>
-              <div className={styles.productSlide} ref={addPanel}>
+              <div className={productStyles.productSlide} ref={addPanel}>
                   <h4>Slide 2</h4>
               </div>
-              <div className={styles.productSlide} ref={addPanel}>
+              <div className={productStyles.productSlide} ref={addPanel}>
                   <h4>Slide 3</h4>
               </div>
-              <div className={styles.productSlide} ref={addPanel}>
+              <div className={productStyles.productSlide} ref={addPanel}>
                   <h4>Slide 4</h4>
               </div>
-              <div className={styles.productSlide} ref={addPanel}>
+              <div className={productStyles.productSlide} ref={addPanel}>
                   <h4>Slide 5</h4>
               </div>
-              <div className={styles.productSlide} ref={addPanel}>
+              <div className={productStyles.productSlide} ref={addPanel}>
                   <h4>Slide 6</h4>
               </div>
             </div>

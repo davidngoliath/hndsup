@@ -6,11 +6,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProductScroll from "./components/ProductScroll";
 import StatisticsScroll from "./components/StatisticsScroll";
+import TakeAction from "./components/TakeAction";
 
 export default function Home() {
-
-
-
 
   return (
     <>
@@ -58,6 +56,7 @@ export default function Home() {
 
         <StatisticsScroll />
         <div id="horizontal-spacer2" style={{ height: "100vh" }}></div>
+        <TakeAction />
         <footer className={styles.footer}>
         </footer>
 
