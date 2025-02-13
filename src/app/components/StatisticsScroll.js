@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from "../page.module.css";
-// import styles from './Horizontal.module.css';
-
+import styles from "../styles/page.module.css";
+import Image from 'next/image';
 
 
 export default function StatisticsScroll() {
@@ -32,8 +31,6 @@ export default function StatisticsScroll() {
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-      
-
         // const panels = gsap.utils.toArray(panel.current);
         const totalScroll = wrapper.current.scrollWidth - window.innerWidth;
         setWrap(wrapper.current.scrollWidth);
@@ -57,7 +54,6 @@ export default function StatisticsScroll() {
             end: `+=${totalScroll}`, // Ensures smooth exit
           },
         });
-      
         
       }, []);
       
