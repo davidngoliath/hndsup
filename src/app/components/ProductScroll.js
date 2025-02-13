@@ -18,7 +18,6 @@ export default function ProductScroll() {
     
     const handleNavToggle = useCallback((e) => {
       setSection(e)
-      console.log(e)
     }, [setSection]);
   
     const handleAnimation = useCallback((e) => {
@@ -82,13 +81,12 @@ export default function ProductScroll() {
 
     }, []);
       
-    
-
     const addPanel = useCallback((el) => {
       if (el && !panel.current.includes(el)) {
         panel.current.push(el);
       }
     }, []);
+
 
     return (
         <div className={styles.productWrapper}>

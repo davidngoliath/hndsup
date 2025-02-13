@@ -6,10 +6,8 @@ import Image from 'next/image';
 import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
 
-export default function ScrollNav({active, windowsize, wrapsize, ref}) {
-    const productNav = useRef();
-    console.log(active)
-    
+export default function ScrollNav({active, ref}) {
+
 
     return (
         <>
