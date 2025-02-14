@@ -21,8 +21,8 @@
 /build
 
 # images
-/images/panels
-
+/public/images/panels/
+/images/panels/
 # misc
 .DS_Store
 *.pem

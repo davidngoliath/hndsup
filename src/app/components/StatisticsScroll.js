@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import statsStyles from "../styles/components/statisticsscroll.module.css";
 import Image from 'next/image';
 import ScrollNav from './ScrollNav';
-
+import { Data } from "../data.js";
 
 export default function StatisticsScroll() {
 
@@ -15,8 +15,8 @@ export default function StatisticsScroll() {
   const [trigger, setTrigger] = useState(0);
   const [wrap, setWrap] = useState(null);
   const [windowsize, setWindowsize] = useState(window.innerWidth);
+  const ids = Data[0].statsPanels.map((item, index) => item.id);
 
-  
   const handleNavToggle = useCallback((e) => {
     setSection(e)
   }, [setSection]);
@@ -90,27 +90,18 @@ export default function StatisticsScroll() {
         <div className={statsStyles.scrollWrapper}>
             <section className={statsStyles.statsContainer}>
               <div className={statsStyles.statsSlideContainer} ref={wrapper}>
-                <div className={statsStyles.statsSlide} ref={addPanel}>
-                    <h4>Slide 1</h4>
-                </div>
-                <div className={statsStyles.statsSlide} ref={addPanel}>
-                    <h4>Slide 2</h4>
-                </div>
-                <div className={statsStyles.statsSlide} ref={addPanel}>
-                    <h4>Slide 3</h4>
-                </div>
-                <div className={statsStyles.statsSlide} ref={addPanel}>
-                    <h4>Slide 4</h4>
-                </div>
-                <div className={statsStyles.statsSlide} ref={addPanel}>
-                    <h4>Slide 5</h4>
-                </div>
-                <div className={statsStyles.statsSlide} ref={addPanel}>
-                    <h4>Slide 6</h4>
-                </div>
+              {Data[0].statsPanels.map((item, index) => (
+                      <div className={statsStyles.statsSlide} key={index} ref={addPanel}>
+                          <div className={statsStyles.statsSlideContent}>
+                            <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
+                            className={statsStyles.statsImage100} />
+                            <p dangerouslySetInnerHTML={{__html: item.content.contentParagraph[0]}} className={statsStyles.contentParagraph}></p>
+                          </div>
+                      </div>
+                  ))}
               </div>
             </section>
-            <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav}/>
+            <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav} markers={ids} scrolltype={"stats"}/>
         </div>
     )
 }

@@ -6,8 +6,9 @@ import Image from 'next/image';
 import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
 
-export default function ScrollNav({active, ref}) {
+export default function ScrollNav({active, ref, scrolltype, markers}) {
 
+    console.log(active, ref, scrolltype, markers);
 
     return (
         <>

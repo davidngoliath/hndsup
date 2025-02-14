@@ -64,41 +64,41 @@ export const Data =  [
             }
         }
     ],
-    "statisticsPanels": [
+    "statsPanels": [
         {
             id: 'statsone',
             title: false,
             content: {
-                'heroVideo': ['/images/panels/statistics/hero-statsone.png'],
+                'heroVideo': ['/images/panels/stats/hero-statsone.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<p><h3>BLACK PEOPLE ARE 3X MORE LIKELY TO GET KILLED BY POLICE OFFICERS.</h3></p><p>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</p>']
+                'contentParagraph': ['<h3>BLACK PEOPLE ARE 3X MORE LIKELY TO GET KILLED BY POLICE OFFICERS.</h3><br>POLICE BRUTALITY REACHING AN ALL-TIME HIGH']
             }
         },
         {
             id: 'statstwo',
             title: false,
             content: {
-                'heroVideo': ['/images/panels/statistics/hero-statstwo.png'],
+                'heroVideo': ['/images/panels/stats/hero-statstwo.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<p><h3>ONLY 20% OF FATAL KILLINGS ARE <span>captured</span> BY POLICE BODY CAMERAS.</h3></p><p>(BROOK GS)</p>']
+                'contentParagraph': ['<h3>ONLY 20% OF FATAL KILLINGS ARE <span>captured</span> BY POLICE BODY CAMERAS.</h3><br><h5>(BROOK GS)</h5>']
             }
         },
         {
             id: 'statsthree',
             title: false,
             content: {
-                 'heroVideo': ['/images/panels/statistics/hero-statsthree.png'],
+                 'heroVideo': ['/images/panels/stats/hero-statsthree.jpg'],
                 'titleCopy': [''],
-                'contentParagraph':['<p><h3>BLACK TEENAGERS ARE 21 TIMES MORE LIKELY THAN WHITE TEENAGERS TO BE KILLED BY POLICE.</h3></p><p>(BROOKINGS)</p>']
+                'contentParagraph':['<h3>BLACK TEENAGERS ARE 21 TIMES MORE LIKELY THAN WHITE TEENAGERS TO BE KILLED BY POLICE.</h3><br><h5>(BROOKINGS)</h5>']
             }
         },
         {
             id: 'statsfour',
             title: false,
             content: {
-                'heroVideo': ['/images/panels/statistics/hero-statsthree.png'],
+                'heroVideo': ['/images/panels/stats/hero-statsfour.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<p><h3>A BLACK PERSON IS KILLED EVERY 40 HOURS BY POLICE IN THE US.</h3></p><p>(WASHINGTON POST)</p>']
+                'contentParagraph': ['<h3>A BLACK PERSON IS KILLED EVERY 40 HOURS BY POLICE IN THE US.</h3><br><h5>(WASHINGTON POST)</h5>']
             }
         }
     ]

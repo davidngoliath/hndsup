@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     position: relative;
+    background-color: black;
     /* overflow: hidden; */
   }
   
@@ -14,7 +15,6 @@
     height: 100%;
     overflow-x: hidden; /* Enable horizontal scrolling */
     scroll-snap-type: x mandatory; /* Optional: Snap to slides */
-    background-color: red; 
     position: relative;
   }
   
@@ -27,7 +27,6 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: green; 
     position: relative;
   }
   
@@ -39,24 +38,94 @@
     min-width: 100%;
     height: 100%;
     scroll-snap-align: start; /* Optional: Snap to slides */
-    background-color: #ccc;
   }
   
 .statsSlide h4 {
     font-family: var(--font-dm-sans);
     font-size: 1.5rem;
     text-align: center;
-    color: darkorchid;
+  }
+
+
+  .statsSlideContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .statsSlideContentRow {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+
+  .statsTitle {
+    font-family: var(--font-dm-sans);
+    font-size: 2.875rem;
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 20%;
+}
+
+  .statsTitle span {
+    font-family: var(--font-silk-serif-extra-light-italic);
+    font-size: 1.313rem;
+  }
+
+  .contentParagraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    text-align: center;
+  }
+
+  .contentParagraph h3{
+    font-family: var(--font-rational-tw-display-light);
+    text-align: center;
+    color: white;
+    font-size: 2.875rem;
+
+  }
+
+  .contentParagraph h5 {
+    font-family: var(--font-rational-tw-display-light);
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    display: contents;
+  }
+
+.contentParagraph span {
+    font-family: var(--font-silk-serif-extra-light-italic);
+    text-align: center;
+    display: contents;
+    font-size: 2.875rem;
+}
+
+
+  .statsImage100 {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+  }
+
+  .statsImage50 {
+    max-width: 1512px;
+    width: 40%;
+    height: auto;
+    /* object-fit: cover; */
   }
   
-.statsSlide.setActive {
-    background-color: dodgerblue;
-  }
-  
-  .statsSlide:nth-child(odd) {
-    background-color: #f0f0f0; /* Light grey for odd slides */
-  }
-  
-  .statsSlide:nth-child(even) {
-    background-color: #d0d0d0; /* Darker grey for even slides */
-  }

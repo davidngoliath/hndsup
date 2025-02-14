@@ -14,10 +14,7 @@ export default function ProductScroll() {
     const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
     const [windowsize, setWindowsize] = useState(window.innerWidth);
-  
-
-    // const getId = Data[0].panels[e].id;
-    console.log(Data[0]);
+    const ids = Data[0].productPanels.map((item, index) => item.id);
 
     const handleNavToggle = useCallback((e) => {
       setSection(e)
@@ -105,11 +102,9 @@ export default function ProductScroll() {
                           </div>
                       </div>
                   ))}
-
-
               </div>
           </section>
-          <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav}/>
+          <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav} markers={ids} scrolltype={"product"}/>
         </div>
     )
 }
