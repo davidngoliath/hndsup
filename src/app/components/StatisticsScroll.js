@@ -89,26 +89,26 @@ export default function StatisticsScroll() {
     return (
         <div className={statsStyles.scrollWrapper}>
             <section className={statsStyles.statsContainer}>
-            <div className={statsStyles.statsSlideContainer} ref={wrapper}>
-            <div className={statsStyles.statsSlide} ref={addPanel}>
-                <h4>Slide 1</h4>
-            </div>
-            <div className={statsStyles.statsSlide} ref={addPanel}>
-                <h4>Slide 2</h4>
-            </div>
-            <div className={statsStyles.statsSlide} ref={addPanel}>
-                <h4>Slide 3</h4>
-            </div>
-            <div className={statsStyles.statsSlide} ref={addPanel}>
-                <h4>Slide 4</h4>
-            </div>
-            <div className={statsStyles.statsSlide} ref={addPanel}>
-                <h4>Slide 5</h4>
-            </div>
-            <div className={statsStyles.statsSlide} ref={addPanel}>
-                <h4>Slide 6</h4>
-            </div>
-            </div>
+              <div className={statsStyles.statsSlideContainer} ref={wrapper}>
+                <div className={statsStyles.statsSlide} ref={addPanel}>
+                    <h4>Slide 1</h4>
+                </div>
+                <div className={statsStyles.statsSlide} ref={addPanel}>
+                    <h4>Slide 2</h4>
+                </div>
+                <div className={statsStyles.statsSlide} ref={addPanel}>
+                    <h4>Slide 3</h4>
+                </div>
+                <div className={statsStyles.statsSlide} ref={addPanel}>
+                    <h4>Slide 4</h4>
+                </div>
+                <div className={statsStyles.statsSlide} ref={addPanel}>
+                    <h4>Slide 5</h4>
+                </div>
+                <div className={statsStyles.statsSlide} ref={addPanel}>
+                    <h4>Slide 6</h4>
+                </div>
+              </div>
             </section>
             <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav}/>
         </div>

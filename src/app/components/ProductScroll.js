@@ -91,26 +91,23 @@ export default function ProductScroll() {
     return (
         <div className={productStyles.scrollWrapper}>
           <section className={productStyles.productContainer}>
-            <div className={productStyles.productSlideContainer} ref={wrapper}>
-              <div className={productStyles.productSlide} ref={addPanel}>
-                  <h4>Slide 1</h4>
+              <div className={productStyles.productSlideContainer} ref={wrapper}>
+                  {Data[0].productPanels.map((item, index) => (
+                      <div className={productStyles.productSlide} key={index} ref={addPanel}>
+                          <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
+                            <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
+                            className={`${ item.title === true ? productStyles.productImage100 : productStyles.productImage50}`} />
+                            {item.title === true ? 
+                              <h2 className={productStyles.productTitle} dangerouslySetInnerHTML={{__html: item.content.titleCopy[0]}}></h2> 
+                              : 
+                              <p dangerouslySetInnerHTML={{__html: item.content.contentParagraph[0]}} className={productStyles.contentParagraph}></p>
+                            }
+                          </div>
+                      </div>
+                  ))}
+
+
               </div>
-              <div className={productStyles.productSlide} ref={addPanel}>
-                  <h4>Slide 2</h4>
-              </div>
-              <div className={productStyles.productSlide} ref={addPanel}>
-                  <h4>Slide 3</h4>
-              </div>
-              <div className={productStyles.productSlide} ref={addPanel}>
-                  <h4>Slide 4</h4>
-              </div>
-              <div className={productStyles.productSlide} ref={addPanel}>
-                  <h4>Slide 5</h4>
-              </div>
-              <div className={productStyles.productSlide} ref={addPanel}>
-                  <h4>Slide 6</h4>
-              </div>
-            </div>
           </section>
           <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav}/>
         </div>
