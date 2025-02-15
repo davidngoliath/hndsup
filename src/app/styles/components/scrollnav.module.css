@@ -1,4 +1,4 @@
-.productNav {
+.scrollNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,7 +12,7 @@
     z-index: 1;
 }
 
-.productNavButton {
+.scrollNavButton {
     width: 60px;
     height: 100px;
     display: flex;
@@ -21,20 +21,20 @@
     flex-direction: column;
 }
 
-.productNavButton img {
+.scrollNavButton img {
     width: 50%;
     height: 50%;
-    display: flex;
+    /* display: flex; */
     opacity: 0;
 }
 
-.productNavButton img.setActive {
+.scrollNavButton img.setActive {
     opacity: 1;
     transform: scale(1.5);
     transition: all 0.3s ease-in-out;
 }
 
-.productNavButton button {
+.scrollNavButton button {
     width: 7px;
     height: 7px;
     background-color: #D9D9D9;
@@ -43,10 +43,15 @@
     cursor: pointer;
     opacity: 0.25;
     transition: all 0.3s ease-in-out;
+    /* display: flex; */
 }
 
-.productNavButton button.setActive {
+.scrollNavButton button.setActive {
     opacity: 1;
     transform: scale(1.5);
     transition: all 0.3s ease-in-out;
+}
+
+.hide {
+    display: none;
 }

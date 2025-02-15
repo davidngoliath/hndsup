@@ -90,7 +90,8 @@ export default function StatisticsScroll() {
         <div className={statsStyles.scrollWrapper}>
             <section className={statsStyles.statsContainer}>
               <div className={statsStyles.statsSlideContainer} ref={wrapper}>
-              {Data[0].statsPanels.map((item, index) => (
+              {Data[0].statsPanels.map((item, index) => {
+                  return (
                       <div className={statsStyles.statsSlide} key={index} ref={addPanel}>
                           <div className={statsStyles.statsSlideContent}>
                             <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
@@ -98,7 +99,8 @@ export default function StatisticsScroll() {
                             <p dangerouslySetInnerHTML={{__html: item.content.contentParagraph[0]}} className={statsStyles.contentParagraph}></p>
                           </div>
                       </div>
-                  ))}
+                  )
+              })}
               </div>
             </section>
             <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav} markers={ids} scrolltype={"stats"}/>

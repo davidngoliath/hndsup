@@ -24,6 +24,14 @@ export default function ProductScroll() {
       setTrigger(e)
     }, [setTrigger]);
 
+    // useEffect(() => {
+    //   const resizeReset = () => {
+    //     ScrollTrigger.refresh();
+    //   }
+    //   window.addEventListener('resize', resizeReset)
+    //     return () => window.removeEventListener('resize', resizeReset)
+    // }, [])
+
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -89,7 +97,8 @@ export default function ProductScroll() {
         <div className={productStyles.scrollWrapper}>
           <section className={productStyles.productContainer}>
               <div className={productStyles.productSlideContainer} ref={wrapper}>
-                  {Data[0].productPanels.map((item, index) => (
+                  {Data[0].productPanels.map((item, index) => {
+                    return (
                       <div className={productStyles.productSlide} key={index} ref={addPanel}>
                           <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
                             <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
@@ -101,7 +110,8 @@ export default function ProductScroll() {
                             }
                           </div>
                       </div>
-                  ))}
+                    )
+                  })}
               </div>
           </section>
           <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav} markers={ids} scrolltype={"product"}/>

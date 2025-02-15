@@ -10,6 +10,22 @@ import TakeAction from "./components/TakeAction";
 
 export default function Home() {
 
+  // const [width, setWidth] = useState(null)
+
+  // for orientation change
+  // useEffect(() => {
+  //   if(width === null){
+  //     setWidth(window.innerWidth)
+  //   }
+
+  //   const updateWindowDimensions = () => {
+  //     setWidth(window.innerWidth)
+  //   }
+
+  //   window.addEventListener('resize', updateWindowDimensions)
+  //   return () => window.removeEventListener('resize', updateWindowDimensions)
+  // }, [width, setWidth])
+
   return (
     <>
         <nav className={styles.navContainer}>
@@ -58,6 +74,17 @@ export default function Home() {
         <div id="horizontal-spacer2" style={{ height: "100vh" }}></div>
         <TakeAction />
         <footer className={styles.footer}>
+          <div className={styles.footerContent}>
+            <div className={styles.footerText}>
+              <p>© 2025 HNDSUP ALL RIGHTS RESERVED</p>
+            </div>
+            <div className={styles.footerLogoContainer}>
+              <Image src="/images/facebook.svg" alt="facebook" width={23} height={23} className={styles.footerLogos}/>
+              <Image src="/images/instagram.svg" alt="instagram" width={23} height={23} className={styles.footerLogos}/>  
+              <Image src="/images/twitter.svg" alt="twitter" width={23} height={23} className={styles.footerLogos}/>
+              <Image src="/images/youtube.svg" alt="youtube" width={23} height={23} className={styles.footerLogos}/>
+            </div>
+          </div>
         </footer>
 
 
