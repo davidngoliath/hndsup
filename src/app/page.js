@@ -10,21 +10,7 @@ import TakeAction from "./components/TakeAction";
 
 export default function Home() {
 
-  // const [width, setWidth] = useState(null)
-
-  // for orientation change
-  // useEffect(() => {
-  //   if(width === null){
-  //     setWidth(window.innerWidth)
-  //   }
-
-  //   const updateWindowDimensions = () => {
-  //     setWidth(window.innerWidth)
-  //   }
-
-  //   window.addEventListener('resize', updateWindowDimensions)
-  //   return () => window.removeEventListener('resize', updateWindowDimensions)
-  // }, [width, setWidth])
+  
 
   return (
     <>

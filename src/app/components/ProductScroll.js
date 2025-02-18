@@ -1,10 +1,14 @@
-import React, { useEffect, useRef, useState, useCallback} from 'react';
+
+"use client"
+import React, { useEffect, useRef, useState, useCallback, useLayoutEffect} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import productStyles from "../styles/components/productscroll.module.css";
 import Image from 'next/image';
 import ScrollNav from "./ScrollNav";
 import { Data } from "../data.js";
+import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
 export default function ProductScroll() {
     const productNav = useRef();
@@ -13,7 +17,7 @@ export default function ProductScroll() {
     const [section, setSection] = useState(0);
     const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
-    const [windowsize, setWindowsize] = useState(window.innerWidth);
+    const [windowsize, setWindowsize] = useState(null);
     const ids = Data[0].productPanels.map((item, index) => item.id);
 
     const handleNavToggle = useCallback((e) => {
@@ -24,17 +28,53 @@ export default function ProductScroll() {
       setTrigger(e)
     }, [setTrigger]);
 
-    // useEffect(() => {
-    //   const resizeReset = () => {
-    //     ScrollTrigger.refresh();
-    //   }
-    //   window.addEventListener('resize', resizeReset)
-    //     return () => window.removeEventListener('resize', resizeReset)
-    // }, [])
-
+    useLayoutEffect(() => {
+      setWindowsize(window.innerWidth);
+    }, []);
+    
+    const handleNavClick = useCallback((e) => {
+      // e.preventDefault();
+      setSection(e);
+      setWrap(wrapper.current.offsetWidth);
+      setWindowsize(window.innerWidth)
+      const getId = Data[0].productPanels[e].id;
+  
+      gsap.to(window, {
+        scrollTo:  ( document.getElementById(getId).offsetLeft * (wrap / (wrap - windowsize)) ),
+        duration: 2
+      })
+    })
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+      let timeout;
+      
+      const handleResize = () => {
+        console.log('resize')
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+          setSection(0);
+          handleNavClick(0);
+          ScrollTrigger.refresh();
+        }, 250); // Wait 250ms after resize before refreshing
+      };
+    
+      window.addEventListener("resize", handleResize);
+      
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        clearTimeout(timeout);
+      };
+    }, []);
+    
+
+    useEffect(() => {
+      const ctx = gsap.context(() => {
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         
         // const panels = gsap.utils.toArray(panel.current);
         const totalScroll = wrapper.current.scrollWidth - window.innerWidth;
@@ -82,10 +122,14 @@ export default function ProductScroll() {
             onEnter: self => handleAnimation(index),
           });
         });
-      
-        return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-    }, []);
+      }, wrapper.current);
+      return () => {
+        ctx.revert();
+        ScrollTrigger.refresh();
+      }
+
+    }, [windowsize]);
       
     const addPanel = useCallback((el) => {
       if (el && !panel.current.includes(el)) {
@@ -99,14 +143,14 @@ export default function ProductScroll() {
               <div className={productStyles.productSlideContainer} ref={wrapper}>
                   {Data[0].productPanels.map((item, index) => {
                     return (
-                      <div className={productStyles.productSlide} key={index} ref={addPanel}>
+                      <div className={productStyles.productSlide} key={index} ref={addPanel} id={item.id}>
                           <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
-                            <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
+                            <Image src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
                             className={`${ item.title === true ? productStyles.productImage100 : productStyles.productImage50}`} />
                             {item.title === true ? 
-                              <h2 className={productStyles.productTitle} dangerouslySetInnerHTML={{__html: item.content.titleCopy[0]}}></h2> 
+                              <div className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div> 
                               : 
-                              <p dangerouslySetInnerHTML={{__html: item.content.contentParagraph[0]}} className={productStyles.contentParagraph}></p>
+                              <div dangerouslySetInnerHTML={{ __html: item.content.contentParagraph[0] }} className={productStyles.contentParagraph}></div>
                             }
                           </div>
                       </div>
