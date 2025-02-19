@@ -61,7 +61,7 @@ export default function ProductScroll({productRef}) {
           setSection(0);
           handleNavClick(0);
           ScrollTrigger.refresh();
-        }, 250); // Wait 250ms after resize before refreshing
+        }); // Wait 250ms after resize before refreshing
       };
     
       window.addEventListener("resize", handleResize);
@@ -74,7 +74,7 @@ export default function ProductScroll({productRef}) {
     
 
     useEffect(() => {
-      const ctx = gsap.context(() => {
+      // const ctx = gsap.context(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         
         // const panels = gsap.utils.toArray(panel.current);
@@ -124,10 +124,11 @@ export default function ProductScroll({productRef}) {
           });
         });
 
-      }, wrapper.current);
+      // }, wrapper.current);
       return () => {
-        ctx.revert();
-        ScrollTrigger.refresh();
+        // ctx.revert();
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        // ScrollTrigger.refresh();
       }
 
     }, [windowsize]);

@@ -60,7 +60,7 @@ export default function StatisticsScroll({statsRef}) {
         setSection(0);
         handleNavClick(0);
         ScrollTrigger.refresh();
-      }, 250); // Wait 250ms after resize before refreshing
+      }); // Wait 250ms after resize before refreshing
     };
   
     window.addEventListener("resize", handleResize);
@@ -72,7 +72,7 @@ export default function StatisticsScroll({statsRef}) {
   }, []);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    // const ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
       
       // const panels = gsap.utils.toArray(panel.current);
@@ -122,12 +122,13 @@ export default function StatisticsScroll({statsRef}) {
         });
       });
 
-      }, wrapper.current);
+      // }, wrapper.current);
       return () => {
-        ctx.revert();
-        ScrollTrigger.refresh();
+        // ctx.revert();
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        // ScrollTrigger.refresh();
       }
-        // return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      
 
   }, [windowsize]);
       
