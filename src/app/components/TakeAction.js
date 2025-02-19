@@ -3,12 +3,12 @@ import actionStyles from "../styles/components/takeaction.module.css";
 import Image from 'next/image';
 
 
-export default function ScrollNav() {
+export default function TakeAction({actionRef}) {
 
 
     return (
         <>
-            <section className={actionStyles.takeActionContainer}>
+            <section className={actionStyles.takeActionContainer} ref={actionRef}>
                 {/* <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={1108} className={actionStyles.takeActionImage}/> */}
                 <h2>TAKE ACTION</h2>
                 <div className={actionStyles.takeActionContent}>

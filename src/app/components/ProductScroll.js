@@ -10,7 +10,7 @@ import ScrollNav from "./ScrollNav";
 import { Data } from "../data.js";
 import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
-export default function ProductScroll() {
+export default function ProductScroll({productRef}) {
     const productNav = useRef();
     const panel = useRef([]);
     const wrapper = useRef();
@@ -34,6 +34,7 @@ export default function ProductScroll() {
     
     const handleNavClick = useCallback((e) => {
       // e.preventDefault();
+      console.log(e)
       setSection(e);
       setWrap(wrapper.current.offsetWidth);
       setWindowsize(window.innerWidth)
@@ -138,7 +139,7 @@ export default function ProductScroll() {
     }, []);
 
     return (
-        <div className={productStyles.scrollWrapper}>
+        <div className={productStyles.scrollWrapper} ref={productRef}>
           <section className={productStyles.productContainer}>
               <div className={productStyles.productSlideContainer} ref={wrapper}>
                   {Data[0].productPanels.map((item, index) => {

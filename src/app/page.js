@@ -10,27 +10,34 @@ import TakeAction from "./components/TakeAction";
 
 export default function Home() {
 
-  
+  const videoDiv = useRef();
+  const productDiv = useRef();
+  const statsDiv = useRef();
+  const actionDiv = useRef();
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
         <nav className={styles.navContainer}>
           <div className={styles.pageLinks}>
             <div>
-              <a href="/">VIDEO</a>
+              <a href="#" onClick={() => scrollToSection(videoDiv)}>VIDEO</a>
             </div>
             <div>
-              <a href="/">EXPLORE PRODUCTS</a>
+              <a href="#" onClick={() => scrollToSection(productDiv)}>EXPLORE PRODUCTS</a>
             </div>
             <div>
-              <a href="/">STATISTICS</a>
+              <a href="#" onClick={() => scrollToSection(statsDiv)}>STATISTICS</a>
             </div>
           </div>
           <div className={styles.takeAction}>
-            <a href="/">TAKE ACTION</a>
+            <a href="#" onClick={() => scrollToSection(actionDiv)}>TAKE ACTION</a>
           </div>
         </nav>
-        <section className={styles.heroContainer}>
+        <section className={styles.heroContainer} ref={videoDiv}>
           <Image src="/images/circleblur.png" alt="hero" width={3024} height={2744} className={styles.blur}/>
           <div className={styles.heroContent}>
             <div className={styles.titleContainer}>
@@ -53,12 +60,12 @@ export default function Home() {
           </div>
         </section>
 
-        <ProductScroll />
+        <ProductScroll productRef={productDiv}/>
         <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
 
-        <StatisticsScroll />
+        <StatisticsScroll statsRef={statsDiv}/>
         <div id="horizontal-spacer2" style={{ height: "100vh" }}></div>
-        <TakeAction />
+        <TakeAction actionRef={actionDiv}/>
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
             <div className={styles.footerText}>

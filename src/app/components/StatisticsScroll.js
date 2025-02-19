@@ -8,7 +8,7 @@ import ScrollNav from './ScrollNav';
 import { Data } from "../data.js";
 import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
-export default function StatisticsScroll() {
+export default function StatisticsScroll({statsRef}) {
 
   const productNav = useRef();
   const panel = useRef([]);
@@ -138,7 +138,7 @@ export default function StatisticsScroll() {
   }, []);
 
     return (
-        <div className={statsStyles.scrollWrapper}>
+        <div className={statsStyles.scrollWrapper} ref={statsRef}>
             <section className={statsStyles.statsContainer}>
               <div className={statsStyles.statsSlideContainer} ref={wrapper}>
               {Data[0].statsPanels.map((item, index) => {
