@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useContext } from "react";
 import Image from "next/image";
 import styles from "./styles/page.module.css";
 import { gsap } from "gsap";
@@ -7,9 +7,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProductScroll from "./components/ProductScroll";
 import StatisticsScroll from "./components/StatisticsScroll";
 import TakeAction from "./components/TakeAction";
+import { ModalContext } from "./contexts/ModalContext";
+import Modal from "./components/Modal";
 
 export default function Home() {
-
+  const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
   const videoDiv = useRef();
   const productDiv = useRef();
   const statsDiv = useRef();
@@ -21,6 +23,7 @@ export default function Home() {
 
   return (
     <>
+      <main>
         <nav className={styles.navContainer}>
           <div className={styles.pageLinks}>
             <div>
@@ -45,7 +48,7 @@ export default function Home() {
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
               <h4 className={styles.titleSubline}>FIRST OF ITS KIND CIVILIAN WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
-              <button className={styles.heroVideo}>
+              <button className={styles.heroVideo} onClick={(e) => setVideo('1033298354',handleModal())}>
                 <div className={styles.playGraphic}>
                   <span></span>
                 </div>
@@ -79,8 +82,9 @@ export default function Home() {
             </div>
           </div>
         </footer>
-
-
-</>
+      </main>
+      <Modal/>
+    </>
+  
   );
 }

@@ -1,6 +1,7 @@
 // import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import ModalContextProvider from "./contexts/ModalContext";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -82,10 +83,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${DMSans.variable} ${DMSansItalic.variable} ${RationalTWDisplayLight.variable} ${RationalTWDisplaySemibold.variable} ${RationalTWTextLight.variable} ${RationalTWTextSemibold.variable} ${SilkSerifExtraLightItalic.variable}`}>
-        {children}
-      </body>
-    </html>
+    
+      <html lang="en">
+        <ModalContextProvider>
+        <body className={`${DMSans.variable} ${DMSansItalic.variable} ${RationalTWDisplayLight.variable} ${RationalTWDisplaySemibold.variable} ${RationalTWTextLight.variable} ${RationalTWTextSemibold.variable} ${SilkSerifExtraLightItalic.variable}`}>
+          {children}     
+        </body>
+        </ModalContextProvider>
+      </html>
+    
   );
 }

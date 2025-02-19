@@ -1,10 +1,11 @@
-import React, { useEffect} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import actionStyles from "../styles/components/takeaction.module.css";
 import Image from 'next/image';
-
+import { ModalContext } from "../contexts/ModalContext";
 
 export default function TakeAction({actionRef}) {
 
+    const { state, setState, handleModal, contact, setContact, donate, setDonate  } = useContext(ModalContext);
 
     return (
         <>
@@ -15,12 +16,12 @@ export default function TakeAction({actionRef}) {
                     <div className={actionStyles.donateContainer}>
                         <h4>DONATE</h4>
                         <p>YOUR FINANCIAL SUPPORT ENABLES COMPREHENSIVE TRAINING FOR OFFICERS IN YOUR COMMUNITY, EQUIPPING THEM WITH ESSENTIAL SKILLS TO SERVE EFFECTIVELY AND JUSTLY.</p>
-                        <button>Donate</button>
+                        <button onClick={(e) => setDonate(true, handleModal())}>Donate</button>
                     </div>
                     <div className={actionStyles.writeLetterContainer}>
                         <h4>CONTACT LOCAL LAW ENFORCEMENT</h4>
                         <p>HERE YOU CAN AMPLIFY YOUR VOICE BY WRITING TO LOCAL LAW ENFORCEMENT AGENCIES, URGING THEM TO PRIORITIZE ADVANCED TRAINING FOR THEIR OFFICERS.</p>
-                        <button>WRITE A LETTER</button>
+                        <button onClick={(e) => setContact(true, handleModal())}>WRITE A LETTER</button>
                     </div>
                 </div>
             </section>
