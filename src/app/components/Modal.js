@@ -16,12 +16,14 @@ export default function Modal() {
 
     useEffect(()=> {
     	const tl = gsap.timeline()	
-    	const bodyTag = document.getElementsByTagName('main')[0];
+    	// const mainTag = document.getElementsByTagName('main')[0];
     	if(state.clicked === false){
-    		tl.set(bodyTag, { autoAlpha: 1 })
+    		
     		tl.set(modalWrapper.current, { autoAlpha: 0})
+            document.body.classList.remove('no-scroll');
     	} else if ( state.clicked === true || (state.clicked === true && state.initial === null)){
-    		tl.set(bodyTag, { autoAlpha: 0 })
+    		
+            document.body.classList.add('no-scroll');
     		tl.to(modalWrapper.current, { autoAlpha: 1, duration: 0.5, ease: 'Expo.easeInOut'})
     	}
     })

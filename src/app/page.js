@@ -10,6 +10,7 @@ import StatisticsScroll from "./components/StatisticsScroll";
 import TakeAction from "./components/TakeAction";
 import { ModalContext } from "./contexts/ModalContext";
 import Modal from "./components/Modal";
+import Nav from "./components/Nav";
 
 export default function Home() {
   const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
@@ -24,27 +25,9 @@ export default function Home() {
 
   return (
     <>
+    <Nav scrollToSection={scrollToSection} videoRef={videoDiv} productRef={productDiv} statsRef={statsDiv} actionRef={actionDiv} />
       <main>
-        <nav className={styles.navContainer}>
-          <div className={styles.pageLinks}>
-            <div>
-              <a href="#" onClick={() => scrollToSection(videoDiv)}>VIDEO</a>
-            </div>
-            <div>
-              <a href="#" onClick={() => scrollToSection(productDiv)}>EXPLORE PRODUCTS</a>
-            </div>
-            <div>
-              <a href="#" onClick={() => scrollToSection(statsDiv)}>STATISTICS</a>
-            </div>
-          </div>
-          <div className={styles.takeAction}>
-            <a href="#" onClick={() => scrollToSection(actionDiv)}>TAKE ACTION</a>
-          </div>
-        </nav>
         <section className={styles.heroContainer} ref={videoDiv}>
-          <div className={styles.blur}>
-            <Image src="/images/circleblur.png" alt="hero" width={3024} height={2744}/>
-          </div>
           <div className={styles.heroContent}>
             <div className={styles.titleContainer}>
               <h3>THE COURAGEOUS CONVERSATIONS<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
@@ -94,8 +77,8 @@ export default function Home() {
           </div>
         </footer>
       </main>
+      
       <Modal/>
     </>
-  
   );
 }

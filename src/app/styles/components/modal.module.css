@@ -14,10 +14,11 @@
 .modalContainer {
     opacity: 0;
     visibility: hidden;
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, .65);
 }
 
 .videoBg {
-    background: black;
     position: fixed;
     top: 0px;
     right: 0px;

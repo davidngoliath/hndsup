@@ -72,7 +72,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['/images/panels/stats/hero-statsone.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h1>BLACK PEOPLE ARE 3X MORE LIKELY TO GET KILLED BY POLICE OFFICERS.</h1><br><h5>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</h5>']
+                'contentParagraph': ['<h1><span>Black People are 3x more likely to get killed by police officers.</span></h1><br><h5>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</h5>']
             }
         },
         {
@@ -90,7 +90,7 @@ export const Data =  [
             content: {
                  'heroVideo': ['/images/panels/stats/hero-statsthree.jpg'],
                 'titleCopy': [''],
-                'contentParagraph':['<h1>BLACK TEENAGERS ARE 21 TIMES MORE LIKELY THAN WHITE TEENAGERS TO BE KILLED BY POLICE.</h1><br><h5>(BROOKINGS)</h5>']
+                'contentParagraph':['<h1>BLACK TEENAGERS ARE 21 TIMES <span>more likely</span> THAN WHITE TEENAGERS TO BE KILLED BY POLICE.</h1><br><h5>(BROOKINGS)</h5>']
             }
         },
         {
@@ -99,7 +99,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['/images/panels/stats/hero-statsfour.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h1>A BLACK PERSON IS KILLED EVERY 40 HOURS BY POLICE IN THE US.</h1><br><h5>(WASHINGTON POST)</h5>']
+                'contentParagraph': ['<h1>A BLACK PERSON IS KILLED EVERY <span>40 hours</span> BY POLICE IN THE US.</h1><br><h5>(WASHINGTON POST)</h5>']
             }
         }
     ]
