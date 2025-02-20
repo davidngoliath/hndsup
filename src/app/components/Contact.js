@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import styles from '../styles/components/contact.module.css';
+import "../globals.css";
 
 export default function Contact() {
   const [name, setName] = useState('');

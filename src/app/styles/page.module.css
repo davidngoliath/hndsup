@@ -20,10 +20,13 @@
   align-items: center;
   padding: 2.5rem 0;
   flex-direction: row;
+  position: relative;
+  z-index: 2;
 }
 
 .takeAction {
-  width: 10%;
+  max-width: 157px;
+  /* width: 10%; */
   height: auto;
   display: flex;
   justify-content: center;
@@ -34,8 +37,9 @@
 }
 
 .takeAction a {
+  max-width: 157px;
   width: 100%;
-  height: auto;
+  height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,9 +63,9 @@
   height: 90vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   flex-direction: row;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 
@@ -74,12 +78,22 @@
 }
 
 .blur {
-  transform: scale(0.5); 
+  /* transform: scale(0.75);  */
   transition: transform 0.3s ease-in-out; 
   width: 100%;
   height: auto;
   position: absolute;
-  z-index: -1;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blur img {
+  
+  height: auto;
+  width: 100%;
 }
 
 .heroContent {
@@ -89,6 +103,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .fistContainer {
@@ -98,12 +113,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  
 
 }
 
 .titleContainer {
   width: 20%;
+  max-width: 325px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -111,15 +127,22 @@
   align-items: center;
 }
 
-.titleContainer h4 {
+.titleContainer h3 {
   text-align: center;
   font-family: var(--font-dm-sans);
 }
 
+.titleContainer > span {
+  font-family: var(--font-silk-serif-extra-light-italic);
+  margin-bottom: 1rem;
+}
+
 .titleSubline {
   font-family: var(--font-rational-tw-display-light);
-  font-size: 0.75rem;
-  letter-spacing: 0.25rem;
+  letter-spacing: 3%;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .heroVideo {
@@ -156,7 +179,7 @@
 }
 
 .videoText {
-  font-family: var(--font-dm-sans);
+  
   max-width: 224px;
   width: 100%;
   display: flex;
@@ -165,6 +188,9 @@
   flex-direction: column;
 }
 
+.videoText span {
+  font-family: var(--font-dm-sans);
+}
 
 
 .footer {
@@ -180,17 +206,20 @@
 }
 
 .footerContent {
-  width: 80%;
+  width: 90%;
   height: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  opacity: 0.5;
 }
 
 .footerText {
   width: 100%;
   height: auto;
+  
+  font-family: var(--font-rational-tw-display-light);
 
 }
 
@@ -199,11 +228,13 @@
   height: auto;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 }
 
-
+.footerLogoContainer a {
+  margin-left: 2%;
+}
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

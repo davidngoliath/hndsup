@@ -2,6 +2,7 @@
 import React, { useContext, useRef, useEffect, useCallback } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import styles from "../styles/components/modal.module.css";
+import "../globals.css";
 import Video from "./Video";
 import Contact from "./Contact";
 import Donate from "./Donate";

@@ -42,10 +42,12 @@ export default function Home() {
           </div>
         </nav>
         <section className={styles.heroContainer} ref={videoDiv}>
-          <Image src="/images/circleblur.png" alt="hero" width={3024} height={2744} className={styles.blur}/>
+          <div className={styles.blur}>
+            <Image src="/images/circleblur.png" alt="hero" width={3024} height={2744}/>
+          </div>
           <div className={styles.heroContent}>
             <div className={styles.titleContainer}>
-              <h4>THE COURAGEOUS CONVERSATIONS<sup>®</sup>GLOBAL FOUNDATION</h4>
+              <h3>THE COURAGEOUS CONVERSATIONS<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
               <h4 className={styles.titleSubline}>FIRST OF ITS KIND CIVILIAN WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
@@ -73,13 +75,21 @@ export default function Home() {
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
             <div className={styles.footerText}>
-              <p>© 2025 HNDSUP ALL RIGHTS RESERVED</p>
+              <p>&copy; 2025 HNDSUP ALL RIGHTS RESERVED</p>
             </div>
             <div className={styles.footerLogoContainer}>
-              <Image src="/images/facebook.svg" alt="facebook" width={23} height={23} className={styles.footerLogos}/>
-              <Image src="/images/instagram.svg" alt="instagram" width={23} height={23} className={styles.footerLogos}/>  
-              <Image src="/images/twitter.svg" alt="twitter" width={23} height={23} className={styles.footerLogos}/>
-              <Image src="/images/youtube.svg" alt="youtube" width={23} height={23} className={styles.footerLogos}/>
+              <a>
+                <Image src="/images/facebook.svg" alt="facebook" width={23} height={23} className={styles.footerLogos}/>
+              </a>
+              <a>
+                <Image src="/images/instagram.svg" alt="instagram" width={23} height={23} className={styles.footerLogos}/>  
+              </a>
+              <a>
+                <Image src="/images/twitter.svg" alt="twitter" width={23} height={23} className={styles.footerLogos}/>
+              </a>
+              <a>
+                <Image src="/images/youtube.svg" alt="youtube" width={23} height={23} className={styles.footerLogos}/>
+              </a>
             </div>
           </div>
         </footer>

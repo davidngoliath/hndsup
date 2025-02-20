@@ -15,7 +15,7 @@ export const Data =  [
             title: true,
             content: {
                 'heroVideo': ['/images/panels/product/hero-productmain.jpg'],
-                'titleCopy': ['THE PRODUCT WE HOPE TO <span>never</span> LAUNCH.'],
+                'titleCopy': ['<h1>THE PRODUCT WE HOPE TO <span>never</span> LAUNCH.</h1>'],
                 'contentParagraph': []
             }
         },
@@ -72,7 +72,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['/images/panels/stats/hero-statsone.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h1>BLACK PEOPLE ARE 3X MORE LIKELY TO GET KILLED BY POLICE OFFICERS.</h1><br><h3>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</h3>']
+                'contentParagraph': ['<h1>BLACK PEOPLE ARE 3X MORE LIKELY TO GET KILLED BY POLICE OFFICERS.</h1><br><h5>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</h5>']
             }
         },
         {

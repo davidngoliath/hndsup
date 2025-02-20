@@ -10,16 +10,18 @@ export default function TakeAction({actionRef}) {
     return (
         <>
             <section className={actionStyles.takeActionContainer} ref={actionRef}>
-                {/* <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={1108} className={actionStyles.takeActionImage}/> */}
-                <h2>TAKE ACTION</h2>
+                <div className={actionStyles.takeActionImageContainer}>
+                    <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={1108} className={actionStyles.takeActionImage}/>
+                </div>
+                <h1>TAKE ACTION</h1>
                 <div className={actionStyles.takeActionContent}>
                     <div className={actionStyles.donateContainer}>
-                        <h4>DONATE</h4>
+                        <h2>DONATE</h2>
                         <p>YOUR FINANCIAL SUPPORT ENABLES COMPREHENSIVE TRAINING FOR OFFICERS IN YOUR COMMUNITY, EQUIPPING THEM WITH ESSENTIAL SKILLS TO SERVE EFFECTIVELY AND JUSTLY.</p>
-                        <button onClick={(e) => setDonate(true, handleModal())}>Donate</button>
+                        <button onClick={(e) => setDonate(true, handleModal())}>DONATE</button>
                     </div>
                     <div className={actionStyles.writeLetterContainer}>
-                        <h4>CONTACT LOCAL LAW ENFORCEMENT</h4>
+                        <h2>CONTACT LOCAL LAW ENFORCEMENT</h2>
                         <p>HERE YOU CAN AMPLIFY YOUR VOICE BY WRITING TO LOCAL LAW ENFORCEMENT AGENCIES, URGING THEM TO PRIORITIZE ADVANCED TRAINING FOR THEIR OFFICERS.</p>
                         <button onClick={(e) => setContact(true, handleModal())}>WRITE A LETTER</button>
                     </div>
