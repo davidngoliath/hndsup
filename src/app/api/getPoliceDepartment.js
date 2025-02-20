@@ -3,6 +3,8 @@ import axios from 'axios';
 export default async function handler(req, res) {
   const { zipcode } = req.query;
 
+  console.log(process.env.GOOGLE_PLACES_API_KEY);
+
   try {
     const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=police+department+in+${zipcode}&key=${process.env.GOOGLE_PLACES_API_KEY}`);
     const data = await response.json();

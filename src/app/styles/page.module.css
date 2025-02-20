@@ -23,6 +23,7 @@
   position: fixed;
   top: 0;
   z-index: 2;
+  color: white;
 }
 
 .takeAction {
@@ -122,6 +123,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .titleContainer h3 {
@@ -186,6 +188,7 @@
 
 .videoText span {
   font-family: var(--font-dm-sans);
+  color: white;
 }
 
 .footer {

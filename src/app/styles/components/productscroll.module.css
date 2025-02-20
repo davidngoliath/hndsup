@@ -98,6 +98,7 @@
 
   .contentParagraph h2 {
     font-family: var(--font-dm-sans);
+    color: white;
   }
 
 .contentParagraph h2 > span {

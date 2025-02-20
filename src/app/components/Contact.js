@@ -9,16 +9,24 @@ export default function Contact() {
   const [zipcode, setZipcode] = useState('');
   const [message, setMessage] = useState('');
   const [recipient, setRecipient] = useState('');
+  const [error, setError] = useState(null);
 
   const handleZipcodeChange = async (e) => {
     const zipcode = e.target.value;
     setZipcode(zipcode);
 
     if (zipcode.length === 5) {
-      // Fetch the local police department name using Google Places API
-      const response = await fetch(`/api/getPoliceDepartment?zipcode=${zipcode}`);
-      const data = await response.json();
-      setRecipient(data.policeDepartment);
+      try {
+        const response = await fetch(`/api/getPoliceDepartment?zipcode=${zipcode}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setRecipient(data.policeDepartment);
+      } catch (error) {
+        setError('Failed to fetch police department');
+        console.error('Error fetching police department:', error);
+      }
     }
   };
 
@@ -87,6 +95,7 @@ export default function Contact() {
             </div>
         </div>
       </form>
+      {error && <p className={styles.error}>{error}</p>}
       {recipient && (
         <div className={styles.preWrittenLetter}>
           <h2>Pre-Written Letter</h2>
