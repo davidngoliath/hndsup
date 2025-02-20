@@ -85,6 +85,7 @@
     align-items: flex-start;
     flex-direction: column;
     width: 30%;
+    max-width: 464px;
     height: 100%;
   }
 
@@ -94,6 +95,7 @@
     color: #3982BC;
     font-size: 1rem;
     position: relative;
+    margin-bottom: 0.75rem;
   }
 
 .contentParagraph span {
