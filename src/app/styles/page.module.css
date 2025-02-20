@@ -44,9 +44,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #EDEDED;
+  border: 1px solid #ededed;
   border-radius: 2rem;
-  padding: 0.875rem 1rem ;
+  padding: 0.875rem 1rem;
 }
 
 .pageLinks {
@@ -55,7 +55,6 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
 }
 
 .heroContainer {
@@ -70,7 +69,6 @@
 }
 
 .fistImage {
-
   transition: transform 0.3s ease-in-out;
   max-width: 762px;
   height: auto;
@@ -79,7 +77,7 @@
 
 .blur {
   /* transform: scale(0.75);  */
-  transition: transform 0.3s ease-in-out; 
+  transition: transform 0.3s ease-in-out;
   width: 100%;
   height: auto;
   position: absolute;
@@ -91,7 +89,6 @@
 }
 
 .blur img {
-  
   height: auto;
   width: 100%;
 }
@@ -113,8 +110,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-
 }
 
 .titleContainer {
@@ -152,7 +147,7 @@
   height: auto;
   font-size: 1rem;
   background-color: black;
-  border: #EDEDED 1px solid;
+  border: #ededed 1px solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -167,19 +162,18 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  border-right: #EDEDED 1px solid;
+  border-right: #ededed 1px solid;
 }
 
 .playGraphic span {
   width: 0;
   height: 0;
   border-top: 15px solid transparent;
-  border-left: 20px solid #EDEDED;
+  border-left: 20px solid #ededed;
   border-bottom: 15px solid transparent;
 }
 
 .videoText {
-  
   max-width: 224px;
   width: 100%;
   display: flex;
@@ -192,7 +186,6 @@
   font-family: var(--font-dm-sans);
 }
 
-
 .footer {
   width: 100%;
   height: 100px;
@@ -202,7 +195,7 @@
   align-items: center;
   background-color: black;
   position: relative;
-  color: #EBEBEB;
+  color: #ebebeb;
 }
 
 .footerContent {
@@ -218,9 +211,8 @@
 .footerText {
   width: 100%;
   height: auto;
-  
-  font-family: var(--font-rational-tw-display-light);
 
+  font-family: var(--font-rational-tw-display-light);
 }
 
 .footerLogoContainer {
@@ -238,13 +230,10 @@
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
-
 }
 
 @media (max-width: 600px) {
-
 }
 
 @media (prefers-color-scheme: dark) {
-
 }

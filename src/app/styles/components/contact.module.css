@@ -97,6 +97,10 @@ align-items: center;
   color: #DBDBDB;
 }
 
+.formGroup textarea {
+  max-width: 827px;
+  max-height: 633px;
+}
 .input {
   width: 100%;
   min-height: 61px;
