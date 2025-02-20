@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, useCallback, useContext } from "react";
 import Image from "next/image";
 import styles from "./styles/page.module.css";
+import "./globals.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProductScroll from "./components/ProductScroll";

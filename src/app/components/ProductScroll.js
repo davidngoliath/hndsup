@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import productStyles from "../styles/components/productscroll.module.css";
+import "../globals.css";
 import Image from 'next/image';
 import ScrollNav from "./ScrollNav";
 import { Data } from "../data.js";

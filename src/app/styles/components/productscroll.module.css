@@ -89,13 +89,17 @@
     height: 100%;
   }
 
-  .contentParagraph h3{
+  .contentParagraph h3 {
     font-family: var(--font-rational-tw-display-light);
     text-align: center;
     color: #3982BC;
     font-size: 1rem;
     position: relative;
     margin-bottom: 0.75rem;
+  }
+
+  .contentParagraph h2 {
+    font-family: var(--font-dm-sans);
   }
 
 .contentParagraph span {
