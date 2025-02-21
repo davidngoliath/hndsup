@@ -13,7 +13,9 @@ export default function Contact() {
 
   const prewrittenLetter = `
     Dear ${recipient},
+
     In the United States, only 20% of killings by police are captured on body cameras. In 92% of cases, when footage is available, it is used to prosecute civilians. Will these incidents continue to go unwitnessed, with cameras going dark and your office remaining silent?
+
     Will police brutality cases be left for the victims to solve? Will we have to protect ourselves from those whose job it is to protect us?
 
     Courageous Conversation Global Foundation reluctantly presents to you: HndsUp.com—a first-of-its-kind civilian wearable camera that records police encounters. It is motion- and speech-activated, designed for the safety of both civilians and officers. It detects racial profiling from 100 feet away and uploads footage in real time to local news stations, so everyone can be an eyewitness.
