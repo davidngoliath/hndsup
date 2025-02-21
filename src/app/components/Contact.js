@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/components/contact.module.css';
 import "../globals.css";
 
@@ -11,13 +11,34 @@ export default function Contact() {
   const [recipient, setRecipient] = useState('');
   const [error, setError] = useState(null);
 
+  const prewrittenLetter = `
+    Dear ${recipient},
+    In the United States, only 20% of killings by police are captured on body cameras. In 92% of cases, when footage is available, it is used to prosecute civilians. Will these incidents continue to go unwitnessed, with cameras going dark and your office remaining silent?
+    Will police brutality cases be left for the victims to solve? Will we have to protect ourselves from those whose job it is to protect us?
+
+    Courageous Conversation Global Foundation reluctantly presents to you: HndsUp.com—a first-of-its-kind civilian wearable camera that records police encounters. It is motion- and speech-activated, designed for the safety of both civilians and officers. It detects racial profiling from 100 feet away and uploads footage in real time to local news stations, so everyone can be an eyewitness.
+
+    So, really, Chief of Police of New York, has it come to this?
+
+    We urge you to take action. Schedule your training with Courageous Conversation today so we can train officers in your community. Someday, this technology may be able to capture everything. For now, let’s start by preventing it.
+
+    Only education and conversation can stop it from ever starting. Take action today, and set the standard for a safer, more just tomorrow.
+
+    Sincerely,
+    ${name}
+  `;
+
+  useEffect(() => {
+    setMessage(prewrittenLetter);
+  }, [name, recipient]);
+
   const handleZipcodeChange = async (e) => {
     const zipcode = e.target.value;
     setZipcode(zipcode);
 
     if (zipcode.length === 5) {
       try {
-        const response = await fetch(`/api/getPoliceDepartment?zipcode=${zipcode}`);
+        const response = await fetch(`/api/getpolicedepartment?zipcode=${zipcode}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -47,81 +68,55 @@ export default function Contact() {
       <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
       <form onSubmit={handleSubmit} className={styles.contactForm}>
         <div className={styles.userContainer}>
-            <div className={styles.formGroup}>
+          <div className={styles.formGroup}>
             <label htmlFor="name">NAME</label>
             <input
-                className={styles.input}
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
+              className={styles.input}
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
-            </div>
-            <div className={styles.formGroup}>
+          </div>
+          <div className={styles.formGroup}>
             <label htmlFor="zipcode">ZIPCODE</label>
             <input
-                className={styles.input}
-                type="text"
-                id="zipcode"
-                value={zipcode}
-                onChange={handleZipcodeChange}
-                required
+              className={styles.input}
+              type="text"
+              id="zipcode"
+              value={zipcode}
+              onChange={handleZipcodeChange}
+              required
             />
-            </div>
-            <div className={styles.formGroup}>
+          </div>
+          <div className={styles.formGroup}>
             <label htmlFor="email">EMAIL</label>
             <input
-                className={styles.input}
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+              className={styles.input}
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            </div>
-            <button type="submit" className={styles.submitButton}>SUBMIT</button>
+          </div>
+          <button type="submit" className={styles.submitButton}>SUBMIT</button>
         </div>
         <div className={styles.messageContainer}>
-            <div className={styles.formGroup}>
+          <div className={styles.formGroup}>
             <label htmlFor="message">SAMPLE LETTER</label>
             <textarea
-                id="message"
-                value={message}
-                className={styles.textarea}
-                onChange={(e) => setMessage(e.target.value)}
-                required
+              id="message"
+              value={message}
+              className={styles.textarea}
+              onChange={(e) => setMessage(e.target.value)}
+              required
             ></textarea>
-            </div>
+          </div>
         </div>
       </form>
       {error && <p className={styles.error}>{error}</p>}
-      {recipient && (
-        <div className={styles.preWrittenLetter}>
-          <h2>Pre-Written Letter</h2>
-          <p>Dear {recipient},</p>
-            <p>In the United States, only 20% of killings by police are captured on body cameras. In 92% of cases, when footage is available, it is used to prosecute civilians. Will these incidents continue to go unwitnessed, with cameras going dark and your office remaining silent?
-            </p>
-            <p>
-            Will police brutality cases be left for the victims to solve? Will we have to protect ourselves from those whose job it is to protect us?
-            </p>
-            <p>
-            Courageous Conversation Global Foundation reluctantly presents to you: HndsUp.com—a first-of-its-kind civilian wearable camera that records police encounters. It is motion- and speech-activated, designed for the safety of both civilians and officers. It detects racial profiling from 100 feet away and uploads footage in real time to local news stations, so everyone can be an eyewitness.
-            </p>
-            <p>
-            So, really, Chief of Police of New York, has it come to this?
-            </p>
-            <p>
-            We urge you to take action. Schedule your training with Courageous Conversation today so we can train officers in your community. Someday, this technology may be able to capture everything. For now, let’s start by preventing it.
-            </p>
-            <p>
-            Only education and conversation can stop it from ever starting. Take action today, and set the standard for a safer, more just tomorrow.
-            </p>
-
-          <p>Sincerely,</p>
-          <p>{name}</p>
-        </div>
-      )}
     </div>
   );
 }
