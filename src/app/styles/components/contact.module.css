@@ -25,6 +25,7 @@
 
 .contactContainer h1 > span {
   font-family: var(--font-silk-serif-extra-light-italic);
+  font-size: 3.875rem;
 }
 
 .contactContainer label {
@@ -36,6 +37,10 @@
   font-family: var(--font-dm-sans);
   color: #dbdbdb;
   max-height: 605px;
+  background-color: #282828;
+  border-radius: 4px;
+  padding: 10px;
+  overflow-y: auto;
 }
 
 .contactForm {
@@ -106,6 +111,7 @@ align-items: center;
   height: 100vh;
   max-width: 827px;
   max-height: 633px;
+  overflow-y: auto;
 }
 .input {
   width: 100%;

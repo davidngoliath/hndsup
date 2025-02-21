@@ -11,6 +11,7 @@ import TakeAction from "./components/TakeAction";
 import { ModalContext } from "./contexts/ModalContext";
 import Modal from "./components/Modal";
 import Nav from "./components/Nav";
+import { Data } from "./data.js";
 
 export default function Home() {
   const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
@@ -18,6 +19,8 @@ export default function Home() {
   const productDiv = useRef();
   const statsDiv = useRef();
   const actionDiv = useRef();
+
+  const vimeoId = Data[0].videoId;
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -34,7 +37,7 @@ export default function Home() {
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
               <h4 className={styles.titleSubline}>FIRST OF ITS KIND CIVILIAN WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
-              <button className={styles.heroVideo} onClick={(e) => setVideo('1033298354',handleModal())}>
+              <button className={styles.heroVideo} onClick={(e) => setVideo(vimeoId,handleModal())}>
                 <div className={styles.playGraphic}>
                   <span></span>
                 </div>

@@ -1,4 +1,19 @@
-<svg width="33" height="29" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.812 2.59417L1.39178 23.5865C0.279014 25.4659 1.66903 27.8171 3.89456 27.8171H28.735C30.9605 27.8171 32.3506 25.4659 31.2378 23.5865L18.8176 2.59417C17.7048 0.714703 14.9248 0.714703 13.812 2.59417Z" stroke="white" stroke-miterlimit="10"/>
-<path d="M14.5576 21.0233H18.072V24.4313H14.5576V21.0233ZM14.6063 11.3371V7.62207H18.027V11.3371L17.1129 19.5168H15.5243L14.6101 11.3371H14.6063Z" fill="white"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 25 45">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .st1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M10.4,24.6L1.1,40.3c-.8,1.4.2,3.2,1.9,3.2h18.7c1.7,0,2.7-1.8,1.9-3.2l-9.3-15.8c-.8-1.4-2.9-1.4-3.8,0Z"/>
+  <path class="st1" d="M11,38.4h2.6v2.6h-2.6v-2.6ZM11,31.1v-2.8h2.6v2.8l-.7,6.1h-1.2l-.7-6.1h0Z"/>
 </svg>

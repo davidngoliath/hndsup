@@ -1,10 +1,26 @@
-<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_182_1135)">
-<path d="M26.8217 9.0586H17.9418V0.178711H9.05836V9.0586H0.178467V17.9421H9.05836V26.8219H17.9418V17.9421H26.8217V9.0586Z" stroke="white" stroke-miterlimit="10"/>
-</g>
-<defs>
-<clipPath id="clip0_182_1135">
-<rect width="27" height="27" fill="white"/>
-</clipPath>
-</defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 25 45">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: none;
+      }
+
+      .st1 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .st2 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" x=".5" y="20.5" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g class="st2">
+    <path class="st1" d="M24.3,28.6h-7.9v-7.9h-7.9v7.9H.7v7.9h7.9v7.9h7.9v-7.9h7.9v-7.9Z"/>
+  </g>
 </svg>

@@ -8,26 +8,26 @@ export default function Contact() {
   const [email, setEmail] = useState('');
   const [zipcode, setZipcode] = useState('');
   const [message, setMessage] = useState('');
-  const [recipient, setRecipient] = useState('');
+  const [recipient, setRecipient] = useState('Your Local Police Department');
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const prewrittenLetter = `
-    Dear ${recipient},
-
-    In the United States, only 20% of killings by police are captured on body cameras. In 92% of cases, when footage is available, it is used to prosecute civilians. Will these incidents continue to go unwitnessed, with cameras going dark and your office remaining silent?
-
-    Will police brutality cases be left for the victims to solve? Will we have to protect ourselves from those whose job it is to protect us?
-
-    Courageous Conversation Global Foundation reluctantly presents to you: HndsUp.com—a first-of-its-kind civilian wearable camera that records police encounters. It is motion- and speech-activated, designed for the safety of both civilians and officers. It detects racial profiling from 100 feet away and uploads footage in real time to local news stations, so everyone can be an eyewitness.
-
-    So, really, Chief of Police of New York, has it come to this?
-
-    We urge you to take action. Schedule your training with Courageous Conversation today so we can train officers in your community. Someday, this technology may be able to capture everything. For now, let’s start by preventing it.
-
-    Only education and conversation can stop it from ever starting. Take action today, and set the standard for a safer, more just tomorrow.
-
-    Sincerely,
-    ${name}
+    <p>Dear ${recipient},</p>
+    <br>
+    <p>In the United States, only 20% of killings by police are captured on body cameras. In 92% of cases, when footage is available, it is used to prosecute civilians. Will these incidents continue to go unwitnessed, with cameras going dark and your office remaining silent?</p>
+    <br>
+    <p>Will police brutality cases be left for the victims to solve? Will we have to protect ourselves from those whose job it is to protect us?</p>
+    <br>
+    <p>Courageous Conversation Global Foundation reluctantly presents to you: HndsUp.com—a first-of-its-kind civilian wearable camera that records police encounters. It is motion- and speech-activated, designed for the safety of both civilians and officers. It detects racial profiling from 100 feet away and uploads footage in real time to local news stations, so everyone can be an eyewitness.</p>
+    <br>
+    <p>So, really, Chief of Police of New York, has it come to this?</p>
+    <br>
+    <p>We urge you to take action. Schedule your training with Courageous Conversation today so we can train officers in your community. Someday, this technology may be able to capture everything. For now, let’s start by preventing it.</p>
+    <br>
+    <p>Only education and conversation can stop it from ever starting. Take action today, and set the standard for a safer, more just tomorrow.</p>
+    <br>
+    <p>Sincerely,<br>${name}</p>
   `;
 
   useEffect(() => {
@@ -39,6 +39,8 @@ export default function Contact() {
     setZipcode(zipcode);
 
     if (zipcode.length === 5) {
+      setLoading(true);
+      setRecipient('Locating...');
       try {
         const response = await fetch(`/api/getpolicedepartment?zipcode=${zipcode}`);
         if (!response.ok) {
@@ -49,6 +51,8 @@ export default function Contact() {
       } catch (error) {
         setError('Failed to fetch police department');
         console.error('Error fetching police department:', error);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -62,7 +66,7 @@ export default function Contact() {
     setEmail('');
     setZipcode('');
     setMessage('');
-    setRecipient('');
+    setRecipient('Your Local Police Department');
   };
 
   return (
@@ -108,13 +112,11 @@ export default function Contact() {
         <div className={styles.messageContainer}>
           <div className={styles.formGroup}>
             <label htmlFor="message">SAMPLE LETTER</label>
-            <textarea
+            <div
               id="message"
-              value={message}
               className={styles.textarea}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            ></textarea>
+              dangerouslySetInnerHTML={{ __html: message }}
+            ></div>
           </div>
         </div>
       </form>

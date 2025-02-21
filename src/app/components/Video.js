@@ -1,6 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useState, useCallback, useLayoutEffect} from 'react';
-import { gsap } from 'gsap';
+
 import styles from "../styles/components/modal.module.css";
 export default function Video({videoId}) {
 
