@@ -64,11 +64,11 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
             setOpen(false)
             tl.to(mobileButtons.current, { display: 'none', autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' })
             tl.to(smalllogo.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' })
-            tl.to(mobileNavBg.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' })
+            tl.to(mobileNavBg.current, { display: 'none', autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' })
             tl.to(navContainer.current, { css: { height: 'auto' }, duration: 1, ease: 'Expo.easeOut' })
         } else if (state.clicked === true || (state.clicked === true && state.initial === null)) {
             tl.to(navContainer.current, { css: { height: '100%' }, duration: 1, ease: 'Expo.easeOut' })
-            tl.to(mobileNavBg.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' })
+            tl.to(mobileNavBg.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' })
             tl.to(smalllogo.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' })
             tl.to(mobileButtons.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' })
         }
