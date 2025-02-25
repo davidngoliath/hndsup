@@ -3,13 +3,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    width: 20%;
+    width: 50%;
     height: 100px;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+}
+
+@media (max-width: 800px) {
+    .scrollNav {
+
+        /* width: 50%!important;
+        max-width: 140px!important; */
+        /* height: 65px!important; */
+    }
+
+    .scrollNavButton img {
+        bottom: 6%!important;
+    }
 }
 
 .scrollNavButton {

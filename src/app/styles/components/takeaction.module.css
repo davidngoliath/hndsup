@@ -42,6 +42,39 @@
     margin-bottom: 1rem;
 }
 
+@media (max-width: 800px) {
+
+    .takeActionContainer {
+        justify-content: center!important;
+    }
+
+    .takeActionContainer h2 {
+        font-size: 1.5rem!important;
+        margin-bottom: 0;
+    }
+
+    .takeActionContainer p {
+        font-size: 0.75rem!important;
+        margin-bottom: 0.25rem!important;
+    }
+
+    .donateContainer button {
+        max-width: 117px!important;
+    }
+
+    .takeActionContainer h1 {
+        font-size: 1.5rem!important;
+    }
+
+    .takeActionImageContainer {
+        top: 0;
+    }
+
+    .takeActionImageContainer img {
+        width: 100%;
+    }
+}
+
 .takeActionContainer p {
     font-family: var(--font-rational-tw-display-light);
     
@@ -63,10 +96,22 @@
     height: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     z-index: 1;
 }
+
+@media (max-width: 800px) {
+    .takeActionContent {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .takeActionContent div {
+        width: 90%!important;
+    }
+}
+
 
 .takeActionContent button {
     width: 100%;
@@ -91,6 +136,7 @@
     justify-content: center;
     align-items: flex-start;
     text-align: left;
+    margin: 1rem 0;
 }
 
 .donateContainer button {

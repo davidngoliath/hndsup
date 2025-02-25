@@ -47,30 +47,30 @@ export default function StatisticsScroll({statsRef}) {
     setWindowsize(window.innerWidth);
   }, []);
   
-  useEffect(() => {
-    let timeout;
+  // useEffect(() => {
+  //   let timeout;
     
-    const handleResize = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        });
-        setSection(0);
-        handleNavClick(0);
-        ScrollTrigger.refresh();
-      }); // Wait 250ms after resize before refreshing
-    };
+  //   const handleResize = () => {
+  //     clearTimeout(timeout);
+  //     timeout = setTimeout(() => {
+  //       window.scrollTo({
+  //         top: 0,
+  //         left: 0,
+  //         behavior: 'smooth'
+  //       });
+  //       setSection(0);
+  //       handleNavClick(0);
+  //       ScrollTrigger.refresh();
+  //     }); // Wait 250ms after resize before refreshing
+  //   };
   
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
     
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeout);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //     clearTimeout(timeout);
+  //   };
+  // }, []);
 
   useEffect(() => {
     // const ctx = gsap.context(() => {
@@ -147,7 +147,7 @@ export default function StatisticsScroll({statsRef}) {
                   return (
                       <div className={statsStyles.statsSlide} key={index} ref={addPanel} id={item.id}>
                           <div className={statsStyles.statsSlideContent}>
-                            <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
+                            <Image key={index} src={item.content.heroVideo[0]} alt="hero" width={1512} height={1800}
                             className={statsStyles.statsImage100} />
                             <div dangerouslySetInnerHTML={{__html: item.content.contentParagraph[0]}} className={statsStyles.contentParagraph}></div>
                           </div>

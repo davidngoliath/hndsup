@@ -9,7 +9,9 @@ export default function Donate() {
     
     return (
         <div className={styles.contactContainer}>
-            <h1>SUPPORT THE <span>global</span> FOUNDATION</h1>
+            <form className={styles.contactForm}>
+                <h1>SUPPORT THE <span>global</span> FOUNDATION</h1>
+            </form>
         </div>
     )
 }

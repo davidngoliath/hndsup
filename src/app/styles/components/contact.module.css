@@ -3,24 +3,46 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: relative;
   top: 0px;
-  right: 0px;
-  bottom: 0px;
   left: 0px;
   width: 100vw;
   height: 100vh;
-  margin: 0 auto;
-  z-index: 3;
   color: #ebebeb;
+  padding: 4rem 0;
+  overflow-y: scroll;
 }
 
-.contactContainer h1 {
+.contactForm h1 {
   font-family: var(--font-dm-sans);
   top: 2%;
-  position: absolute;
-  width: 60%;
+  position: relative;
+  width: 70%;
+  height: auto;
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  .contactContainer h1, .contactContainer h1 > span {
+    font-size: 1.5rem!important;
+    line-height: 1.5rem!important;
+    width: 90%!important;
+  }
+
+  .contactForm {
+    flex-direction: column!important;
+    overflow-y: scroll;
+  }
+
+  .userContainer {
+    max-width: 100%!important;
+    margin-bottom: 2rem;
+  }
+
+  .inputContainer {
+    flex-direction: column!important;
+  }
+
 }
 
 .contactContainer h1 > span {
@@ -45,14 +67,26 @@
 
 .contactForm {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: baseline;
-  width: 70%;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
   height: auto;
-  max-height: 633px;
+  /* max-height: 1033px; */
+  position: relative;
 }
 
+.inputContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  width: 100%;
+  height: auto;
+  top: 0;
+}
 /* .contactForm > div {
 width: 50%;
 height: 50%;

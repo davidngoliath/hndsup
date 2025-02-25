@@ -1,7 +1,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   background-color: black;
 }
 
@@ -24,9 +24,13 @@
   background: radial-gradient(circle, rgba(25,25,25,1) 0%, rgba(25,25,25,0) 85%);
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 2000px) {
   .heroContainer {
     align-items: center;
+  }
+
+  .fistImage  {
+    width: 80%!important;
   }
 
 }
@@ -45,7 +49,7 @@
 
 .heroContent {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -53,12 +57,58 @@
   /* z-index: 1; */
 }
 
+@media (max-width: 800px) { 
+  .heroContent {
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .fistContainer {
+    align-items: center!important;
+    width: 75%!important;
+    height: auto!important;
+    margin-top: 1rem;
+  }
+
+  .hndsup {
+    max-width: 179px!important;
+  }
+
+  .titleContainer {
+    width: 90%!important;
+  }
+
+  .heroVideo {
+    width: 192px!important;
+    height: 52px!important;
+  }
+
+  .playGraphic {
+    width: 52px!important;
+    height: 52px!important;
+  }
+
+  .videoText {
+    width: 140px!important;
+  }
+
+  .titleContainer h3 {
+    font-size: 0.75rem!important;
+  }
+
+  .titleContainer h4 {
+    font-size: 0.75rem!important;
+    line-height: 0.75rem!important;
+  }
+
+}
+
 .fistContainer {
   width: 50%;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: end;
 }
 
@@ -90,17 +140,15 @@
 
 .titleSubline {
   font-family: var(--font-rational-tw-display-light);
-  letter-spacing: 3%;
+  /* letter-spacing: 3%; */
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 .heroVideo {
-  max-width: 300px;
-  min-height: 85px;
-  width: 100%;
-  height: auto;
+  width: 300px;
+  height: 85px;
   font-size: 1rem;
   background-color: black;
   border: #ededed 1px solid;
@@ -170,6 +218,13 @@
   height: auto;
 
   font-family: var(--font-rational-tw-display-light);
+}
+
+@media (max-width: 800px) {
+  .footerText p {
+    font-size: 0.45rem!important;
+  }
+
 }
 
 .footerLogoContainer {

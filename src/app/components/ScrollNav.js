@@ -16,7 +16,7 @@ export default function ScrollNav({active, ref, scrolltype, markers}) {
                     return (
                         <div className={scrollNavStyles.scrollNavButton} key={index}>
                         <Image src={`/images/scrollnav/${marker}.svg`} alt="spacer" width={28} height={46} className={`${active === index ? scrollNavStyles.setActive : ''} ${scrolltype === 'stats' ? scrollNavStyles.hide : ''}`}/>
-                        <button onClick={() => handleNavToggle(0)} className={`${active === index ? scrollNavStyles.setActive : ''}`}></button>
+                        <button className={`${active === index ? scrollNavStyles.setActive : ''}`}></button>
                         </div>
                     )
                 })}

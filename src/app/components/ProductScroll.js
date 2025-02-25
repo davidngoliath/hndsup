@@ -35,7 +35,6 @@ export default function ProductScroll({productRef}) {
     
     const handleNavClick = useCallback((e) => {
       // e.preventDefault();
-      console.log(e)
       setSection(e);
       setWrap(wrapper.current.offsetWidth);
       setWindowsize(window.innerWidth)
@@ -47,31 +46,30 @@ export default function ProductScroll({productRef}) {
       })
     })
 
-    useEffect(() => {
-      let timeout;
+    // useEffect(() => {
+    //   let timeout;
       
-      const handleResize = () => {
-        console.log('resize')
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-          });
-          setSection(0);
-          handleNavClick(0);
-          ScrollTrigger.refresh();
-        }); // Wait 250ms after resize before refreshing
-      };
+    //   const handleResize = () => {
+    //     clearTimeout(timeout);
+    //     timeout = setTimeout(() => {
+    //       window.scrollTo({
+    //         top: 0,
+    //         left: 0,
+    //         behavior: 'smooth'
+    //       });
+    //       setSection(0);
+    //       handleNavClick(0);
+    //       ScrollTrigger.refresh();
+    //     }); // Wait 250ms after resize before refreshing
+    //   };
     
-      window.addEventListener("resize", handleResize);
+    //   window.addEventListener("resize", handleResize);
       
-      return () => {
-        window.removeEventListener("resize", handleResize);
-        clearTimeout(timeout);
-      };
-    }, []);
+    //   return () => {
+    //     window.removeEventListener("resize", handleResize);
+    //     clearTimeout(timeout);
+    //   };
+    // }, []);
     
 
     useEffect(() => {
@@ -148,7 +146,7 @@ export default function ProductScroll({productRef}) {
                     return (
                       <div className={productStyles.productSlide} key={index} ref={addPanel} id={item.id}>
                           <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
-                            <Image src={item.content.heroVideo[0]} alt="hero" width={3024} height={2744}
+                            <Image src={item.content.heroVideo[0]} alt="hero" width={1512} height={1800}
                             className={`${ item.title === true ? productStyles.productImage100 : productStyles.productImage50}`} />
                             {item.title === true ? 
                               <div className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div> 

@@ -71,8 +71,10 @@ export default function Contact() {
 
   return (
     <div className={styles.contactContainer}>
-      <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
+      
       <form onSubmit={handleSubmit} className={styles.contactForm}>
+      <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
+      <div className={styles.inputContainer}>
         <div className={styles.userContainer}>
           <div className={styles.formGroup}>
             <label htmlFor="name">NAME</label>
@@ -119,7 +121,9 @@ export default function Contact() {
             ></div>
           </div>
         </div>
+      </div>
       </form>
+      
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
