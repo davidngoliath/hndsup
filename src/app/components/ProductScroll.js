@@ -47,25 +47,25 @@ export default function ProductScroll({ productRef }) {
         });
     });
 
-    useEffect(() => {
-        let timeout;
+    // useEffect(() => {
+    //     let timeout;
 
-        const handleResize = () => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                setSection(0);
-                handleNavClick(0);
-                ScrollTrigger.refresh();
-            }, 250); // Wait 250ms after resize before refreshing
-        };
+    //     const handleResize = () => {
+    //         clearTimeout(timeout);
+    //         timeout = setTimeout(() => {
+    //             setSection(0);
+    //             handleNavClick(0);
+    //             ScrollTrigger.refresh();
+    //         }, 250); // Wait 250ms after resize before refreshing
+    //     };
 
-        window.addEventListener("resize", handleResize);
+    //     window.addEventListener("resize", handleResize);
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            clearTimeout(timeout);
-        };
-    }, []);
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //         clearTimeout(timeout);
+    //     };
+    // }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -87,8 +87,8 @@ export default function ProductScroll({ productRef }) {
                 scrub: 1,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 0.5,
-                    ease: "power1.inOut",
+                    duration: 2,
+                    ease: "none",
                 },
                 end: `+=${totalScroll}`, // Ensures smooth exit
             },
@@ -107,7 +107,7 @@ export default function ProductScroll({ productRef }) {
             ScrollTrigger.create({
                 trigger: el,
                 start: 'top top-=' + (el.offsetLeft - windowsize / 2) * (totalScroll / (el.offsetWidth * (panel.current.length - 1))),
-                end: '+=' + el.offsetWidth * (totalScroll / (el.offsetWidth * (panel.current.length - 1))),
+                end: '+=' + el.offsetWidth * (totalScroll / (el.offsetWidth * (panel.current.length - 1))) * 6,
                 toggleClass: { targets: el, className: "setActive" },
                 onToggle: self => self.isActive && handleNavToggle(index),
                 onEnter: self => handleAnimation(index),
@@ -116,7 +116,7 @@ export default function ProductScroll({ productRef }) {
 
         // Image sequence animation
         const images = [];
-        for (let i = 1; i <= 70; i++) {
+        for (let i = 1; i <= 60; i++) {
             const img = new Image();
             img.src = `/images/panels/product/sequence/hndsup_${i}.jpg`;
             images.push(img);
