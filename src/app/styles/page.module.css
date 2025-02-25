@@ -9,6 +9,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  opacity: 0;
 }
 
 .heroContainer {
@@ -239,6 +240,26 @@
 .footerLogoContainer a {
   margin-left: 2%;
 }
+
+
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000; /* Adjust the background color as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it is above all other elements */
+}
+
+.loadingLogo {
+  width: 319px; /* Adjust the size as needed */
+  height: 209px;
+}
+
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

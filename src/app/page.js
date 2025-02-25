@@ -12,6 +12,7 @@ import { ModalContext } from "./contexts/ModalContext";
 import Modal from "./components/Modal";
 import Nav from "./components/Nav";
 import { Data } from "./data.js";
+import LoadingScreen from "./components/LoadingScreen";
 
 export default function Home() {
   const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
@@ -19,6 +20,8 @@ export default function Home() {
   const productDiv = useRef();
   const statsDiv = useRef();
   const actionDiv = useRef();
+  const mainDiv = useRef();
+  const [loading, setLoading] = useState(true);
 
   const vimeoId = Data[0].videoId;
 
@@ -26,10 +29,53 @@ export default function Home() {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const handleLoad = () => {
+      setLoading(false);
+      gsap.to(mainDiv.current, { autoAlpha: 1, duration: 1 });
+    };
+
+    // Set a timeout to hide the loading screen after 5 seconds
+    const timeout = setTimeout(handleLoad, 5000);
+
+    // Wait for all images to load
+    const images = document.querySelectorAll('img');
+    let loadedImages = 0;
+
+    images.forEach((img) => {
+      if (img.complete) {
+        loadedImages++;
+      } else {
+        img.addEventListener('load', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
+            handleLoad();
+          }
+        });
+        img.addEventListener('error', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
+            handleLoad();
+          }
+        });
+      }
+    });
+
+    if (loadedImages === images.length) {
+      clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
+      handleLoad();
+    }
+
+    return () => clearTimeout(timeout); // Cleanup the timeout on component unmount
+  }, []);
+
   return (
     <>
-    <Nav scrollToSection={scrollToSection} videoRef={videoDiv} productRef={productDiv} statsRef={statsDiv} actionRef={actionDiv} />
-      <main>
+      {loading && <LoadingScreen />}
+      <Nav scrollToSection={scrollToSection} videoRef={videoDiv} productRef={productDiv} statsRef={statsDiv} actionRef={actionDiv} />
+      <main ref={mainDiv} className={styles.main}>
         <section className={styles.heroContainer} ref={videoDiv}>
           <div className={styles.heroContent}>
             <div className={styles.titleContainer}>

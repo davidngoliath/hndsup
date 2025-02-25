@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import productStyles from "../styles/components/productscroll.module.css";
 import "../globals.css";
-import NextImage from "next/image";
 import ScrollNav from "./ScrollNav";
 import { Data } from "../data.js";
 import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
@@ -17,6 +16,8 @@ export default function ProductScroll({ productRef }) {
     const panel = useRef([]);
     const wrapper = useRef();
     const canvasRef = useRef();
+    const contentParagraphRefs = useRef([]);
+    const productTitleRefs = useRef([]);
     const [section, setSection] = useState(0);
     const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
@@ -27,9 +28,10 @@ export default function ProductScroll({ productRef }) {
         setSection(e);
     }, [setSection]);
 
-    const handleAnimation = useCallback((e) => {
-        setTrigger(e);
-    }, [setTrigger]);
+    const handleAnimation = useCallback((index) => {
+        const element = contentParagraphRefs.current[index];
+        gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 });
+    }, []);
 
     useLayoutEffect(() => {
         setWindowsize(window.innerWidth);
@@ -47,25 +49,25 @@ export default function ProductScroll({ productRef }) {
         });
     });
 
-    // useEffect(() => {
-    //     let timeout;
+    useEffect(() => {
+        let timeout;
 
-    //     const handleResize = () => {
-    //         clearTimeout(timeout);
-    //         timeout = setTimeout(() => {
-    //             setSection(0);
-    //             handleNavClick(0);
-    //             ScrollTrigger.refresh();
-    //         }, 250); // Wait 250ms after resize before refreshing
-    //     };
+        const handleResize = () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                setSection(0);
+                handleNavClick(0);
+                ScrollTrigger.refresh();
+            }, 250); // Wait 250ms after resize before refreshing
+        };
 
-    //     window.addEventListener("resize", handleResize);
+        window.addEventListener("resize", handleResize);
 
-    //     return () => {
-    //         window.removeEventListener("resize", handleResize);
-    //         clearTimeout(timeout);
-    //     };
-    // }, []);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            clearTimeout(timeout);
+        };
+    }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -87,8 +89,8 @@ export default function ProductScroll({ productRef }) {
                 scrub: 1,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 2,
-                    ease: "none",
+                    duration: 0.5,
+                    ease: "power1.inOut",
                 },
                 end: `+=${totalScroll}`, // Ensures smooth exit
             },
@@ -107,7 +109,7 @@ export default function ProductScroll({ productRef }) {
             ScrollTrigger.create({
                 trigger: el,
                 start: 'top top-=' + (el.offsetLeft - windowsize / 2) * (totalScroll / (el.offsetWidth * (panel.current.length - 1))),
-                end: '+=' + el.offsetWidth * (totalScroll / (el.offsetWidth * (panel.current.length - 1))) * 6,
+                end: '+=' + el.offsetWidth * (totalScroll / (el.offsetWidth * (panel.current.length - 1))),
                 toggleClass: { targets: el, className: "setActive" },
                 onToggle: self => self.isActive && handleNavToggle(index),
                 onEnter: self => handleAnimation(index),
@@ -118,7 +120,7 @@ export default function ProductScroll({ productRef }) {
         const images = [];
         for (let i = 1; i <= 60; i++) {
             const img = new Image();
-            img.src = `/images/panels/product/sequence/hndsup_${i}.jpg`;
+            img.src = `https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/sequence/hndsup_${i}.jpg`;
             images.push(img);
         }
 
@@ -147,6 +149,20 @@ export default function ProductScroll({ productRef }) {
             }
         });
 
+        // Fade-in animations for productTitle
+        productTitleRefs.current.forEach((element) => {
+            gsap.fromTo(element, { autoAlpha: 0 }, {
+                autoAlpha: 1,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 80%",
+                    end: "top 50%",
+                    scrub: true,
+                    // markers: true
+                }
+            });
+        });
+
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
@@ -156,6 +172,18 @@ export default function ProductScroll({ productRef }) {
     const addPanel = useCallback((el) => {
         if (el && !panel.current.includes(el)) {
             panel.current.push(el);
+        }
+    }, []);
+
+    const addContentParagraph = useCallback((el) => {
+        if (el && !contentParagraphRefs.current.includes(el)) {
+            contentParagraphRefs.current.push(el);
+        }
+    }, []);
+
+    const addProductTitle = useCallback((el) => {
+        if (el && !productTitleRefs.current.includes(el)) {
+            productTitleRefs.current.push(el);
         }
     }, []);
 
@@ -169,15 +197,20 @@ export default function ProductScroll({ productRef }) {
                                 {index === 0 ? (
                                     <>
                                     <canvas ref={canvasRef} width={1512} height={1800} className={productStyles.imageSequence}></canvas>
-                                    <div className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
+                                    <div ref={addProductTitle} className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
                                     </>
                                 ) : (
                                     <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
-                                        <NextImage src={item.content.heroVideo[0]} alt="hero" width={1512} height={1800}
-                                            className={`${item.title === true ? productStyles.productImage100 : productStyles.productImage50}`} />
-                                        
-                                            <div dangerouslySetInnerHTML={{ __html: item.content.contentParagraph[0] }} className={productStyles.contentParagraph}></div>
-                                        
+                                        <video
+                                            src={item.content.heroVideo[0]}
+                                            width="960"
+                                            height="1080"
+                                            loop
+                                            autoPlay
+                                            muted
+                                            className={`${item.title === true ? productStyles.productImage100 : productStyles.productImage50}`}
+                                        ></video>
+                                        <div ref={addContentParagraph} dangerouslySetInnerHTML={{ __html: item.content.contentParagraph[0] }} className={productStyles.contentParagraph}></div>
                                     </div>
                                 )}
                             </div>
