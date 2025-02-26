@@ -49,25 +49,25 @@ export default function ProductScroll({ productRef }) {
         });
     });
 
-    useEffect(() => {
-        let timeout;
+    // useEffect(() => {
+    //     let timeout;
 
-        const handleResize = () => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                setSection(0);
-                handleNavClick(0);
-                ScrollTrigger.refresh();
-            }, 250); // Wait 250ms after resize before refreshing
-        };
+    //     const handleResize = () => {
+    //         clearTimeout(timeout);
+    //         timeout = setTimeout(() => {
+    //             setSection(0);
+    //             handleNavClick(0);
+    //             ScrollTrigger.refresh();
+    //         }, 250); // Wait 250ms after resize before refreshing
+    //     };
 
-        window.addEventListener("resize", handleResize);
+    //     window.addEventListener("resize", handleResize);
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            clearTimeout(timeout);
-        };
-    }, []);
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //         clearTimeout(timeout);
+    //     };
+    // }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
