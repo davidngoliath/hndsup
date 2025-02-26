@@ -36,6 +36,13 @@
 
 }
 
+@media (max-height: 1200px) {
+  .fistImage  {
+    width: 50%!important;
+  }
+
+}
+
 .fistImage {
   transition: transform 0.3s ease-in-out;
   /* max-width: 381px; */
@@ -58,10 +65,10 @@
   /* z-index: 1; */
 }
 
-@media (max-width: 800px) { 
+@media (max-width: 900px) { 
   .heroContent {
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-evenly;
   }
 
   .fistContainer {
@@ -221,7 +228,7 @@
   font-family: var(--font-rational-tw-display-light);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .footerText p {
     font-size: 0.45rem!important;
   }
@@ -256,8 +263,8 @@
 }
 
 .loadingLogo {
-  width: 319px; /* Adjust the size as needed */
-  height: 209px;
+  width: 219px!important; /* Adjust the size as needed */
+  height: auto;
 }
 
 

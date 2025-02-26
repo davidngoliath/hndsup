@@ -20,7 +20,7 @@
     flex-direction: column;
     position: absolute;
     z-index: -1;
-    top: 20%;
+    
 }
 
 .takeActionImageContainer img {
@@ -92,7 +92,7 @@
 } */
 
 .takeActionContent {
-    width: 70%;
+    width: 90%;
     height: auto;
     display: flex;
     flex-direction: row;

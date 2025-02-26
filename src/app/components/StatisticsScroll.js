@@ -87,8 +87,8 @@ export default function StatisticsScroll({ statsRef }) {
                 scrub: 1,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 0.5,
-                    ease: "none",
+                    duration: 2,
+                    ease: "power1.inOut",
                 },
                 end: `+=${totalScroll}`, // Ensures smooth exit
             },

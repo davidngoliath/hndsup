@@ -99,10 +99,10 @@ export default function Home() {
         </section>
 
         <ProductScroll productRef={productDiv}/>
-        <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
+        <div id="horizontal-spacer" style={{ height: "110vh" }}></div>
 
         <StatisticsScroll statsRef={statsDiv}/>
-        <div id="horizontal-spacer2" style={{ height: "100vh" }}></div>
+        <div id="horizontal-spacer2" style={{ height: "110vh" }}></div>
         <TakeAction actionRef={actionDiv}/>
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
@@ -110,16 +110,16 @@ export default function Home() {
               <p>&copy; 2025 HNDSUP ALL RIGHTS RESERVED</p>
             </div>
             <div className={styles.footerLogoContainer}>
-              <a>
+              <a href="https://www.facebook.com/OfficialCourageousConversation" target="_blank" rel="noreferrer" aria-label="Facebook">
                 <Image src="/images/facebook.svg" alt="facebook" width={23} height={23} className={styles.footerLogos}/>
               </a>
-              <a>
+              <a href="https://www.instagram.com/ccaboutrace/" target="_blank" rel="noreferrer" aria-label="Instagram">
                 <Image src="/images/instagram.svg" alt="instagram" width={23} height={23} className={styles.footerLogos}/>  
               </a>
-              <a>
+              <a href="https://x.com/CCAboutRace" target="_blank" rel="noreferrer" aria-label="Twitter">
                 <Image src="/images/twitter.svg" alt="twitter" width={23} height={23} className={styles.footerLogos}/>
               </a>
-              <a>
+              <a href="https://www.linkedin.com/company/courageous-conversation-official/" target="_blank" rel="noreferrer" aria-label="Youtube">
                 <Image src="/images/youtube.svg" alt="youtube" width={23} height={23} className={styles.footerLogos}/>
               </a>
             </div>

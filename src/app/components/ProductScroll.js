@@ -89,7 +89,7 @@ export default function ProductScroll({ productRef }) {
                 scrub: 1,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 0.5,
+                    duration: 2,
                     ease: "power1.inOut",
                 },
                 end: `+=${totalScroll}`, // Ensures smooth exit
@@ -133,13 +133,38 @@ export default function ProductScroll({ productRef }) {
             context.drawImage(images[index], 0, 0, canvas.width, canvas.height);
         };
 
+        const resizeCanvas = () => {
+            const aspectRatio = 1920 / 1080; // Replace with your canvas aspect ratio
+            const containerWidth = canvas.parentElement.offsetWidth;
+            const containerHeight = canvas.parentElement.offsetHeight;
+
+            if (window.innerWidth <= 800) {
+                canvas.height = containerHeight;
+                canvas.width = canvas.height * aspectRatio;
+            } else {
+                if (containerWidth / containerHeight > aspectRatio) {
+                    canvas.width = containerHeight * aspectRatio;
+                    canvas.height = containerHeight;
+                } else {
+                    canvas.width = containerWidth;
+                    canvas.height = containerWidth / aspectRatio;
+                }
+            }
+
+            render(0); // Render the first frame after resizing
+        };
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial resize
+
         const imageSequence = gsap.timeline({
             scrollTrigger: {
                 trigger: canvas,
-                start: "top top",
-                end: "bottom-=20% top", // Adjust the duration as needed
+                start: window.innerWidth <= 800 ? "top-=150% top" : "top-=100% top",
+                end: "bottom+=20% top", // Adjust the duration as needed
                 scrub: true,
                 pin: true,
+                markers: false,
                 anticipatePin: 1,
                 onUpdate: self => {
                     const progress = self.progress.toFixed(2);
@@ -149,8 +174,8 @@ export default function ProductScroll({ productRef }) {
             }
         });
 
-
         return () => {
+            window.removeEventListener('resize', resizeCanvas);
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
 
