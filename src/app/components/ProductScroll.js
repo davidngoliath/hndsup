@@ -207,6 +207,7 @@ export default function ProductScroll({ productRef }) {
                                             height="1080"
                                             loop
                                             autoPlay
+                                            playsInline
                                             muted
                                             className={`${item.title === true ? productStyles.productImage100 : productStyles.productImage50}`}
                                         ></video>
