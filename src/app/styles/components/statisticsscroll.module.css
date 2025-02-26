@@ -102,6 +102,7 @@
   bottom: 50%;
   transform: translateY(50%);
   text-align: center;
+  opacity: 0;
 }
 
 .contentParagraph h1 {

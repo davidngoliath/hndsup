@@ -15,6 +15,7 @@ export default function StatisticsScroll({ statsRef }) {
     const productNav = useRef();
     const panel = useRef([]);
     const wrapper = useRef();
+    const contentParagraphRefs = useRef([]);
     const [section, setSection] = useState(0);
     const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
@@ -25,9 +26,10 @@ export default function StatisticsScroll({ statsRef }) {
         setSection(e);
     }, [setSection]);
 
-    const handleAnimation = useCallback((e) => {
-        setTrigger(e);
-    }, [setTrigger]);
+    const handleAnimation = useCallback((index) => {
+      const element = contentParagraphRefs.current[index];
+      gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 1 });
+    }, []);
 
     const handleNavClick = useCallback((e) => {
         setSection(e);
@@ -124,6 +126,12 @@ export default function StatisticsScroll({ statsRef }) {
         }
     }, []);
 
+    const addContentParagraph = useCallback((el) => {
+      if (el && !contentParagraphRefs.current.includes(el)) {
+          contentParagraphRefs.current.push(el);
+      }
+    }, []);
+
     return (
         <div className={statsStyles.scrollWrapper} ref={statsRef}>
             <section className={statsStyles.statsContainer}>
@@ -139,7 +147,7 @@ export default function StatisticsScroll({ statsRef }) {
                                         }}
                                     ></div>
                                     <Image src={'/images/blueframe.svg'} alt="frame" fill={true} className={statsStyles.blueFrame} />
-                                    <div dangerouslySetInnerHTML={{ __html: item.content.contentParagraph[0] }} className={statsStyles.contentParagraph}></div>
+                                    <div ref={addContentParagraph} dangerouslySetInnerHTML={{ __html: item.content.contentParagraph[0] }} className={statsStyles.contentParagraph}></div>
                                 </div>
                             </div>
                         )

@@ -69,7 +69,7 @@
 
   .productSlideContentRow {
     display: flex;
-    justify-content: space-between;
+    justify-content: stretch;
     align-items: center;
     flex-direction: row;
     width: 100%;

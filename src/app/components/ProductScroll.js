@@ -17,7 +17,6 @@ export default function ProductScroll({ productRef }) {
     const wrapper = useRef();
     const canvasRef = useRef();
     const contentParagraphRefs = useRef([]);
-    const productTitleRefs = useRef([]);
     const [section, setSection] = useState(0);
     const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
@@ -29,8 +28,9 @@ export default function ProductScroll({ productRef }) {
     }, [setSection]);
 
     const handleAnimation = useCallback((index) => {
+        
         const element = contentParagraphRefs.current[index];
-        gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 });
+        gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 1 });
     }, []);
 
     useLayoutEffect(() => {
@@ -149,19 +149,6 @@ export default function ProductScroll({ productRef }) {
             }
         });
 
-        // Fade-in animations for productTitle
-        productTitleRefs.current.forEach((element) => {
-            gsap.fromTo(element, { autoAlpha: 0 }, {
-                autoAlpha: 1,
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 80%",
-                    end: "top 50%",
-                    scrub: true,
-                    // markers: true
-                }
-            });
-        });
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -181,12 +168,6 @@ export default function ProductScroll({ productRef }) {
         }
     }, []);
 
-    const addProductTitle = useCallback((el) => {
-        if (el && !productTitleRefs.current.includes(el)) {
-            productTitleRefs.current.push(el);
-        }
-    }, []);
-
     return (
         <div className={productStyles.scrollWrapper} ref={productRef}>
             <section className={productStyles.productContainer}>
@@ -197,7 +178,7 @@ export default function ProductScroll({ productRef }) {
                                 {index === 0 ? (
                                     <>
                                     <canvas ref={canvasRef} width={1512} height={1800} className={productStyles.imageSequence}></canvas>
-                                    <div ref={addProductTitle} className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
+                                    <div ref={addContentParagraph} className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
                                     </>
                                 ) : (
                                     <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
