@@ -1,6 +1,6 @@
 .navContainer {
   width: 100%;
-  height: auto;
+  height: 70px;
   font-family: var(--font-dm-sans);
   font-size: 1rem;
   display: flex;
@@ -11,6 +11,7 @@
   top: 0;
   z-index: 2;
   color: white;
+  padding: 1rem 0;
 }
 
 .mobileNavBackground {

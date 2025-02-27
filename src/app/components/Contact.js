@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../styles/components/contact.module.css';
 import "../globals.css";
 
@@ -12,6 +12,8 @@ export default function Contact() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+  const [showMessageContainer, setShowMessageContainer] = useState(false);
+  const messageContainerRef = useRef(null);
 
   const prewrittenLetter = `
     <p>Dear ${recipient},</p>
@@ -35,9 +37,13 @@ export default function Contact() {
     setMessage(prewrittenLetter);
   }, [name, recipient]);
 
+  useEffect(() => {
+    if (showMessageContainer && window.innerWidth <= 800 && messageContainerRef.current) {
+      messageContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showMessageContainer]);
+  
   const handleSubmit = async (e) => {
-    // const zipcode = e.target.value;
-    // setZipcode(zipcode);
     e.preventDefault();
 
     if (zipcode.length === 5) {
@@ -51,14 +57,15 @@ export default function Contact() {
         }
         const data = await response.json();
         setRecipient(data.policeDepartment);
+        setShowMessageContainer(true);
+
       } catch (error) {
         setError('Failed to fetch police department');
         console.error('Error fetching police department:', error);
       } finally {
-        // handleSubmit(e);
         setLoading(false);
         setShowLoadingScreen(false);
-        // handleFormClear();
+        setShowMessageContainer(true);
       }
     }
   };
@@ -74,6 +81,7 @@ export default function Contact() {
     setZipcode('');
     setMessage('');
     setRecipient('Your Local Police Department');
+    
   };
 
   return (
@@ -122,16 +130,18 @@ export default function Contact() {
             </div>
             <button type="submit" className={styles.submitButton}>SUBMIT</button>
           </div>
-          <div className={styles.messageContainer}>
-            <div className={styles.formGroup}>
-              <label htmlFor="message">SAMPLE LETTER</label>
-              <div
-                id="message"
-                className={styles.textarea}
-                dangerouslySetInnerHTML={{ __html: message }}
-              ></div>
+          {showMessageContainer && (
+            <div className={styles.messageContainer} ref={messageContainerRef}>
+              <div className={styles.formGroup}>
+                <label htmlFor="message">SAMPLE LETTER</label>
+                <div
+                  id="message"
+                  className={styles.textarea}
+                  dangerouslySetInnerHTML={{ __html: message }}
+                ></div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </form>
       

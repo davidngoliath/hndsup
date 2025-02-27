@@ -14,10 +14,10 @@ export default function ScrollNav({active, ref, scrolltype, markers}) {
             <div className={scrollNavStyles.scrollNav} ref={ref}>
                 {markers.map((marker, index) => {
                     return (
-                        <div className={scrollNavStyles.scrollNavButton} key={index}>
+                        <div className={scrollNavStyles.scrollNavButton} key={index} style={{ height: scrolltype === 'product' ? '200px' : '100px' }} >
                         <Image src={`/images/scrollnav/${marker}.svg`} alt="spacer" width={28} height={46} className={`${active === index ? scrollNavStyles.setActive : ''} ${scrolltype === 'stats' ? scrollNavStyles.hide : ''}`}/>
-                        <button className={`${active === index ? scrollNavStyles.setActive : ''}`}></button>
-                        <div className={scrollNavStyles.scrollNavButtonSpacer}></div>
+                        <button className={`${active === index ? scrollNavStyles.setActive : ''}`} ></button>
+                        { scrolltype === "product" ? <div className={scrollNavStyles.scrollNavButtonSpacer}></div> : null }
                         </div>
                     )
                 })}

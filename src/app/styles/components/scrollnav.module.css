@@ -20,7 +20,7 @@
     }
 
     .scrollNavButton {
-        height: 100px!important;
+        height: auto!important;
         justify-content: end!important;
     }
     .scrollNavButton button{
@@ -33,7 +33,7 @@
 
     .scrollNavButton img {
         width: 30%!important;
-        bottom: 20%!important;
+        bottom: 0!important;
     }
 }
 
@@ -53,7 +53,7 @@
     /* display: flex; */
     opacity: 0;
     position: relative;
-    bottom: 35%;
+    bottom: 20%;
 }
 
 .scrollNavButton img.setActive {
