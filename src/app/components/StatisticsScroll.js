@@ -28,7 +28,7 @@ export default function StatisticsScroll({ statsRef }) {
 
     const handleAnimation = useCallback((index) => {
       const element = contentParagraphRefs.current[index];
-      gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 1 });
+      gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 0.25 });
     }, []);
 
     const handleNavClick = useCallback((e) => {

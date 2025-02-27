@@ -39,16 +39,16 @@
 @media (max-width: 1800px) {
 
   .fistImage  {
-    width: 100%!important;
+    width: 70%!important;
   }
 
 }
 
 
-@media (max-height: 1200px) {
-  /* .fistImage  {
-    width: 50%!important;
-  } */
+@media (max-width: 1300px) {
+  .fistImage  {
+    width: 90%!important;
+  }
 
 }
 
