@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import styles from '../styles/components/nav.module.css';
@@ -53,22 +54,22 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
         }, 2500);
     };
 
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         if (window.innerHeight > 800) {
-    //             setState((prevState) => ({
-    //                 ...prevState,
-    //                 clicked: true
-    //             }));
-    //         }
-    //     };
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    //     window.addEventListener('resize', handleResize);
+        ScrollTrigger.create({
+            trigger: videoRef.current,
+            start: "top 50%",
+            end: "bottom 50%",
+            markers: true,
+            onLeave: () => {
+                gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+            },
+        });
 
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     };
-    // }, []);
+    }, [videoRef.current]);
+
+
 
     useEffect(() => {
         const tl = gsap.timeline();
@@ -78,16 +79,12 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
         }
         if (state.clicked === false) {
             setOpen(false);
-            tl.to(mobileButtons.current, { display: 'none', autoAlpha: 0, duration: 0.5, ease: 'Expo.easeOut' });
-            tl.to(smalllogo.current, { autoAlpha: 0, duration: 0.5, ease: 'Expo.easeOut' });
-            tl.to(mobileNavBg.current, { display: 'none', autoAlpha: 0, duration: 0.5, ease: 'Expo.easeOut' });
+            tl.to([mobileButtons.current, smalllogo.current, mobileNavBg.current], { display: 'none', autoAlpha: 0, duration: 2, ease: 'Expo.easeOut' });
             tl.set(navContainer.current, { css: { height: 'auto' } });
         } else if (state.clicked === true || (state.clicked === true && state.initial === null)) {
             setOpen(true);
             tl.set(navContainer.current, { css: { height: '100%' } });
-            tl.to(mobileNavBg.current, { display: 'flex', autoAlpha: 1, duration: 0.5, ease: 'Expo.easeOut' });
-            tl.to(smalllogo.current, { autoAlpha: 1, duration: 0.5, ease: 'Expo.easeOut' });
-            tl.to(mobileButtons.current, { display: 'flex', autoAlpha: 1, duration: 0.5, ease: 'Expo.easeOut' });
+            tl.to([mobileNavBg.current, smalllogo.current, mobileButtons.current], { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
         }
     }, [state]);
 

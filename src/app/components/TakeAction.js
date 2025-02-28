@@ -10,10 +10,12 @@ export default function TakeAction({actionRef}) {
     return (
         <>
             <section className={actionStyles.takeActionContainer} ref={actionRef}>
-                <div className={actionStyles.takeActionImageContainer}>
-                    <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={1108} className={actionStyles.takeActionImage}/>
+                <div className={actionStyles.takeActionHeader}>
+                    <div className={actionStyles.takeActionImageContainer}>
+                        <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={877} className={actionStyles.takeActionImage}/>
+                    </div>
+                    <h1>TAKE ACTION</h1>
                 </div>
-                <h1>TAKE ACTION</h1>
                 <div className={actionStyles.takeActionContent}>
                     <div className={actionStyles.donateContainer}>
                         <h2>Donate</h2>

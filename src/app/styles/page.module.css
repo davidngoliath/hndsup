@@ -58,6 +58,19 @@
   }
 }
 
+@media (max-width: 1024px) and (max-height: 1400px) {
+  .fistContainer  {
+    justify-content: center!important;
+  }
+
+}
+
+@media (max-width: 768px) and (max-height: 985px) {
+  .fistContainer  {
+    align-items: center!important;
+  }
+
+}
 
 .fistImage {
   transition: transform 0.3s ease-in-out;
@@ -115,6 +128,7 @@
 
   .fistMobile {
     display: flex;
+    width: 100%;
   }
 
   .fistContainer {
@@ -127,7 +141,7 @@
 
   .titleContainer {
     width: 90%!important;
-    max-width: 70%!important;
+    /* max-width: 70%!important; */
   }
 
   .heroVideo {
@@ -311,6 +325,9 @@
   height: auto;
 }
 
+.loadingLogo svg path {
+  opacity: 0;
+}
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

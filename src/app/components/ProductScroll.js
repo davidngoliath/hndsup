@@ -7,7 +7,6 @@ import productStyles from "../styles/components/productscroll.module.css";
 import "../globals.css";
 import ScrollNav from "./ScrollNav";
 import { Data } from "../data.js";
-import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -133,9 +132,12 @@ export default function ProductScroll({ productRef }) {
 
         // Image sequence animation
         const images = [];
-        for (let i = 1; i <= 60; i++) {
+        const isMobile = window.innerWidth <= 900;
+        const imagePath = isMobile ? '/mobile' : '';
+
+        for (let i = 1; i <= 121; i++) {
             const img = new Image();
-            img.src = `https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/sequence/hndsup_${i}.jpg`;
+            img.src = `https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/sequence${imagePath}/hndsup_${i}.jpg`;
             images.push(img);
         }
 
@@ -149,11 +151,11 @@ export default function ProductScroll({ productRef }) {
         };
 
         const resizeCanvas = () => {
-            const aspectRatio = 1920 / 1080; // Replace with your canvas aspect ratio
+          const aspectRatio = isMobile ? 800 / 1080 : 1920 / 1080; // Replace with your canvas aspect ratio
             const containerWidth = canvas.parentElement.offsetWidth;
             const containerHeight = canvas.parentElement.offsetHeight;
 
-            if (window.innerWidth <= 800) {
+            if (isMobile) {
                 canvas.height = containerHeight;
                 canvas.width = canvas.height * aspectRatio;
             } else {
@@ -175,7 +177,7 @@ export default function ProductScroll({ productRef }) {
         const imageSequence = gsap.timeline({
             scrollTrigger: {
                 trigger: canvas,
-                start: window.innerWidth <= 800 ? "top-=150% top" : "top-=100% top",
+                start: window.innerWidth <= 900 ? "top-=150% top" : "top-=100% top",
                 end: "bottom+=20% top", // Adjust the duration as needed
                 scrub: true,
                 pin: true,

@@ -63,9 +63,10 @@
 
 @media (max-width: 800px) { 
     .imageSequence {
-      top: auto!important;
-      height: 100vh;
-      width: auto!important;
+      /* top: auto!important; */
+      height: auto!important;
+      width: 100%!important;
+      max-width: 800px!important;
     }
 
   }
