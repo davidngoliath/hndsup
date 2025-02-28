@@ -83,7 +83,8 @@ export default function Home() {
               <h3>THE COURAGEOUS CONVERSATIONS<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
-              <h4 className={styles.titleSubline}>FIRST OF ITS KIND CIVILIAN WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
+              <Image src="/images/fistmobile.png" alt="fist mobile" width={393} height={380} className={styles.fistMobile}/>
+              <h4 className={styles.titleSubline}>FIRST-OF-ITS-KIND CIVILIAN-WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
               <button className={styles.heroVideo} onClick={(e) => setVideo(vimeoId,handleModal())}>
                 <div className={styles.playGraphic}>
                   <span></span>

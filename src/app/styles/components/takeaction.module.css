@@ -55,7 +55,7 @@
 
     .takeActionContainer p {
         font-size: 0.75rem!important;
-        margin-bottom: 0.25rem!important;
+        /* margin-bottom: 0.25rem!important; */
     }
 
     .donateContainer button {

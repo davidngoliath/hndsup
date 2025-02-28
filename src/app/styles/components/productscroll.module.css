@@ -19,6 +19,8 @@
     position: relative;
   }
 
+
+
   
   .scrollWrapper {
     display: flex;
@@ -68,6 +70,11 @@
 
   }
 
+  @media (max-width: 500px) { 
+    .productSlideContainer:first-child > .productSlide > .productTitle {
+      bottom: 14%!important;
+    }
+  }
 
   .productSlideContent {
     display: flex;
@@ -106,6 +113,15 @@
       font-size: 1rem!important;
     }
 
+    .contentParagraph h2 > span {
+      font-size: 1.5rem!important;
+      padding: 0.3rem!important;
+    }
+
+    .productTitle h1 > span {
+      font-size: 2rem!important;
+    }
+
     .contentParagraph h3 {
       font-size: 0.75rem!important;
       margin-bottom: 0!important;
@@ -124,6 +140,7 @@
     color:#EBEBEB;
     position: absolute;
     bottom: 5%;
+    opacity: 0;
 }
 
   .productTitle span {
@@ -160,7 +177,7 @@
     text-align: center;
     display: inline;
     font-size: 2rem;
-    padding: 0.65rem!important;
+    padding: 0.65rem;
 }
 
 

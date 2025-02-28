@@ -78,47 +78,19 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
         }
         if (state.clicked === false) {
             setOpen(false);
-            tl.to(mobileButtons.current, { display: 'none', autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
-            tl.to(smalllogo.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
-            tl.to(mobileNavBg.current, { display: 'none', autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
+            tl.to(mobileButtons.current, { display: 'none', autoAlpha: 0, duration: 0.5, ease: 'Expo.easeOut' });
+            tl.to(smalllogo.current, { autoAlpha: 0, duration: 0.5, ease: 'Expo.easeOut' });
+            tl.to(mobileNavBg.current, { display: 'none', autoAlpha: 0, duration: 0.5, ease: 'Expo.easeOut' });
             tl.set(navContainer.current, { css: { height: 'auto' } });
         } else if (state.clicked === true || (state.clicked === true && state.initial === null)) {
             setOpen(true);
             tl.set(navContainer.current, { css: { height: '100%' } });
             tl.to(mobileNavBg.current, { display: 'flex', autoAlpha: 1, duration: 0.5, ease: 'Expo.easeOut' });
-            tl.to(smalllogo.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
-            tl.to(mobileButtons.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+            tl.to(smalllogo.current, { autoAlpha: 1, duration: 0.5, ease: 'Expo.easeOut' });
+            tl.to(mobileButtons.current, { display: 'flex', autoAlpha: 1, duration: 0.5, ease: 'Expo.easeOut' });
         }
     }, [state]);
 
-    useEffect(() => {
-        console.log('videoRef.current:', videoRef.current);
-        if (videoRef.current) {
-          console.log('Creating ScrollTrigger');
-          ScrollTrigger.create({
-            trigger: videoRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            markers: false,
-            onEnter: () => {
-              console.log('onEnter triggered');
-              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1 });
-            },
-            onLeave: () => {
-              console.log('onLeave triggered');
-              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1 });
-            },
-            onEnterBack: () => {
-              console.log('onEnterBack triggered');
-              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1 });
-            },
-            onLeaveBack: () => {
-              console.log('onLeaveBack triggered');
-              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1 });
-            },
-          });
-        }
-      }, [videoRef]);
 
     return (
         <nav className={styles.navContainer} ref={navContainer}>

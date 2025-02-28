@@ -42,7 +42,7 @@ export default function Contact() {
       messageContainerRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [showMessageContainer]);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -107,7 +107,7 @@ export default function Contact() {
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="zipcode">ZIPCODE</label>
+              <label htmlFor="zipcode">ZIP CODE</label>
               <input
                 className={styles.input}
                 type="text"

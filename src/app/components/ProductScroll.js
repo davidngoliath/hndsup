@@ -27,11 +27,10 @@ export default function ProductScroll({ productRef }) {
         setSection(e);
     }, [setSection]);
 
-    const handleAnimation = useCallback((index) => {
-        
-        const element = contentParagraphRefs.current[index];
-        gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 0.25 });
-    }, []);
+    // const handleAnimation = useCallback((index) => {
+    //     const element = contentParagraphRefs.current[index];
+    //     gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 0.25 });
+    // }, []);
 
     useLayoutEffect(() => {
         setWindowsize(window.innerWidth);
@@ -113,7 +112,22 @@ export default function ProductScroll({ productRef }) {
                 end: '+=' + el.offsetWidth * (totalScroll / (el.offsetWidth * (panel.current.length - 1))),
                 toggleClass: { targets: el, className: "setActive" },
                 onToggle: self => self.isActive && handleNavToggle(index),
-                onEnter: self => handleAnimation(index),
+                onEnter: () => {
+                  const element = contentParagraphRefs.current[index];
+                  gsap.to(element, { autoAlpha: 1, duration: 1, delay: 0.75 }); 
+                },
+                // onLeave: () => {
+                //   const element = contentParagraphRefs.current[index];
+                //   gsap.fromTo(element, { autoAlpha: 1 }, { autoAlpha: 0, duration: 1, delay: 0.25 }); 
+                // },
+                // onEnterBack: () => {
+                //   const element = contentParagraphRefs.current[index];
+                //   gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 0.25 }); 
+                // },
+                // onLeaveBack: () => {
+                //   const element = contentParagraphRefs.current[index];
+                //   gsap.fromTo(element, { autoAlpha: 1 }, { autoAlpha: 0, duration: 1, delay: 0.25 }); 
+                // }
             });
         });
 

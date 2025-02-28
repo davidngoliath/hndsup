@@ -25,7 +25,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-watch.mp4'],
                 'titleCopy': [],
-                'contentParagraph': ['<p><h3>WRIST-POSITIONED FOR SAFETY</h3><h2>FILMS ORGANICALLY AND<span>never</span>CONFUSED WITH A WEAPON.</h2></p><p><br><h3>SPEECH ACTIVATED</h3><h2>AUTOMATICALLY<span>activated</span>BY THE PHRASE “HANDS UP”.</h2></p>']
+                'contentParagraph': ['<p><h3>WRIST-POSITIONED FOR SAFETY</h3><h2>FILMS ORGANICALLY AND<span>never</span>CONFUSED WITH A WEAPON.</h2></p><p><br><h3>SPEECH-ACTIVATED</h3><h2>AUTOMATICALLY<span>activated</span>BY THE PHRASE “HANDS-UP”.</h2></p>']
             }
         },
         {
@@ -34,7 +34,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-person.mp4'],
                 'titleCopy': [],
-                'contentParagraph': ['<p><h3>CLEAR IDENTIFICATION</h3><h2>DISPLAYS A BODY CAM TO<span>reveal</span>YOURE UNARMED.</p></h2>']
+                'contentParagraph': ['<p><h3>CLEAR IDENTIFICATION</h3><h2>DISPLAYS A BODY CAM TO<span>reveal</span>YOU&#39;RE UNARMED.</p></h2>']
             }
         },
         {
@@ -61,7 +61,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-firstresponder.mp4'],
                 'titleCopy': [],
-                'contentParagraph': ['<p><h3>EMERGENCY MEDICAL ALERTS</h3><h2>CALLS AN AMBULANCE BECAUSE <span>every</span> SECOND COUNTS</p></h2>']
+                'contentParagraph': ['<p><h3>EMERGENCY MEDICAL ALERTS</h3><h2>CALLS AN AMBULANCE BECAUSE <span>every</span> SECOND COUNTS.</p></h2>']
             }
         }
     ],
