@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from "./styles/page.module.css";
 import "./globals.css";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProductScroll from "./components/ProductScroll";
 import StatisticsScroll from "./components/StatisticsScroll";
 import TakeAction from "./components/TakeAction";
@@ -13,6 +12,7 @@ import Modal from "./components/Modal";
 import Nav from "./components/Nav";
 import { Data } from "./data.js";
 import LoadingScreen from "./components/LoadingScreen";
+
 
 export default function Home() {
   const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
@@ -32,6 +32,7 @@ export default function Home() {
   useEffect(() => {
     const handleLoad = () => {
       setLoading(false);
+      
       gsap.to(mainDiv.current, { autoAlpha: 1, duration: 1 });
     };
 
@@ -99,10 +100,10 @@ export default function Home() {
         </section>
 
         <ProductScroll productRef={productDiv}/>
-        <div id="horizontal-spacer" style={{ height: "110vh" }}></div>
+        <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
 
         <StatisticsScroll statsRef={statsDiv}/>
-        <div id="horizontal-spacer2" style={{ height: "110vh" }}></div>
+        <div id="horizontal-spacer2" style={{ height: "100vh" }}></div>
         <TakeAction actionRef={actionDiv}/>
         <footer className={styles.footer}>
           <div className={styles.footerContent}>

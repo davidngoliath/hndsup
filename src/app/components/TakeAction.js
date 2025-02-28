@@ -16,12 +16,12 @@ export default function TakeAction({actionRef}) {
                 <h1>TAKE ACTION</h1>
                 <div className={actionStyles.takeActionContent}>
                     <div className={actionStyles.donateContainer}>
-                        <h2>DONATE</h2>
+                        <h2>Donate</h2>
                         <p>YOUR FINANCIAL SUPPORT ENABLES COMPREHENSIVE TRAINING FOR OFFICERS IN YOUR COMMUNITY, EQUIPPING THEM WITH ESSENTIAL SKILLS TO SERVE EFFECTIVELY AND JUSTLY.</p>
                         <button onClick={(e) => setDonate(true, handleModal())}>DONATE</button>
                     </div>
                     <div className={actionStyles.writeLetterContainer}>
-                        <h2>CONTACT LOCAL LAW ENFORCEMENT</h2>
+                        <h2>Contact local law enforcement</h2>
                         <p>HERE YOU CAN AMPLIFY YOUR VOICE BY WRITING TO LOCAL LAW ENFORCEMENT AGENCIES, URGING THEM TO PRIORITIZE ADVANCED TRAINING FOR THEIR OFFICERS.</p>
                         <button onClick={(e) => setContact(true, handleModal())}>WRITE A LETTER</button>
                     </div>

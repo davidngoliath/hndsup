@@ -52,6 +52,13 @@
 
 }
 
+@media (max-height: 900px) {
+  .fistImage  {
+    width: 60%!important;
+  }
+}
+
+
 .fistImage {
   transition: transform 0.3s ease-in-out;
   max-width: 1063px;

@@ -75,7 +75,7 @@ export default function ProductScroll({ productRef }) {
         const totalScroll = wrapper.current.scrollWidth - window.innerWidth;
 
         // Ensure enough space is left after pinning
-        document.getElementById("horizontal-spacer").style.height = `${totalScroll}px`;
+        document.getElementById("horizontal-spacer").style.height = `${totalScroll  + window.innerWidth}px`;
         setWrap(totalScroll);
         setWindowsize(window.innerWidth);
 
@@ -86,13 +86,14 @@ export default function ProductScroll({ productRef }) {
                 trigger: wrapper.current,
                 pin: true,
                 start: "top top",
-                scrub: 1,
+                scrub: 2,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 1,
+                    duration: 2,
                     ease: "power1.inOut",
+                    delay: 1,
                 },
-                end: `+=${totalScroll}`, // Ensures smooth exit
+                end: `+=${totalScroll + window.innerWidth}`, // Ensures smooth exit
             },
         });
 
@@ -100,7 +101,7 @@ export default function ProductScroll({ productRef }) {
             scrollTrigger: {
                 trigger: productNav.current,
                 start: "bottom bottom",
-                end: `+=${totalScroll}`,
+                end: `+=${totalScroll + window.innerWidth}`,
                 pin: true,
             },
         });

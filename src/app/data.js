@@ -41,7 +41,7 @@ export const Data =  [
             id: 'eye',
             title: false,
             content: {
-                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-eye.mp4'],
+                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-eye_2.mp4'],
                 'titleCopy': [],
                 'contentParagraph': ['<p><h3>RACIAL PROFILING DETECTION</h3><h2>DETECTS RACIAL<span>prejudice</span>FROM 100 FEET AWAY.</h2></p><br><p><h3>REAL-TIME UPLOADS</h3><h2>UPLOADS FOOTAGE IN REAL TIME TO LOCAL NEWS STATIONS. SO<span>everyone</span> CAN BE ANY EYEWITNESS.</h2></p>']
             }
@@ -67,7 +67,7 @@ export const Data =  [
     ],
     "statsPanels": [
         {
-            id: 'statsone',
+            id: 'intro',
             title: false,
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statsone.jpg'],
@@ -76,16 +76,16 @@ export const Data =  [
             }
         },
         {
-            id: 'statstwo',
+            id: 'intro',
             title: false,
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statstwo.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h1>ONLY 20% OF FATAL KILLINGS ARE <span>captured</span> BY POLICE BODY CAMERAS.</h1><br><h5>(BROOK GS)</h5>']
+                'contentParagraph': ['<h1>ONLY 20% OF FATAL KILLINGS ARE <span>captured</span> BY POLICE BODY CAMERAS.</h1><br><h5>(BROOKINGS)</h5>']
             }
         },
         {
-            id: 'statsthree',
+            id: 'intro',
             title: false,
             content: {
                  'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statsthree.jpg'],
@@ -94,7 +94,7 @@ export const Data =  [
             }
         },
         {
-            id: 'statsfour',
+            id: 'intro',
             title: false,
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statsfour.jpg'],

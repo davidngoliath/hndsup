@@ -1,31 +1,24 @@
 .scrollNav {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-direction: row;
     width: 50%;
     height: 100px;
     position: absolute;
-    bottom: 0;
+    bottom: 0!important;
 
     z-index: 1;
 }
 
 @media (max-width: 800px) {
-    .scrollNav {
 
-        /* width: 50%!important;
-        max-width: 140px!important; */
-        /* height: 65px!important; */
-    }
 
-    .scrollNavButton {
+    /* .scrollNavButton {
         height: auto!important;
         justify-content: end!important;
     }
-    .scrollNavButton button{
-        /* margin-bottom: 3%; */
-    }
+
 
     .scrollNavButtonSpacer {
         height: 40px!important;
@@ -34,7 +27,7 @@
     .scrollNavButton img {
         width: 30%!important;
         margin-bottom: 20%;
-    }
+    } */
 }
 
 .scrollNavButton {

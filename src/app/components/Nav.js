@@ -3,6 +3,9 @@ import Image from 'next/image';
 import styles from '../styles/components/nav.module.css';
 import "../globals.css";
 import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Nav({ scrollToSection, videoRef, productRef, statsRef, actionRef }) {
 
@@ -12,6 +15,7 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
     const mobileButtons = useRef(null);
     const navContainer = useRef(null);
     const smalllogo = useRef(null);
+    const logoSmallDesktopRef = useRef(null);
 
     const [state, setState] = useState({
         initial: false,
@@ -87,6 +91,35 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
         }
     }, [state]);
 
+    useEffect(() => {
+        console.log('videoRef.current:', videoRef.current);
+        if (videoRef.current) {
+          console.log('Creating ScrollTrigger');
+          ScrollTrigger.create({
+            trigger: videoRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            markers: false,
+            onEnter: () => {
+              console.log('onEnter triggered');
+              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1 });
+            },
+            onLeave: () => {
+              console.log('onLeave triggered');
+              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1 });
+            },
+            onEnterBack: () => {
+              console.log('onEnterBack triggered');
+              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1 });
+            },
+            onLeaveBack: () => {
+              console.log('onLeaveBack triggered');
+              gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1 });
+            },
+          });
+        }
+      }, [videoRef]);
+
     return (
         <nav className={styles.navContainer} ref={navContainer}>
             <div className={styles.mobileNavBackground} ref={mobileNavBg}></div>
@@ -97,7 +130,7 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
                         <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(videoRef); handleMenu();}}>VIDEO</a>
                     </div>
                     <div>
-                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(productRef); handleMenu();}}>EXPLORE PRODUCTS</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(productRef); handleMenu();}}>PRODUCT OVERVIEW</a>
                     </div>
                     <div>
                         <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(statsRef); handleMenu();}}>STATISTICS</a>
@@ -115,12 +148,13 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
                 </button>
             </div>
             <div className={styles.desktopButtonContainer}>
+                <Image src="/images/logosmall.svg" alt="logo" width={77} height={51} className={styles.logoSmallDesktop} ref={logoSmallDesktopRef} />
                 <div className={styles.desktopPageLinks}>
                     <div>
                         <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(videoRef); }}>VIDEO</a>
                     </div>
                     <div>
-                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(productRef); }}>EXPLORE PRODUCTS</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(productRef); }}>PRODUCT OVERVIEW</a>
                     </div>
                     <div>
                         <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(statsRef); }}>STATISTICS</a>
