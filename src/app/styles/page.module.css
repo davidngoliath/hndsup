@@ -128,7 +128,7 @@
 
   .fistMobile {
     display: flex;
-    width: 100%;
+    width: 80%;
   }
 
   .fistContainer {
@@ -164,7 +164,7 @@
 
   .titleContainer h4 {
     font-size: 0.75rem!important;
-    line-height: 0.75rem!important;
+    line-height: 1rem!important;
   }
 
 }

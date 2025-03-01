@@ -62,6 +62,9 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
             start: "top 50%",
             end: "bottom 50%",
             // markers: true,
+            onEnter: () => {
+                gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
+            },
             onLeave: () => {
                 gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
             },

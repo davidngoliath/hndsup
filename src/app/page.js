@@ -6,6 +6,7 @@ import "./globals.css";
 import { gsap } from "gsap";
 import ProductScroll from "./components/ProductScroll";
 import StatisticsScroll from "./components/StatisticsScroll";
+import StatisticsSlider from "./components/StatisticsSlider";
 import TakeAction from "./components/TakeAction";
 import { ModalContext } from "./contexts/ModalContext";
 import Modal from "./components/Modal";
@@ -102,9 +103,9 @@ export default function Home() {
 
         <ProductScroll productRef={productDiv}/>
         <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
-
-        <StatisticsScroll statsRef={statsDiv}/>
-        <div id="horizontal-spacer2" style={{ height: "100vh" }}></div>
+        <StatisticsSlider statsRef={statsDiv}/>
+        {/* <StatisticsScroll statsRef={statsDiv}/>
+        <div id="horizontal-spacer2" style={{ height: "100vh" }}></div> */}
         <TakeAction actionRef={actionDiv}/>
         <footer className={styles.footer}>
           <div className={styles.footerContent}>

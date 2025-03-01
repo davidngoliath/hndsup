@@ -41,31 +41,32 @@ export default function ProductScroll({ productRef }) {
         setWindowsize(window.innerWidth);
         const getId = Data[0].productPanels[e].id;
 
-        gsap.to(window, {
-            scrollTo: (document.getElementById(getId).offsetLeft * (wrap / (wrap - windowsize))),
-            duration: 2
-        });
+        // gsap.to(window, {
+        //     scrollTo: (document.getElementById(getId).offsetLeft * (wrap / (wrap - windowsize))),
+        //     duration: 2
+        // });
     });
 
-    // useEffect(() => {
-    //     let timeout;
+    useEffect(() => {
+        // let timeout;
 
-    //     const handleResize = () => {
-    //         clearTimeout(timeout);
-    //         timeout = setTimeout(() => {
-    //             setSection(0);
-    //             handleNavClick(0);
-    //             ScrollTrigger.refresh();
-    //         }, 250); // Wait 250ms after resize before refreshing
-    //     };
+        const handleResize = () => {
+            console.log('resize');
+            // clearTimeout(timeout);
+            // timeout = setTimeout(() => {
+                setSection(0);
+                handleNavClick(0);
+                ScrollTrigger.refresh();
+            // }, 250); // Wait 250ms after resize before refreshing
+        };
 
-    //     window.addEventListener("resize", handleResize);
+        window.addEventListener("resize", handleResize);
 
-    //     return () => {
-    //         window.removeEventListener("resize", handleResize);
-    //         clearTimeout(timeout);
-    //     };
-    // }, []);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            // clearTimeout(timeout);
+        };
+    }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -168,7 +169,11 @@ export default function ProductScroll({ productRef }) {
                 }
             }
 
-            render(0); // Render the first frame after resizing
+             // Render the first frame after resizing
+            render(1);
+            ScrollTrigger.refresh();
+            
+            console.log('resize');
         };
 
         window.addEventListener('resize', resizeCanvas);
