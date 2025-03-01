@@ -145,6 +145,10 @@
         width: 100%!important;
         height: 100%!important;
     }
+
+    .navButton {
+        top: 70%!important;
+    }
 }
 
 .contentParagraph h5 {
@@ -213,3 +217,4 @@
     width: 58px;
     height: 58px;
 }
+

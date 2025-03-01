@@ -1,5 +1,6 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import statsStyles from "../styles/components/statisticsslider.module.css";
 import "../globals.css";
 import ScrollNav from './ScrollNav';
@@ -34,6 +35,23 @@ export default function StatisticsSlider({ statsRef }) {
         if (el && !contentParagraphRefs.current.includes(el)) {
             contentParagraphRefs.current.push(el);
         }
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            // Reset the slides to the initial position
+            setCurrentSlide(0);
+            gsap.set(panel.current, { xPercent: 0 });
+            // Refresh GSAP animations
+            gsap.to(panel.current, { xPercent: 0, duration: 0 });
+            ScrollTrigger.refresh();
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     return (
