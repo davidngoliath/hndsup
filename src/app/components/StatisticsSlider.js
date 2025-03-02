@@ -19,6 +19,9 @@ export default function StatisticsSlider({ statsRef }) {
         gsap.to(panel.current, { xPercent: -100 * newSlide, duration: 1, ease: 'power2.inOut' });
     };
 
+
+    
+
     const handleNextSlide = () => {
         const newSlide = currentSlide === panel.current.length - 1 ? 0 : currentSlide + 1;
         setCurrentSlide(newSlide);
