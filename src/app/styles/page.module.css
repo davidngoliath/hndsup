@@ -21,8 +21,8 @@
   flex-direction: row;
   /* overflow: hidden; */
   position: relative;
-  background: rgb(25,25,25);
-  background: radial-gradient(circle, rgba(25,25,25,1) 0%, rgba(25,25,25,0) 85%);
+  /* background: rgb(25,25,25); */
+  /* background: radial-gradient(circle, rgba(25,25,25,1) 0%, rgba(25,25,25,0) 85%); */
 }
 
 @media (max-width: 2200px) {
@@ -179,7 +179,7 @@
 }
 
 .hndsup {
-  width: 100%;
+  width: 60%;
   height: auto;
 }
 

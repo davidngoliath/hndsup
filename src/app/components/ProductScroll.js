@@ -74,7 +74,7 @@ export default function ProductScroll({ productRef }) {
         const totalScroll = wrapper.current.scrollWidth - window.innerWidth;
 
         // Ensure enough space is left after pinning
-        document.getElementById("horizontal-spacer").style.height = `${totalScroll  + window.innerWidth}px`;
+        document.getElementById("horizontal-spacer").style.height = `${totalScroll}px`;
         setWrap(totalScroll);
         setWindowsize(window.innerWidth);
 
@@ -85,14 +85,14 @@ export default function ProductScroll({ productRef }) {
                 trigger: wrapper.current,
                 pin: true,
                 start: "top top",
-                scrub: 2,
+                scrub: 1,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 2,
-                    ease: "power1.inOut",
-                    delay: 1,
+                    duration: 1,
+                    ease: "none",
+                    delay: 0,
                 },
-                end: `+=${totalScroll + window.innerWidth}`, // Ensures smooth exit
+                end: `+=${totalScroll}`, // Ensures smooth exit
             },
         });
 
@@ -100,7 +100,7 @@ export default function ProductScroll({ productRef }) {
             scrollTrigger: {
                 trigger: productNav.current,
                 start: "bottom bottom",
-                end: `+=${totalScroll + window.innerWidth}`,
+                end: `+=${totalScroll}`,
                 pin: true,
             },
         });
@@ -134,7 +134,7 @@ export default function ProductScroll({ productRef }) {
         // Image sequence animation
         const images = [];
         const isMobile = window.innerWidth <= 900;
-        const imagePath = isMobile ? '/mobile' : '';
+        const imagePath = isMobile ? '/mobile' : '/mobile';
 
         for (let i = 1; i <= 121; i++) {
             const img = new Image();
@@ -152,7 +152,7 @@ export default function ProductScroll({ productRef }) {
         };
 
         const resizeCanvas = () => {
-          const aspectRatio = isMobile ? 800 / 1080 : 1920 / 1080; // Replace with your canvas aspect ratio
+          const aspectRatio = isMobile ? 800 / 1080 : 800 / 1080; // Replace with your canvas aspect ratio
             const containerWidth = canvas.parentElement.offsetWidth;
             const containerHeight = canvas.parentElement.offsetHeight;
 
@@ -223,10 +223,10 @@ export default function ProductScroll({ productRef }) {
                         return (
                             <div className={productStyles.productSlide} key={index} ref={addPanel} id={item.id}>
                                 {index === 0 ? (
-                                    <>
-                                    <canvas ref={canvasRef} width={1512} height={1800} className={productStyles.imageSequence}></canvas>
-                                    <div ref={addContentParagraph} className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
-                                    </>
+                                    <div className={productStyles.productSlideContent}>
+                                        <canvas ref={canvasRef} width={1920} height={1080} className={productStyles.imageSequence}></canvas>
+                                        <div ref={addContentParagraph} className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
+                                    </div>
                                 ) : (
                                     <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
                                         <video

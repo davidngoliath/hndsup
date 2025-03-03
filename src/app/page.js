@@ -96,7 +96,10 @@ export default function Home() {
               </button>
             </div>
             <div className={styles.fistContainer}>
-              <Image src="/images/fist.png" alt="fist" width={3024} height={2744} className={styles.fistImage}/>
+              <video src="/images/fistheader.mp4" width="531" height="758" loop autoPlay playsInline muted 
+              className={styles.fistImage} >
+              </video>
+              {/* <Image src="/images/fist.png" alt="fist" width={3024} height={2744} className={styles.fistImage}/> */}
             </div>
           </div>
         </section>

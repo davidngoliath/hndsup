@@ -15,7 +15,7 @@ export const Data =  [
             title: true,
             content: {
                 'heroVideo': ['/images/panels/product/hero-productmain.jpg'],
-                'titleCopy': ['<h1>THE PRODUCT WE<br>HOPE TO <span>never</span> LAUNCH.</h1>'],
+                'titleCopy': ['<h1>THE PRODUCT WE HOPE<br>TO <span>never</span> LAUNCH.</h1>'],
                 'contentParagraph': []
             }
         },
