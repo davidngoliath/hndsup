@@ -313,7 +313,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000; /* Adjust the background color as needed */
+  background-color: #000; 
+
+  background: radial-gradient(circle, rgba(25,25,25,1) 100%, rgba(25,25,25,0) 100%);
   display: flex;
   justify-content: center;
   align-items: center;

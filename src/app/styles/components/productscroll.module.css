@@ -97,6 +97,11 @@
   }
 
   @media (max-width: 800px) { 
+    .productTitle {
+      bottom: 10%!important;
+      text-align: center!important;
+    }
+
     .productSlideContentRow, .productSlideContent {
       flex-direction: column;
     }

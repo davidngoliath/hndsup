@@ -64,10 +64,20 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
             // markers: true,
             onEnter: () => {
                 gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
+                gsap.to(smalllogo.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
             },
             onLeave: () => {
                 gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+                gsap.to(smalllogo.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
             },
+            onEnterBack: () => {
+                gsap.to(logoSmallDesktopRef.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
+                gsap.to(smalllogo.current, { autoAlpha: 0, duration: 1, ease: 'Expo.easeOut' });
+            },
+            onLeaveBack: () => {
+                gsap.to(logoSmallDesktopRef.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+                gsap.to(smalllogo.current, { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+            }
         });
 
     }, [videoRef.current]);
@@ -82,12 +92,12 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
         }
         if (state.clicked === false) {
             setOpen(false);
-            tl.to([mobileButtons.current, smalllogo.current, mobileNavBg.current], { display: 'none', autoAlpha: 0, duration: 2, ease: 'Expo.easeOut' });
+            tl.to([mobileButtons.current, mobileNavBg.current], { display: 'none', autoAlpha: 0, duration: 2, ease: 'Expo.easeOut' });
             tl.set(navContainer.current, { css: { height: 'auto' } });
         } else if (state.clicked === true || (state.clicked === true && state.initial === null)) {
             setOpen(true);
             tl.set(navContainer.current, { css: { height: '100%' } });
-            tl.to([mobileNavBg.current, smalllogo.current, mobileButtons.current], { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+            tl.to([mobileNavBg.current, mobileButtons.current], { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
         }
     }, [state]);
 

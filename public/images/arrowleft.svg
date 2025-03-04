@@ -3,38 +3,18 @@
   <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
   <defs>
     <style>
-      .st0, .st1, .st2, .st3 {
-        fill: none;
-      }
-
-      .st1 {
-        clip-path: url(#clippath-1);
-      }
-
-      .st2 {
-        clip-path: url(#clippath);
-      }
-
-      .st4 {
+      .st0 {
         fill: #252525;
         fill-opacity: .9;
       }
 
-      .st3 {
+      .st1 {
+        fill: none;
         stroke: #fff;
       }
     </style>
-    <clipPath id="clippath">
-      <polygon class="st0" points="56 57 55 57 56 56 56 57"/>
-    </clipPath>
-    <clipPath id="clippath-1">
-      <polygon class="st2" points="58 59 59 59 58 60 58 59"/>
-    </clipPath>
-    <clipPath id="clippath-2">
-      <circle class="st1" cx="28" cy="29" r="29"/>
-    </clipPath>
   </defs>
-  <circle class="st4" cx="28" cy="29" r="29"/>
-  <path class="st3" d="M27.1,43.1l-14.1-14.1,14.1-14.1"/>
-  <line class="st3" x1="13.4" y1="28.9" x2="41.6" y2="28.9"/>
+  <circle class="st0" cx="29" cy="29" r="27.5"/>
+  <path class="st1" d="M27.1,42.4l-13.4-13.4,13.4-13.4"/>
+  <line class="st1" x1="14.2" y1="28.9" x2="40.9" y2="28.9"/>
 </svg>

@@ -88,7 +88,7 @@ export default function ProductScroll({ productRef }) {
                 scrub: 1,
                 snap: {
                     snapTo: 1 / (panel.current.length - 1),
-                    duration: 1,
+                    duration: 0.5,
                     ease: "none",
                     delay: 0,
                 },
