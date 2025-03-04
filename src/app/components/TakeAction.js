@@ -20,7 +20,7 @@ export default function TakeAction({actionRef}) {
                     <div className={actionStyles.donateContainer}>
                         <h2>Donate</h2>
                         <p>YOUR FINANCIAL SUPPORT ENABLES COMPREHENSIVE TRAINING FOR OFFICERS IN YOUR COMMUNITY, EQUIPPING THEM WITH ESSENTIAL SKILLS TO SERVE EFFECTIVELY AND JUSTLY.</p>
-                        <button onClick={(e) => setDonate(true, handleModal())}>DONATE</button>
+                        <a href="https://ccglobalfoundation.org/donate/" target="_blank" rel="noreferrer" aria-label="Donate">DONATE</a>
                     </div>
                     <div className={actionStyles.writeLetterContainer}>
                         <h2>Contact local law enforcement</h2>
