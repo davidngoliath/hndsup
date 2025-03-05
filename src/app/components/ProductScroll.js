@@ -51,7 +51,7 @@ export default function ProductScroll({ productRef }) {
         // let timeout;
 
         const handleResize = () => {
-            console.log('resize');
+            // console.log('resize');
             // clearTimeout(timeout);
             // timeout = setTimeout(() => {
                 setSection(0);
@@ -173,7 +173,7 @@ export default function ProductScroll({ productRef }) {
             render(1);
             ScrollTrigger.refresh();
             
-            console.log('resize');
+            // console.log('resize');
         };
 
         window.addEventListener('resize', resizeCanvas);

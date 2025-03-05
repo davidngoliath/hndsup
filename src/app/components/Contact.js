@@ -13,7 +13,9 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [showLoadingScreen, setShowLoadingScreen] = useState(false);
   const [showMessageContainer, setShowMessageContainer] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const messageContainerRef = useRef(null);
+  const clippy = useRef(null);
 
   const prewrittenLetter = `
     <p>Dear ${recipient},</p>
@@ -39,7 +41,7 @@ export default function Contact() {
 
   useEffect(() => {
     if (showMessageContainer && window.innerWidth <= 800 && messageContainerRef.current) {
-      messageContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+      clippy.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [showMessageContainer]);
 
@@ -58,7 +60,7 @@ export default function Contact() {
         const data = await response.json();
         setRecipient(data.policeDepartment);
         setShowMessageContainer(true);
-
+        setFormSubmitted(true);
       } catch (error) {
         setError('Failed to fetch police department');
         console.error('Error fetching police department:', error);
@@ -68,6 +70,19 @@ export default function Contact() {
         setShowMessageContainer(true);
       }
     }
+  };
+
+  const handleCopyToClipboard = () => {
+    const textToCopy = messageContainerRef.current.innerHTML.replace(/<br\s*\/?>/gi, '\n');
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = textToCopy;
+    const plainText = tempElement.innerText;
+  
+    navigator.clipboard.writeText(plainText).then(() => {
+      alert('Letter copied to clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
   };
 
   const handleFormClear = (e) => {
@@ -91,9 +106,11 @@ export default function Contact() {
           <h2>LOCATING LOCAL LAW ENFORCEMENT...</h2>
         </div>
       )}
+      
       <form onSubmit={handleSubmit} className={styles.contactForm}>
         <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
         <div className={styles.inputContainer}>
+        {!formSubmitted && (
           <div className={styles.userContainer}>
             <div className={styles.formGroup}>
               <label htmlFor="name">NAME</label>
@@ -130,6 +147,7 @@ export default function Contact() {
             </div>
             <button type="submit" className={styles.submitButton}>SUBMIT</button>
           </div>
+        )}
           {showMessageContainer && (
             <div className={styles.messageContainer} ref={messageContainerRef}>
               <div className={styles.formGroup}>
@@ -140,11 +158,12 @@ export default function Contact() {
                   dangerouslySetInnerHTML={{ __html: message }}
                 ></div>
               </div>
+              <button onClick={handleCopyToClipboard} ref={clippy} className={styles.copyButton}>COPY TO CLIPBOARD</button>
             </div>
           )}
         </div>
       </form>
-      
+    
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );

@@ -9,6 +9,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
 }
 
@@ -78,6 +80,7 @@
   max-height: 1516px;
   height: auto;
   width: 60%;
+  opacity: 0;
 }
 
 .blur img {
@@ -313,9 +316,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000; 
-
-  background: radial-gradient(circle, rgba(25,25,25,1) 100%, rgba(25,25,25,0) 100%);
+  /* background-color: #000;  */
+  background: rgb(25,25,25);
+  background: radial-gradient(circle at center, rgba(25,25,25,1) 20%, rgba(25, 25, 25, 0) 50%);
   display: flex;
   justify-content: center;
   align-items: center;

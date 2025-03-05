@@ -22,6 +22,7 @@ export default function Home() {
   const statsDiv = useRef();
   const actionDiv = useRef();
   const mainDiv = useRef();
+  const fist = useRef();
   const [loading, setLoading] = useState(true);
 
   const vimeoId = Data[0].videoId;
@@ -33,8 +34,10 @@ export default function Home() {
   useEffect(() => {
     const handleLoad = () => {
       setLoading(false);
-      
-      gsap.to(mainDiv.current, { autoAlpha: 1, duration: 1 });
+      const tl = gsap.timeline();
+      tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
+        .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
+        
     };
 
     // Set a timeout to hide the loading screen after 5 seconds
@@ -96,7 +99,7 @@ export default function Home() {
               </button>
             </div>
             <div className={styles.fistContainer}>
-              <video src="/images/fistheader.mp4" width="531" height="758" loop autoPlay playsInline muted 
+              <video src="/images/fistheader.mp4" ref={fist} width="531" height="758" loop autoPlay playsInline muted 
               className={styles.fistImage} >
               </video>
               {/* <Image src="/images/fist.png" alt="fist" width={3024} height={2744} className={styles.fistImage}/> */}

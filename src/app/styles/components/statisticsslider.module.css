@@ -147,16 +147,30 @@
     }
 
     .navButton {
-        top: 70%!important;
+        /* top: 70%!important; */
+        bottom: 0!important;
+        top: auto!important;
     }
+
+    .statsSlideContainer > .statsSlide:first-child .statsSlideContent .contentParagraph h5 {
+        width: 70%!important;
+    }
+
+    .statsSlideContainer > .statsSlide:last-child .statsSlideContent .contentParagraph br {
+        display: none!important;
+    }
+
 }
 
 .contentParagraph h5 {
     font-family: var(--font-rational-tw-display-light);
     text-align: center;
     color: #ebebeb;
-    display: contents;
+    display: flex;
 }
+
+/* x */
+
 
 .contentParagraph span {
     font-family: var(--font-silk-serif-extra-light-italic);
@@ -207,14 +221,14 @@
 .navButtonLeft {
     left: 1rem;
     background: url('/images/arrowleft.svg') no-repeat center;
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
 }
 
 .navButtonRight {
     right: 1rem;
     background: url('/images/arrowright.svg') no-repeat center;
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
 }
 
