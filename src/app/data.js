@@ -99,7 +99,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statsfour.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h1>A BLACK PERSON IS KILLED EVERY<br class="removeBreak"><span>40 hours</span> BY POLICE IN THE US.</h1><br><h5>(WASHINGTON POST)</h5>']
+                'contentParagraph': ['<h1>A BLACK PERSON IS KILLED EVERY <span>40 hours</span> BY POLICE IN THE US.</h1><br><h5>(WASHINGTON POST)</h5>']
             }
         }
     ]

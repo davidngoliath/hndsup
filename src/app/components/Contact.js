@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '../styles/components/contact.module.css';
 import "../globals.css";
+import Image from 'next/image';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -18,7 +19,7 @@ export default function Contact() {
   const clippy = useRef(null);
 
   const prewrittenLetter = `
-    <p>Dear ${recipient},</p>
+    <p>Dear <span>${recipient}</span>,</p>
     <br>
     <p>In the United States, only 20% of killings by police are captured on body cameras. In 92% of cases, when footage is available, it is used to prosecute civilians. Will these incidents continue to go unwitnessed, with cameras going dark and your office remaining silent?</p>
     <br>
@@ -40,9 +41,10 @@ export default function Contact() {
   }, [name, recipient]);
 
   useEffect(() => {
-    if (showMessageContainer && window.innerWidth <= 800 && messageContainerRef.current) {
-      clippy.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    // if (showMessageContainer && window.innerWidth <= 800 && messageContainerRef.current) {
+    //   clippy.current.scrollIntoView({ behavior: 'smooth' });
+    // }
+    clippy.current.scrollIntoView({ behavior: 'smooth' });
   }, [showMessageContainer]);
 
   const handleSubmit = async (e) => {
@@ -72,17 +74,36 @@ export default function Contact() {
     }
   };
 
+
   const handleCopyToClipboard = () => {
     const textToCopy = messageContainerRef.current.innerHTML.replace(/<br\s*\/?>/gi, '\n');
     const tempElement = document.createElement('div');
     tempElement.innerHTML = textToCopy;
     const plainText = tempElement.innerText;
-  
-    navigator.clipboard.writeText(plainText).then(() => {
-      alert('Letter copied to clipboard!');
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    });
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(plainText).then(() => {
+        alert('Letter copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    } else {
+      // Fallback method for older browsers and mobile devices
+      const textarea = document.createElement('textarea');
+      textarea.value = plainText;
+      textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in MS Edge.
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        alert('Letter copied to clipboard!');
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+      document.body.removeChild(textarea);
+    }
   };
 
   const handleFormClear = (e) => {
@@ -107,8 +128,26 @@ export default function Contact() {
         </div>
       )}
       
-      <form onSubmit={handleSubmit} className={styles.contactForm}>
-        <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
+      <form ref={clippy} onSubmit={handleSubmit} className={styles.contactForm}>
+        <div className={styles.headlineContainer}>
+          <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
+        </div>
+        <div className={styles.stepsContainer}>
+            {!formSubmitted && (
+            <div className={styles.stepOne}>
+              <h5>STEP 1/2:</h5><br></br><h5>ENTER YOUR INFO TO CREATE A PREWRITTEN LETTER.</h5>
+            </div>
+            )}
+            {formSubmitted && (
+            <div className={styles.stepTwo}>
+              <h5>STEP 2/2:</h5><br></br><h5>COPY LETTER BELOW AND EMAIL TO YOUR LOCAL LAW ENFORCEMENT.</h5>
+              <div className={styles.copyClipboardContainer}>
+                <Image src="/images/copy.svg" alt="copy to clipboard" width={21} height={23} />
+                <button onClick={handleCopyToClipboard} className={styles.copyButton}>COPY TO CLIPBOARD</button>
+              </div>
+            </div>
+            )}
+        </div>
         <div className={styles.inputContainer}>
         {!formSubmitted && (
           <div className={styles.userContainer}>
@@ -145,20 +184,19 @@ export default function Contact() {
                 required
               />
             </div>
-            <button type="submit" className={styles.submitButton}>SUBMIT</button>
+            <button type="submit" className={styles.submitButton}>GENERATE LETTER</button>
           </div>
         )}
           {showMessageContainer && (
             <div className={styles.messageContainer} ref={messageContainerRef}>
               <div className={styles.formGroup}>
-                <label htmlFor="message">SAMPLE LETTER</label>
+                {/* <label htmlFor="message">SAMPLE LETTER</label> */}
                 <div
                   id="message"
                   className={styles.textarea}
                   dangerouslySetInnerHTML={{ __html: message }}
                 ></div>
               </div>
-              <button onClick={handleCopyToClipboard} ref={clippy} className={styles.copyButton}>COPY TO CLIPBOARD</button>
             </div>
           )}
         </div>

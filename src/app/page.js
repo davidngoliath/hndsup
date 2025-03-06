@@ -31,9 +31,15 @@ export default function Home() {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  // }, []);
+
+
   useEffect(() => {
     const handleLoad = () => {
       setLoading(false);
+      
       const tl = gsap.timeline();
       tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
         .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
@@ -46,7 +52,7 @@ export default function Home() {
     // Wait for all images to load
     const images = document.querySelectorAll('img');
     let loadedImages = 0;
-
+    
     images.forEach((img) => {
       if (img.complete) {
         loadedImages++;

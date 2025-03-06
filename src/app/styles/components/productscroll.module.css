@@ -153,6 +153,7 @@
   .productTitle span {
     font-family: var(--font-silk-serif-extra-light-italic);
     font-size: 3.875rem;
+    letter-spacing: -0.25rem;
   }
 
   .contentParagraph {
