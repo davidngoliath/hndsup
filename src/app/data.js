@@ -46,15 +46,15 @@ export const Data =  [
                 'contentParagraph': ['<p><h3>REAL-TIME UPLOADS</h3><h2>UPLOADS FOOTAGE IN REAL TIME TO LOCAL NEWS STATIONS. SO<span>everyone</span> CAN BE ANY EYEWITNESS.</h2></p>']
             }
         },
-        {
-            id: 'notify',
-            title: false,
-            content: {
-                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-notify.mp4'],
-                'titleCopy': [],
-                'contentParagraph': ['<p><h3>LEGAL SUPPORT AT THE READY</h3><h2>INSTANTLY<span>connects</span> YOU WITH A CIVIL RIGHTS LAWYER.</h2></p><br><p><h3>FAMILY NOTIFICATIONS</h3><h2>AUTOMATICALLY <span>shares</span> GEO LOCATION WITH FAMILY.</p></h2>']
-            }
-        },
+        // {
+        //     id: 'notify',
+        //     title: false,
+        //     content: {
+        //         'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-notify.mp4'],
+        //         'titleCopy': [],
+        //         'contentParagraph': ['<p><h3>LEGAL SUPPORT AT THE READY</h3><h2>INSTANTLY<span>connects</span> YOU WITH A CIVIL RIGHTS LAWYER.</h2></p><br><p><h3>FAMILY NOTIFICATIONS</h3><h2>AUTOMATICALLY <span>shares</span> GEO LOCATION WITH FAMILY.</p></h2>']
+        //     }
+        // },
         {
             id: 'firstresponder',
             title: false,

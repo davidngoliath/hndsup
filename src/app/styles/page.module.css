@@ -83,6 +83,18 @@
   opacity: 0;
 }
 
+
+.fistImageMobile {
+  width: 100%;
+  height: auto;
+  max-width: 265px;
+  max-height: 378px;
+  transition: transform 0.3s ease-in-out;
+  opacity: 1;
+}
+
+
+
 .blur img {
   height: auto;
   width: 100%;
@@ -138,6 +150,10 @@
     display: none!important;
   }
 
+  .fistContainerMobile {
+    display: flex!important;
+  }
+
   .hndsup {
     max-width: 179px!important;
   }
@@ -179,6 +195,16 @@
   flex-direction: column;
   justify-content: end;
   align-items: end;
+}
+
+.fistContainerMobile {
+  width: 50%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
 .hndsup {

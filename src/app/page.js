@@ -23,6 +23,7 @@ export default function Home() {
   const actionDiv = useRef();
   const mainDiv = useRef();
   const fist = useRef();
+  const fistMobile = useRef();
   const [loading, setLoading] = useState(true);
 
   const vimeoId = Data[0].videoId;
@@ -93,7 +94,11 @@ export default function Home() {
               <h3>THE COURAGEOUS CONVERSATIONS<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
-              <Image src="/images/fistmobile.png" alt="fist mobile" width={393} height={380} className={styles.fistMobile}/>
+              <div className={styles.fistContainerMobile}>
+                <video src="/images/fistheader.mp4" ref={fistMobile} width="531" height="758" loop autoPlay playsInline muted 
+                className={styles.fistImageMobile} >
+                </video>
+              </div>
               <h4 className={styles.titleSubline}>FIRST-OF-ITS-KIND CIVILIAN-WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
               <button className={styles.heroVideo} onClick={(e) => setVideo(vimeoId,handleModal())}>
                 <div className={styles.playGraphic}>
@@ -108,7 +113,6 @@ export default function Home() {
               <video src="/images/fistheader.mp4" ref={fist} width="531" height="758" loop autoPlay playsInline muted 
               className={styles.fistImage} >
               </video>
-              {/* <Image src="/images/fist.png" alt="fist" width={3024} height={2744} className={styles.fistImage}/> */}
             </div>
           </div>
         </section>

@@ -9,7 +9,7 @@
   width: 100vw;
   height: 100vh;
   color: #ebebeb;
-  padding: 4rem 0;
+  /* margin: 4rem 0; */
   overflow-y: auto;
 }
 
@@ -65,10 +65,14 @@
 }
 
 @media (max-width: 800px) {
-  .contactContainer h1, .contactContainer h1 > span {
+  .contactContainer h1 {
     font-size: 1.5rem!important;
     line-height: 1.5rem!important;
     width: 90%!important;
+  }
+
+  .contactContainer h1 > span {
+    font-size: 2rem!important;
   }
 
   .contactForm {
