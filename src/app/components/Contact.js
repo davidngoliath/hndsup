@@ -44,7 +44,7 @@ export default function Contact() {
     // if (showMessageContainer && window.innerWidth <= 800 && messageContainerRef.current) {
     //   clippy.current.scrollIntoView({ behavior: 'smooth' });
     // }
-    clippy.current.scrollIntoView({ behavior: 'smooth' });
+    clippy.current.scrollIntoView({ behavior: 'smooth', block: "end" });
   }, [showMessageContainer]);
 
   const handleSubmit = async (e) => {
@@ -108,15 +108,15 @@ export default function Contact() {
 
   const handleFormClear = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', { name, email, message, recipient });
     // Reset form fields
-    
     setName('');
     setEmail('');
     setZipcode('');
     setMessage('');
     setRecipient('Your Local Police Department');
+    // Hide step 2 and show step 1
+    setFormSubmitted(false);
+    setShowMessageContainer(false);
     
   };
 
@@ -130,7 +130,7 @@ export default function Contact() {
       
       <form ref={clippy} onSubmit={handleSubmit} className={styles.contactForm}>
         <div className={styles.headlineContainer}>
-          <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1>
+        {!formSubmitted && <h1>WRITE A LETTER TO <span>your</span> LOCAL LAW ENFORCEMENT</h1> }
         </div>
         <div className={styles.stepsContainer}>
             {!formSubmitted && (
@@ -197,6 +197,13 @@ export default function Contact() {
                   dangerouslySetInnerHTML={{ __html: message }}
                 ></div>
               </div>
+              <button onClick={handleCopyToClipboard} className={styles.copyButtonBtm}>COPY TO CLIPBOARD</button>
+              
+                <button onClick={handleFormClear} className={styles.backButton}>
+                  <Image src="/images/arrowback.svg" alt="back" width={12} height={13} />
+                  BACK
+                </button>
+              
             </div>
           )}
         </div>

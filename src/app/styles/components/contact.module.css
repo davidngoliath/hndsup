@@ -25,10 +25,10 @@
 .contactForm h5 {
   font-family: var(--font-rational-tw-display-light);
   position: relative;
-  width: 70%;
+  width: 100%;
   height: auto;
   text-align: center;
-  font-size: ;
+
 }
 
 .stepsContainer, .stepTwo, .stepOne {
@@ -38,6 +38,14 @@
   align-items: center;
   width: 100%;
   height: auto;
+}
+
+.stepOne {
+  padding-top: 1rem;
+}
+
+.stepTwo {
+  /* padding-top: 10rem; */
 }
 
 .headlineContainer {
@@ -50,7 +58,7 @@
 }
 
 .stepsContainer {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .copyClipboardContainer {
@@ -62,6 +70,13 @@
   height: auto;
   margin-top: 2rem;
   max-width: 234px;
+}
+
+.topAnchor {
+  width: 100%;
+  height: 10px;
+  display: block;
+  
 }
 
 @media (max-width: 800px) {
@@ -78,7 +93,11 @@
   .contactForm {
     flex-direction: column!important;
     overflow-y: scroll;
-    padding-top: 7rem;
+    padding: 15rem 0;
+  }
+
+  .stepTwo {
+    padding-top: 4rem;
   }
 
   .userContainer {
@@ -117,8 +136,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: auto;
+  width: 90%;
+  height: 100%;
   /* max-height: 1033px; */
   position: relative;
  /* Add padding to prevent cutting off */
@@ -213,7 +232,7 @@ border-radius: 4px;
 cursor: pointer;
 } */
 
-.submitButton {
+.submitButton, .copyButtonBtm {
   max-width: 343px;
   width: 90%;
   height: 61px;
@@ -228,6 +247,38 @@ cursor: pointer;
   font-family: var(--font-dm-sans);
   background-color: #111111;
   color: #ebebeb;
+}
+
+.backButton {
+  width: 100%;
+  height: 61px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-dm-sans);
+  background-color: #000000;
+  color: #ebebeb;
+}
+
+.backButton img {
+  width: 12px;
+  height: 13px;
+  margin-right: 10px;
+}
+
+.backButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 343px;
+  height: auto;
+  margin-top: 2rem;
 }
 
 .copyButton {
@@ -273,7 +324,7 @@ cursor: pointer;
   backdrop-filter: blur(20px);
   background-color: rgba(0, 0, 0, .65);
   color: #dbdbdb;
-  font-family: var(--font-rational-tw-text-semibold);
+  font-family: var(--font-rational-tw-display-light);
   display: flex;
   justify-content: center;
   align-items: center;

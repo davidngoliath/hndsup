@@ -110,7 +110,7 @@ export default function Home() {
               </button>
             </div>
             <div className={styles.fistContainer}>
-              <video src="/images/fistheader.mp4" ref={fist} width="531" height="758" loop autoPlay playsInline muted 
+              <video src="/images/fistheader.mp4" ref={fist} width="1062" height="1516" loop autoPlay playsInline muted 
               className={styles.fistImage} >
               </video>
             </div>

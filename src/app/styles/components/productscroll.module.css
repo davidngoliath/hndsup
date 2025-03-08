@@ -150,10 +150,15 @@
     opacity: 0;
 }
 
+  .productTitle h1 {
+    line-height: 120%;
+  }
+
+
   .productTitle span {
     font-family: var(--font-silk-serif-extra-light-italic);
     font-size: 3.875rem;
-    letter-spacing: -0.25rem;
+    letter-spacing: 0.05rem;
   }
 
   .contentParagraph {
@@ -172,7 +177,8 @@
     text-align: center;
     color: #3982BC;
     position: relative;
-    margin-bottom: 0.75rem;
+    /* margin-bottom: 0.75rem; */
+    line-height: 120%;
   }
 
   .contentParagraph h2 {

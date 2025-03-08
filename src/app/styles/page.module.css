@@ -27,6 +27,8 @@
   /* background: radial-gradient(circle, rgba(25,25,25,1) 0%, rgba(25,25,25,0) 85%); */
 }
 
+
+
 @media (max-width: 2200px) {
   .heroContainer {
     align-items: center;
@@ -41,7 +43,15 @@
 @media (max-width: 1800px) {
 
   .fistImage  {
-    width: 70%!important;
+    width: 90%!important;
+  }
+
+}
+
+@media (max-width: 1400px) {
+
+  .fistImage  {
+    width: 90%!important;
   }
 
 }
@@ -49,7 +59,7 @@
 
 @media (max-width: 1300px) {
   .fistImage  {
-    width: 90%!important;
+    width: 100%!important;
   }
 
 }
@@ -76,8 +86,8 @@
 
 .fistImage {
   transition: transform 0.3s ease-in-out;
-  max-width: 1063px;
-  max-height: 1516px;
+  max-width: 1062px;
+  max-height: 1516;
   height: auto;
   width: 60%;
   opacity: 0;

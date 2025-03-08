@@ -113,8 +113,14 @@ export default function ProductScroll({ productRef }) {
                 toggleClass: { targets: el, className: "setActive" },
                 onToggle: self => self.isActive && handleNavToggle(index),
                 onEnter: () => {
-                  const element = contentParagraphRefs.current[index];
-                  gsap.to(element, { autoAlpha: 1, duration: 1 }); 
+                    handleNavToggle(index);
+                    const element = contentParagraphRefs.current[index];
+                    gsap.to(element, { autoAlpha: 1, duration: 1 });
+                },
+                onEnterBack: () => {
+                    handleNavToggle(index);
+                    const element = contentParagraphRefs.current[index];
+                    gsap.to(element, { autoAlpha: 1, duration: 1 });
                 },
                 // onLeave: () => {
                 //   const element = contentParagraphRefs.current[index];
