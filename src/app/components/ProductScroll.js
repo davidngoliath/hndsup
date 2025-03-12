@@ -26,47 +26,44 @@ export default function ProductScroll({ productRef }) {
         setSection(e);
     }, [setSection]);
 
-    // const handleAnimation = useCallback((index) => {
-    //     const element = contentParagraphRefs.current[index];
-    //     gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 0.25 });
-    // }, []);
-
     useLayoutEffect(() => {
         setWindowsize(window.innerWidth);
     }, []);
 
-    const handleNavClick = useCallback((e) => {
-        setSection(e);
+    const handleScrollReset = useCallback(() => {
+        setSection(0);
         setWrap(wrapper.current.offsetWidth);
         setWindowsize(window.innerWidth);
-        const getId = Data[0].productPanels[e].id;
+        const getId = Data[0].productPanels[0].id;
 
-        // gsap.to(window, {
-        //     scrollTo: (document.getElementById(getId).offsetLeft * (wrap / (wrap - windowsize))),
-        //     duration: 2
-        // });
+        gsap.to(window, {
+            scrollTo: (document.getElementById(getId).offsetLeft * (wrap / (wrap - windowsize))),
+            duration: 2
+        });
     });
 
-    useEffect(() => {
-        // let timeout;
 
-        const handleResize = () => {
-            // console.log('resize');
-            // clearTimeout(timeout);
-            // timeout = setTimeout(() => {
-                setSection(0);
-                handleNavClick(0);
-                ScrollTrigger.refresh();
-            // }, 250); // Wait 250ms after resize before refreshing
-        };
+    
+    // useEffect(() => {
+    //     // let timeout;
 
-        window.addEventListener("resize", handleResize);
+    //     const handleResize = () => {
+    //         // console.log('resize');
+    //         // clearTimeout(timeout);
+    //         // timeout = setTimeout(() => {
+    //             setSection(0);
+    //             handleNavClick(0);
+    //             ScrollTrigger.refresh();
+    //         // }, 250); // Wait 250ms after resize before refreshing
+    //     };
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            // clearTimeout(timeout);
-        };
-    }, []);
+    //     window.addEventListener("resize", handleResize);
+
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //         // clearTimeout(timeout);
+    //     };
+    // }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -140,7 +137,8 @@ export default function ProductScroll({ productRef }) {
         // Image sequence animation
         const images = [];
         const isMobile = window.innerWidth <= 900;
-        const imagePath = isMobile ? '/mobile' : '/mobile';
+        // const imagePath = isMobile ? '/mobile' : '/mobile';
+        const imagePath = '/mobile';
 
         for (let i = 1; i <= 121; i++) {
             const img = new Image();
@@ -176,7 +174,7 @@ export default function ProductScroll({ productRef }) {
             }
 
              // Render the first frame after resizing
-            render(1);
+            render(0);
             ScrollTrigger.refresh();
             
             // console.log('resize');
@@ -230,7 +228,7 @@ export default function ProductScroll({ productRef }) {
                             <div className={productStyles.productSlide} key={index} ref={addPanel} id={item.id}>
                                 {index === 0 ? (
                                     <div className={productStyles.productSlideContent}>
-                                        <canvas ref={canvasRef} width={1920} height={1080} className={productStyles.imageSequence}></canvas>
+                                        <canvas ref={canvasRef} className={productStyles.imageSequence}></canvas>
                                         <div ref={addContentParagraph} className={productStyles.productTitle} dangerouslySetInnerHTML={{ __html: item.content.titleCopy[0] }}></div>
                                     </div>
                                 ) : (

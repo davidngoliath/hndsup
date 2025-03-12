@@ -64,9 +64,9 @@
 
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .fistImage  {
-    width: 60%!important;
+    width: 70%!important;
   }
 }
 
@@ -385,11 +385,3 @@
 }
 
 /* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-}
-
-@media (max-width: 600px) {
-}
-
-@media (prefers-color-scheme: dark) {
-}
