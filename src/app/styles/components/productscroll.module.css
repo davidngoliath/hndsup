@@ -101,7 +101,7 @@
 
   @media (max-width: 800px) { 
     .productTitle {
-      /* bottom:20%!important; */
+      bottom:15%!important;
       text-align: center!important;
     }
 
