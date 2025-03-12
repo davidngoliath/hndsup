@@ -23,7 +23,7 @@
     top: 20%;
 }
 
-.takeActionImageContainer img {
+.takeActionImageContainer video {
     width: 60%;
     height: auto;
 }
@@ -166,7 +166,7 @@
         /* top: 10%!important; */
     }
 
-    .takeActionImageContainer img {
+    .takeActionImageContainer video {
         width: 100%;
     }
 
@@ -183,7 +183,7 @@
 
 @media (max-width: 430px) {
     .takeActionImageContainer {
-        top: 16%!important
+        top: 15%!important
     }
 
     .takeActionHeader {

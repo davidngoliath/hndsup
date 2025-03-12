@@ -12,7 +12,10 @@ export default function TakeAction({actionRef}) {
             <section className={actionStyles.takeActionContainer} ref={actionRef}>
                 <div className={actionStyles.takeActionHeader}>
                     <div className={actionStyles.takeActionImageContainer}>
-                        <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={877} className={actionStyles.takeActionImage}/>
+                        {/* <Image src="/images/takeaction-bg.jpg" alt="takeaction" width={1544} height={877} className={actionStyles.takeActionImage}/> */}
+                        <video src="/images/takeaction-bg.mp4" width="1544" height="876" loop autoPlay playsInline muted 
+                            className={actionStyles.takeActionImage} >
+                        </video>
                     </div>
                     <h1>TAKE ACTION</h1>
                 </div>

@@ -71,6 +71,7 @@ export default function ProductScroll({ productRef }) {
         const totalScroll = wrapper.current.scrollWidth - window.innerWidth;
 
         // Ensure enough space is left after pinning
+        const ctx = gsap.context(() => {
         document.getElementById("horizontal-spacer").style.height = `${totalScroll}px`;
         setWrap(totalScroll);
         setWindowsize(window.innerWidth);
@@ -118,22 +119,17 @@ export default function ProductScroll({ productRef }) {
                     handleNavToggle(index);
                     const element = contentParagraphRefs.current[index];
                     gsap.to(element, { autoAlpha: 1, duration: 1 });
-                },
-                // onLeave: () => {
-                //   const element = contentParagraphRefs.current[index];
-                //   gsap.fromTo(element, { autoAlpha: 1 }, { autoAlpha: 0, duration: 1, delay: 0.25 }); 
-                // },
-                // onEnterBack: () => {
-                //   const element = contentParagraphRefs.current[index];
-                //   gsap.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, delay: 0.25 }); 
-                // },
-                // onLeaveBack: () => {
-                //   const element = contentParagraphRefs.current[index];
-                //   gsap.fromTo(element, { autoAlpha: 1 }, { autoAlpha: 0, duration: 1, delay: 0.25 }); 
-                // }
+                }
             });
         });
+        }, wrapper.current);
+        return () => {
+            ctx.revert();
+            ScrollTrigger.refresh();
+        }
+    }, [windowsize]);
 
+    useEffect(() => {
         // Image sequence animation
         const images = [];
         const isMobile = window.innerWidth <= 900;
@@ -192,6 +188,7 @@ export default function ProductScroll({ productRef }) {
                 pin: true,
                 markers: false,
                 anticipatePin: 1,
+                pinSpacing: false,
                 onUpdate: self => {
                     const progress = self.progress.toFixed(2);
                     const frameIndex = Math.floor(progress * (frameCount - 1));
@@ -204,7 +201,6 @@ export default function ProductScroll({ productRef }) {
             window.removeEventListener('resize', resizeCanvas);
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
-
     }, [windowsize]);
 
     const addPanel = useCallback((el) => {
