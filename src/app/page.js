@@ -91,7 +91,7 @@ export default function Home() {
         <section className={styles.heroContainer} ref={videoDiv}>
           <div className={styles.heroContent}>
             <div className={styles.titleContainer}>
-              <h3>THE COURAGEOUS CONVERSATIONS<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
+              <h3>COURAGEOUS CONVERSATION<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
               <div className={styles.fistContainerMobile}>

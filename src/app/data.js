@@ -70,20 +70,21 @@ export const Data =  [
             id: 'intro',
             title: false,
             content: {
-                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statsone.jpg'],
+                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statstwo.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h5>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</h5><br><h1>BLACK PEOPLE ARE <span>3x more likely</span> TO GET KILLED BY POLICE OFFICERS.</h1>']
+                'contentParagraph': ['<h1>ONLY 20% OF FATAL KILLINGS ARE <span>captured</span> BY POLICE BODY CAMERAS.</h1><br><h5>(BROOKINGS)</h5>']
             }
         },
         {
             id: 'intro',
             title: false,
             content: {
-                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statstwo.jpg'],
+                'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/stats/hero-statsone.jpg'],
                 'titleCopy': [''],
-                'contentParagraph': ['<h1>ONLY 20% OF FATAL KILLINGS ARE <span>captured</span> BY POLICE BODY CAMERAS.</h1><br><h5>(BROOKINGS)</h5>']
+                'contentParagraph': ['<h5>POLICE BRUTALITY REACHING AN ALL-TIME HIGH</h5><br><h1>BLACK PEOPLE ARE <span>3x more likely</span> TO GET KILLED BY POLICE OFFICERS.</h1>']
             }
         },
+
         // {
         //     id: 'intro',
         //     title: false,
