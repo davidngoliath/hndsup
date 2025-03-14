@@ -52,7 +52,7 @@
 .imageSequence {
     display: block;
     width: 100%!important;
-    height: 100%!important;
+    height: auto!important;
     max-width: 800px!important;
     max-height: 1080px!important;
     position: relative!important;

@@ -17,7 +17,6 @@ export default function ProductScroll({ productRef }) {
     const canvasRef = useRef();
     const contentParagraphRefs = useRef([]);
     const [section, setSection] = useState(0);
-    const [trigger, setTrigger] = useState(0);
     const [wrap, setWrap] = useState(null);
     const [windowsize, setWindowsize] = useState(null);
     const ids = Data[0].productPanels.map((item, index) => item.id);
@@ -30,40 +29,6 @@ export default function ProductScroll({ productRef }) {
         setWindowsize(window.innerWidth);
     }, []);
 
-    const handleScrollReset = useCallback(() => {
-        setSection(0);
-        setWrap(wrapper.current.offsetWidth);
-        setWindowsize(window.innerWidth);
-        const getId = Data[0].productPanels[0].id;
-
-        gsap.to(window, {
-            scrollTo: (document.getElementById(getId).offsetLeft * (wrap / (wrap - windowsize))),
-            duration: 2
-        });
-    });
-
-
-    
-    // useEffect(() => {
-    //     // let timeout;
-
-    //     const handleResize = () => {
-    //         // console.log('resize');
-    //         // clearTimeout(timeout);
-    //         // timeout = setTimeout(() => {
-    //             setSection(0);
-    //             handleNavClick(0);
-    //             ScrollTrigger.refresh();
-    //         // }, 250); // Wait 250ms after resize before refreshing
-    //     };
-
-    //     window.addEventListener("resize", handleResize);
-
-    //     return () => {
-    //         window.removeEventListener("resize", handleResize);
-    //         // clearTimeout(timeout);
-    //     };
-    // }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -82,6 +47,7 @@ export default function ProductScroll({ productRef }) {
             scrollTrigger: {
                 trigger: wrapper.current,
                 pin: true,
+                pinSpacing: false,
                 start: "top top",
                 scrub: 1,
                 snap: {
@@ -168,11 +134,9 @@ export default function ProductScroll({ productRef }) {
                     canvas.height = containerWidth / aspectRatio;
                 }
             }
-
              // Render the first frame after resizing
             render(0);
             ScrollTrigger.refresh();
-            
             // console.log('resize');
         };
 
