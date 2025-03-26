@@ -17,7 +17,6 @@ export default function TakeAction({actionRef}) {
                             className={actionStyles.takeActionImage} >
                         </video>
                     </div>
-                    
                 </div>
                 <div className={actionStyles.takeActionContent}>
                     <div className={actionStyles.donateContainer}>
@@ -25,11 +24,11 @@ export default function TakeAction({actionRef}) {
                         <p>YOUR FINANCIAL SUPPORT ENABLES COMPREHENSIVE TRAINING FOR OFFICERS IN YOUR COMMUNITY, EQUIPPING THEM WITH ESSENTIAL SKILLS TO SERVE EFFECTIVELY AND JUSTLY.</p>
                         <a href="https://ccglobalfoundation.org/donate/" target="_blank" rel="noreferrer" aria-label="Donate">DONATE</a>
                     </div>
-                    <div className={actionStyles.writeLetterContainer}>
+                    {/* <div className={actionStyles.writeLetterContainer}>
                         <h2>Contact local law enforcement</h2>
                         <p>HERE YOU CAN AMPLIFY YOUR VOICE BY WRITING TO LOCAL LAW ENFORCEMENT AGENCIES, URGING THEM TO PRIORITIZE ADVANCED TRAINING FOR THEIR OFFICERS.</p>
                         <button onClick={(e) => setContact(true, handleModal())}>WRITE A LETTER</button>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
