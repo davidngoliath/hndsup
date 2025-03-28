@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ModalContextProvider from "./contexts/ModalContext";
 import Script from "next/script";
-
+import Head from 'next/head'
 
 const DMSans = localFont({
   src: "./fonts/DMSans.woff",
@@ -48,14 +48,32 @@ const SilkSerifExtraLightItalic = localFont({
 
 
 export const metadata = {
-  title: "Hndsup",
-  description: "",
+  title: "Hndsup | The Product We Hope To Never Launch",
+  description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
 };
 
 export default function RootLayout({ children }) {
   return (
 
     <html lang="en">
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta property="og:title" content="Hndsup | Emergency Alert Wearable for Police Stops" />
+        <meta property="og:description" content="Hndsup is a wearable emergency alert device designed to protect lives during police encounters. Learn how you can support the mission." />
+        <meta property="og:image" content="https://hndsup.vercel.app/images/social-card.jpg" />
+        <meta property="og:url" content="https://hndsup.vercel.app/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Hndsup" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hndsup | Emergency Alert Wearable" />
+        <meta name="twitter:description" content="Wearable emergency alert device to promote safety during police stops." />
+        <meta name="twitter:image" content="https://hndsup.vercel.app/images/social-card.jpg" />
+        <meta name="twitter:site" content="@CCAboutRace" />
+
+      </Head>
+
       {/*<!-- Global site tag (gtag.js) - Google Analytics -->*/}
         {/* Google Analytics 4 */}
         <Script
