@@ -19,9 +19,9 @@ export default function StatisticsSlider({ statsRef }) {
     
     // Map slide indices to labels
     const slideLabels = [
-        "Slide 1 - Only 20% of fatal killings...",
-        "Slide 2 - Black people are 3 times more likely...",
-        "Slide 3 - A black person is killed every 40 hours...",
+        "Slide 1 - Police Stop Fatality Stats",
+        "Slide 2 - Racial Disparity Stats",
+        "Slide 3 - Police Encounter Injury Stats",
     ];
 
     const handleSlideChange = (swiper) => {
@@ -36,8 +36,8 @@ export default function StatisticsSlider({ statsRef }) {
         // Push event to GTM's dataLayer
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            event: "slide_change",
-            category: "Slider Interaction",
+            event: "view_statistics_slide",
+            category: "Button Click",
             label: label,
             value: newIndex + 1, // Optional: Numeric value for the slide index
         });

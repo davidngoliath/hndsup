@@ -159,19 +159,59 @@ export default function Home() {
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
             <div className={styles.footerText}>
-              <p>&copy; 2025 HNDSUP ALL RIGHTS RESERVED</p>
+              <p><span className={styles.copyright}>{'\u00A9'}</span>2025 HNDSUP ALL RIGHTS RESERVED</p>
             </div>
             <div className={styles.footerLogoContainer}>
-              <a href="https://www.facebook.com/OfficialCourageousConversation" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/OfficialCourageousConversation" target="_blank" rel="noreferrer" aria-label="Facebook"
+                onClick={() => {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                    event: "click_social",
+                    category: "Button Click",
+                    label: "footer_social_icon_facebook",
+                    value: 1,
+                  });
+                }}
+              >
                 <Image src="/images/facebook.svg" alt="facebook" width={23} height={23} className={styles.footerLogos}/>
               </a>
-              <a href="https://www.instagram.com/ccaboutrace/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/ccaboutrace/" target="_blank" rel="noreferrer" aria-label="Instagram"
+                onClick={() => {
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({
+                    event: "click_social",
+                    category: "Button Click",
+                    label: "footer_social_icon_instagram",
+                    value: 1,
+                  });
+                }}
+              >
                 <Image src="/images/instagram.svg" alt="instagram" width={23} height={23} className={styles.footerLogos}/>  
               </a>
-              <a href="https://x.com/CCAboutRace" target="_blank" rel="noreferrer" aria-label="Twitter">
+              <a href="https://x.com/CCAboutRace" target="_blank" rel="noreferrer" aria-label="X"
+                      onClick={() => {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                          event: "click_social",
+                          category: "Button Click",
+                          label: "footer_social_icon_x",
+                          value: 1,
+                        });
+                      }}
+              >
                 <Image src="/images/twitter.svg" alt="twitter" width={23} height={23} className={styles.footerLogos}/>
               </a>
-              <a href="https://www.linkedin.com/company/courageous-conversation-official/" target="_blank" rel="noreferrer" aria-label="Youtube">
+              <a href="https://www.linkedin.com/company/courageous-conversation-official/" target="_blank" rel="noreferrer" aria-label="Youtube"
+                onClick={() => {
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({
+                    event: "click_social",
+                    category: "Button Click",
+                    label: "footer_social_icon_linkedin",
+                    value: 1,
+                  });
+                }}
+              >
                 <Image src="/images/youtube.svg" alt="youtube" width={23} height={23} className={styles.footerLogos}/>
               </a>
             </div>

@@ -384,4 +384,8 @@
   opacity: 0;
 }
 
+
+.copyright {
+  font-family: Arial, Helvetica, sans-serif!important;
+}
 /* Enable hover only on non-touch devices */

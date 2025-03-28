@@ -25,11 +25,11 @@ export default function ProductScroll({ productRef }) {
         (index) => {
             // Map panel indices to labels
             const panelLabels = [
-                "Panel 1 - Watch Animation Intro",
-                "Panel 2 - Speech Activation",
-                "Panel 3 - Clear Indentification",
-                "Panel 4 - Real-time uploads",
-                "Panel 5 - Emergency medical alerts",
+                "slide 0 - Intro Animation",
+                "slide 1 - wrist-positioned for safety",
+                "slide 2 - clear identification",
+                "slide 3 - real-time uploads",
+                "slide 4 - emergency medical alerts",
             ];
     
             // Get the label for the current index
@@ -38,8 +38,8 @@ export default function ProductScroll({ productRef }) {
             // Push event to GTM's dataLayer
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                event: "panel_enter",
-                category: "Scroll Interaction",
+                event: "view_product_slide",
+                category: "Section View",
                 label: label,
                 value: index + 1, // Optional: Numeric value for the panel index
             });

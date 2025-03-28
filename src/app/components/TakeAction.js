@@ -22,7 +22,18 @@ export default function TakeAction({actionRef}) {
                     <div className={actionStyles.donateContainer}>
                         <h2>Donate</h2>
                         <p>YOUR FINANCIAL SUPPORT ENABLES COMPREHENSIVE TRAINING FOR OFFICERS IN YOUR COMMUNITY, EQUIPPING THEM WITH ESSENTIAL SKILLS TO SERVE EFFECTIVELY AND JUSTLY.</p>
-                        <a href="https://ccglobalfoundation.org/donate/" target="_blank" rel="noreferrer" aria-label="Donate">DONATE</a>
+                        <a href="https://ccglobalfoundation.org/donate/" target="_blank" rel="noreferrer" aria-label="Donate"
+                            onClick={() => {
+                                window.dataLayer = window.dataLayer || [];
+                                window.dataLayer.push({
+                                    event: "click_donate",
+                                    category: "Button Click",
+                                    label: "homepage_donate_now_button",
+                                    value: 1,
+                                });
+                            }}
+                        
+                        >DONATE</a>
                     </div>
                     {/* <div className={actionStyles.writeLetterContainer}>
                         <h2>Contact local law enforcement</h2>
