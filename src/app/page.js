@@ -124,9 +124,9 @@ export default function Home() {
               <button className={styles.heroVideo} onClick={(e) => {
                       window.dataLayer = window.dataLayer || [];
                   window.dataLayer.push({
-                    event: "video_modal_open",
-                    category: "User Interaction",
-                    label: "Watch Video Button",
+                    event: "click_watch_video",
+                    category: "Button Click",
+                    label: "homepage_watch_video_button",
                     value: 1,
                   });
                   
