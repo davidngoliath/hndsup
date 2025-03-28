@@ -99,6 +99,7 @@
     background-color: transparent;
     color: #EBEBEB;
     font-family: var(--font-dm-sans);
+    margin: 0 auto;
 }
 
 .takeActionContent div {

@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import ModalContextProvider from "./contexts/ModalContext";
+import Script from "next/script";
+
 
 const DMSans = localFont({
   src: "./fonts/DMSans.woff",
@@ -54,6 +56,31 @@ export default function RootLayout({ children }) {
   return (
 
     <html lang="en">
+      {/*<!-- Global site tag (gtag.js) - Google Analytics -->*/}
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FWE02ZBMVR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FWE02ZBMVR');
+          `}
+        </Script>
+
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KDQCRZ7S');
+          `}
+        </Script>
       <ModalContextProvider>
         <body className={`${DMSans.variable} ${DMSansItalic.variable} ${RationalTWDisplayLight.variable} ${RationalTWDisplaySemibold.variable} ${RationalTWTextLight.variable} ${RationalTWTextSemibold.variable} ${SilkSerifExtraLightItalic.variable}`}>
           {children}
