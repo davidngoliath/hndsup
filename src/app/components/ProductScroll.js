@@ -21,10 +21,34 @@ export default function ProductScroll({ productRef }) {
     const [windowsize, setWindowsize] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
     const ids = Data[0].productPanels.map((item, index) => item.id);
 
-    const handleNavToggle = useCallback((e) => {
-        // console.log("setSection", e);
-        setSection(e);
-    }, [setSection]);
+    const handleNavToggle = useCallback(
+        (index) => {
+            // Map panel indices to labels
+            const panelLabels = [
+                "Panel 1 - Watch Animation Intro",
+                "Panel 2 - Speech Activation",
+                "Panel 3 - Clear Indentification",
+                "Panel 4 - Real-time uploads",
+                "Panel 5 - Emergency medical alerts",
+            ];
+    
+            // Get the label for the current index
+            const label = panelLabels[index] || "Unknown Panel";
+    
+            // Push event to GTM's dataLayer
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: "panel_enter",
+                category: "Scroll Interaction",
+                label: label,
+                value: index + 1, // Optional: Numeric value for the panel index
+            });
+    
+            // Update the section state
+            setSection(index);
+        },
+        [setSection]
+    );
 
     useLayoutEffect(() => {
         if (typeof window !== 'undefined') {

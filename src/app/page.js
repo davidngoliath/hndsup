@@ -29,7 +29,28 @@ export default function Home() {
   const vimeoId = Data[0].videoId;
 
   const scrollToSection = (ref) => {
+    // Object mapping refs to labels
+    const refLabels = new Map([
+      [videoDiv, "Video/Hero Section"],
+      [productDiv, "Product Section"],
+      [statsDiv, "Statistics Section"],
+      [actionDiv, "Take Action Section"],
+    ]);
+  
+    // Scroll to the section
     ref.current.scrollIntoView({ behavior: "smooth" });
+  
+    // Get the label for the ref
+    const label = refLabels.get(ref) || "Unknown Section";
+  
+    // Push event to GTM's dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "button_click",
+      category: "User Interaction",
+      label: label,
+      value: 1,
+    });
   };
 
   // useEffect(() => {
@@ -100,7 +121,19 @@ export default function Home() {
                 </video>
               </div>
               <h4 className={styles.titleSubline}>FIRST-OF-ITS-KIND CIVILIAN-WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
-              <button className={styles.heroVideo} onClick={(e) => setVideo(vimeoId,handleModal())}>
+              <button className={styles.heroVideo} onClick={(e) => {
+                      window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({
+                    event: "video_modal_open",
+                    category: "User Interaction",
+                    label: "Watch Video Button",
+                    value: 1,
+                  });
+                  
+                  setVideo(vimeoId,handleModal())
+
+                }} 
+              >
                 <div className={styles.playGraphic}>
                   <span></span>
                 </div>

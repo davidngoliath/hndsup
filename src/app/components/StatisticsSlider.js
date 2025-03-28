@@ -17,6 +17,32 @@ export default function StatisticsSlider({ statsRef }) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const ids = Data[0].statsPanels.map((item, index) => item.id);
     
+    // Map slide indices to labels
+    const slideLabels = [
+        "Slide 1 - Only 20% of fatal killings...",
+        "Slide 2 - Black people are 3 times more likely...",
+        "Slide 3 - A black person is killed every 40 hours...",
+    ];
+
+    const handleSlideChange = (swiper) => {
+        const newIndex = swiper.realIndex;
+
+        // Update the current slide state
+        setCurrentSlide(newIndex);
+
+        // Get the label for the current slide
+        const label = slideLabels[newIndex] || "Unknown Slide";
+
+        // Push event to GTM's dataLayer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: "slide_change",
+            category: "Slider Interaction",
+            label: label,
+            value: newIndex + 1, // Optional: Numeric value for the slide index
+        });
+    };
+
     const handlePrevSlide = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slidePrev();
@@ -69,7 +95,7 @@ export default function StatisticsSlider({ statsRef }) {
                 <Swiper
                     className={`${statsStyles.statsSlideContainer} mySwiper`}
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
-                    onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+                    onSlideChange={handleSlideChange} // Use the updated callback
                     modules={[Navigation]}
                     navigation={{
                         prevEl: `.${statsStyles.navButtonLeft}`,
