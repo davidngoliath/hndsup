@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
 
         <meta property="og:title" content="Hndsup | Emergency Alert Wearable for Police Stops" />
         <meta property="og:description" content="Hndsup is a wearable emergency alert device designed to protect lives during police encounters. Learn how you can support the mission." />
-        <meta property="og:image" content="https://hndsup.vercel.app/images/social-card.jpg" />
+        <meta property="og:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg" />
         <meta property="og:url" content="https://hndsup.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Hndsup" />
@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hndsup | Emergency Alert Wearable" />
         <meta name="twitter:description" content="Wearable emergency alert device to promote safety during police stops." />
-        <meta name="twitter:image" content="https://hndsup.vercel.app/images/social-card.jpg" />
+        <meta name="twitter:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg" />
         <meta name="twitter:site" content="@CCAboutRace" />
 
       </Head>
