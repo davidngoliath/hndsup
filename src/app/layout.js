@@ -62,6 +62,8 @@ export default function RootLayout({ children }) {
         <meta property="og:title" content="Hndsup | Emergency Alert Wearable for Police Stops" />
         <meta property="og:description" content="Hndsup is a wearable emergency alert device designed to protect lives during police encounters. Learn how you can support the mission." />
         <meta property="og:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:url" content="https://hndsup.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Hndsup" />

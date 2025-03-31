@@ -24,6 +24,12 @@ export default function StatisticsSlider({ statsRef }) {
         "Slide 3 - Police Encounter Injury Stats",
     ];
 
+    const slideEvents = [
+        "click_nav_statistics_slide_1",
+        "click_nav_statistics_slide_2",
+        "click_nav_statistics_slide_3",
+    ];
+
     const handleSlideChange = (swiper) => {
         const newIndex = swiper.realIndex;
 
@@ -32,11 +38,11 @@ export default function StatisticsSlider({ statsRef }) {
 
         // Get the label for the current slide
         const label = slideLabels[newIndex] || "Unknown Slide";
-
+        const event = slideEvents[newIndex] || "Unknown Event";
         // Push event to GTM's dataLayer
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            event: "view_statistics_slide",
+            event: event,
             category: "Button Click",
             label: label,
             value: newIndex + 1, // Optional: Numeric value for the slide index

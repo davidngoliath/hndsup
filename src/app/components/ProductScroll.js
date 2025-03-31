@@ -21,8 +21,18 @@ export default function ProductScroll({ productRef }) {
     const [windowsize, setWindowsize] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
     const ids = Data[0].productPanels.map((item, index) => item.id);
 
+    const lastTriggeredIndex = useRef(null); // Track the last triggered index
+
     const handleNavToggle = useCallback(
         (index) => {
+
+            // Prevent triggering the same event twice
+            if (lastTriggeredIndex.current === index) {
+                return;
+            }
+
+            // Update the last triggered index
+            lastTriggeredIndex.current = index;
             // Map panel indices to labels
             const panelLabels = [
                 "slide 0 - Intro Animation",
@@ -32,13 +42,21 @@ export default function ProductScroll({ productRef }) {
                 "slide 4 - emergency medical alerts",
             ];
     
+            const panelEvents = [
+                "view_product_slide_0",
+                "view_product_slide_1",
+                "view_product_slide_2",
+                "view_product_slide_3",
+                "view_product_slide_4",
+            ];
+
             // Get the label for the current index
             const label = panelLabels[index] || "Unknown Panel";
-    
+            const event = panelEvents[index] || "Unknown Event";
             // Push event to GTM's dataLayer
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                event: "view_product_slide",
+                event: event,
                 category: "Section View",
                 label: label,
                 value: index + 1, // Optional: Numeric value for the panel index

@@ -119,7 +119,7 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
                     </div>
                 </div>
                 <div className={styles.mobileTakeAction}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(actionRef); handleMenu();}}>TAKE ACTION</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(actionRef); handleMenu();}}>DONATE</a>
                 </div>
             </div>
             <div className={styles.mobileNavContainer}>
@@ -143,7 +143,7 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
                     </div>
                 </div>
                 <div className={styles.desktopTakeAction}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(actionRef); }}>TAKE ACTION</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(actionRef); }}>DONATE</a>
                 </div>
             </div>
         </nav>
