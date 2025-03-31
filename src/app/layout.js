@@ -57,9 +57,13 @@ export const metadata = {
     url: "https://hndsup.com/",
     siteName: "Hndsup",
     type: "website",
-    logo: "/images/logosmall.jpg",
-    logoWidth: 500,
-    logoHeight: 500,
+    logo: [
+      {
+        url: "/images/logosmall.jpg",
+        width: 500,
+        height: 500,
+      },
+    ],
     images: [
       {
         url: "/images/shareimage.jpg",
