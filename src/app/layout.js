@@ -50,35 +50,38 @@ const SilkSerifExtraLightItalic = localFont({
 export const metadata = {
   title: "Hndsup | The Product We Hope To Never Launch",
   description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
+  keywords: "Hndsup, wearable, police encounters, safety, emergency alert, Courageous Conversation Global Foundation",
+  openGraph: {
+    title: "Hndsup | Emergency Alert Wearable for Police Stops",
+    description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
+    url: "https://hndsup.com/",
+    siteName: "Hndsup",
+    images: [
+      {
+        url: "/images/shareimage.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hndsup | Emergency Alert Wearable",
+    description: "Wearable emergency alert device to promote safety during police stops.",
+    images: [
+      {
+        url: "/images/shareimage.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
 
     <html lang="en">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
-
-        <meta property="og:url" content="https://hndsup.com/"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Hndsup | Emergency Alert Wearable for Police Stops"/>
-        <meta property="og:description" content="Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission."/>
-        <meta property="og:image" content="shareimage.jpg"/>
-
-
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta property="twitter:domain" content="hndsup.com"/>
-        <meta property="twitter:url" content="https://hndsup.com/"/>
-        <meta name="twitter:title" content="Hndsup | The Product We Hope To Never Launch"/>
-        <meta name="twitter:description" content="Wearable emergency alert device to promote safety during police stops."/>
-        <meta name="twitter:image" content="shareimage.jpg"/>
-
-
-
-
-      </Head>
 
       {/*<!-- Global site tag (gtag.js) - Google Analytics -->*/}
         {/* Google Analytics 4 */}
