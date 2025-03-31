@@ -44,7 +44,7 @@
     height: auto;
 }
 
-button:hover {
+.formButton:hover {
     background-color: #ededed;
     color: black;
 }
