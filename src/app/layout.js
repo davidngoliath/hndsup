@@ -56,6 +56,7 @@ export const metadata = {
     description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
     url: "https://hndsup.com/",
     siteName: "Hndsup",
+    type: "website",
     images: [
       {
         url: "/images/shareimage.jpg",
@@ -68,6 +69,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Hndsup | Emergency Alert Wearable",
     description: "Wearable emergency alert device to promote safety during police stops.",
+    site: "@CCAboutRace",
     images: [
       {
         url: "/images/shareimage.jpg",
