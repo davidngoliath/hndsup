@@ -154,7 +154,18 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
                     </div>
                 </div>
                 <div className={styles.desktopTakeAction}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(actionRef); }}>DONATE</a>
+                        <a href="https://ccglobalfoundation.org/donate/" target="_blank" rel="noreferrer" aria-label="Donate"
+                            onClick={() => {
+                                window.dataLayer = window.dataLayer || [];
+                                window.dataLayer.push({
+                                    event: "click_donate",
+                                    category: "Button Click",
+                                    label: "homepage_donate_now_button",
+                                    value: 1,
+                                });
+                            }}
+                        
+                        >DONATE</a>
                 </div>
             </div>
         </nav>

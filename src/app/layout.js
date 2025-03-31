@@ -58,6 +58,8 @@ export const metadata = {
     siteName: "Hndsup",
     type: "website",
     logo: "/images/logosmall.jpg",
+    logoWidth: 500,
+    logoHeight: 500,
     images: [
       {
         url: "/images/shareimage.jpg",
