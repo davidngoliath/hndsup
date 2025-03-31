@@ -59,21 +59,24 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta property="og:title" content="Hndsup | Emergency Alert Wearable for Police Stops" />
-        <meta property="og:description" content="Hndsup is a wearable emergency alert device designed to protect lives during police encounters. Learn how you can support the mission." />
-        <meta property="og:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        
-        <meta property="og:url" content="https://hndsup.vercel.app/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Hndsup" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hndsup | Emergency Alert Wearable" />
-        <meta name="twitter:description" content="Wearable emergency alert device to promote safety during police stops." />
-        <meta name="twitter:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg" />
-        <meta name="twitter:site" content="@CCAboutRace" />
+
+        <meta property="og:url" content="https://hndsup.com/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Hndsup | Emergency Alert Wearable for Police Stops"/>
+        <meta property="og:description" content="Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission."/>
+        <meta property="og:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg"/>
+
+
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:domain" content="hndsup.com"/>
+        <meta property="twitter:url" content="https://hndsup.com/"/>
+        <meta name="twitter:title" content="Hndsup | The Product We Hope To Never Launch"/>
+        <meta name="twitter:description" content="Wearable emergency alert device to promote safety during police stops."/>
+        <meta name="twitter:image" content="https://dng-com.s3.amazonaws.com/clients/hndsup/images/key-image-hnds-up.jpg"/>
+
+
+
 
       </Head>
 
