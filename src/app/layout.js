@@ -52,8 +52,8 @@ export const metadata = {
   description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
   keywords: "Hndsup, wearable, police encounters, safety, emergency alert, Courageous Conversation Global Foundation",
   openGraph: {
-    title: "Hndsup | Emergency Alert Wearable for Police Stops",
-    description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
+    title: "This Wearable Doesn’t Tell Time. It Protects Lives",
+    description: "Hndsup sends real-time alerts during police encounters. Help us protect lives—learn more and support the mission.",
     url: "https://hndsup.com/",
     siteName: "Hndsup",
     type: "website",
@@ -74,8 +74,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hndsup | Emergency Alert Wearable",
-    description: "Wearable emergency alert device to promote safety during police stops.",
+    title: "This Wearable Doesn’t Tell Time. It Protects Lives",
+    description: "Hndsup sends real-time alerts during police encounters. Help us protect lives—learn more and support the mission.",
     site: "@CCAboutRace",
     images: [
       {
