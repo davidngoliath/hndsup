@@ -50,7 +50,6 @@ const SilkSerifExtraLightItalic = localFont({
 export const metadata = {
   title: "Hndsup | The Product We Hope To Never Launch",
   description: "Hndsup is the wearable that doesn’t tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
-  keywords: "Hndsup, wearable, police encounters, safety, emergency alert, Courageous Conversation Global Foundation",
   openGraph: {
     title: "This Wearable Doesn’t Tell Time. It Protects Lives",
     description: "Hndsup sends real-time alerts during police encounters. Help us protect lives—learn more and support the mission.",
