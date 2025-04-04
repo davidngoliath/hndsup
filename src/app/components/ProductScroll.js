@@ -22,7 +22,7 @@ export default function ProductScroll({ productRef }) {
     const ids = Data[0].productPanels.map((item, index) => item.id);
 
     const lastTriggeredIndex = useRef(null); // Track the last triggered index
-    const imageSequenceRef = useRef(null); // Cache the timeline
+
 
     const handleNavToggle = useCallback(
         (index) => {
@@ -82,8 +82,6 @@ export default function ProductScroll({ productRef }) {
     useLayoutEffect(() => {
         if (typeof window !== 'undefined') {
             const handleResize = () => {
-                console.log('resize');
-                
                 setWindowsize(window.innerWidth);
             };
 
@@ -156,7 +154,6 @@ export default function ProductScroll({ productRef }) {
             // }, wrapper.current);
 
             const handleResize = () => {
-                console.log('handleResize');
                 ScrollTrigger.refresh();
             };
 
@@ -196,7 +193,6 @@ export default function ProductScroll({ productRef }) {
             };
 
             const resizeCanvas = () => {
-                console.log('resize canvas');
                 const aspectRatio = isMobile ? 800 / 1080 : 800 / 1080; // Replace with your canvas aspect ratio
                 const containerWidth = canvas.parentElement.offsetWidth;
                 const containerHeight = canvas.parentElement.offsetHeight;
@@ -222,7 +218,7 @@ export default function ProductScroll({ productRef }) {
             if (!isMobile) {
                 window.addEventListener('resize', resizeCanvas);
             }
-            
+
             resizeCanvas(); // Initial resize
 
             const imageSequence = gsap.timeline({

@@ -52,7 +52,7 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
         setDisabled(!disabled);
         setTimeout(() => {
             setDisabled(false);
-        }, 2500);
+        }, 1500);
     };
 
     useEffect(() => {
@@ -93,17 +93,13 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
             // Initial state, do nothing
         }
         if (state.clicked === false) {
-            tl.set(navContainer.current, { css: { height: 'auto' } });
-            // tl.set(mobileButtons.current, { display: 'none'});
-            // tl.set(mobileNavBg.current, { display: 'none'});
-            bodyTag.classList.remove('no-scroll');
             setOpen(false);
+            tl.set(navContainer.current, { css: { height: 'auto' } });
+            bodyTag.classList.remove('no-scroll');
         } else if (state.clicked === true || (state.clicked === true && state.initial === null)) {
             setOpen(true);
             bodyTag.classList.add('no-scroll');
             tl.set(navContainer.current, { css: { height: '100%' } });
-            // tl.to(mobileButtons.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
-            // tl.to(mobileNavBg.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
         }
     }, [state]);
 

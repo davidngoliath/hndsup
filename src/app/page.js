@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./styles/page.module.css";
 import "./globals.css";
 import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import ProductScroll from "./components/ProductScroll";
 import StatisticsScroll from "./components/StatisticsScroll";
 import StatisticsSlider from "./components/StatisticsSlider";
@@ -15,6 +16,7 @@ import Nav from "./components/Nav";
 import { Data } from "./data.js";
 import LoadingScreen from "./components/LoadingScreen";
 
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function Home() {
   const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
@@ -26,45 +28,67 @@ export default function Home() {
   const fist = useRef();
   const fistMobile = useRef();
   const [loading, setLoading] = useState(true);
-
+  const [hasScrolledToTop, setHasScrolledToTop] = useState(false);
   const vimeoId = Data[0].videoId;
 
   const scrollToSection = (ref) => {
-    // Object mapping refs to labels
-    const refLabels = new Map([
-      [videoDiv, "Video/Hero Section"],
-      [productDiv, "Product Section"],
-      [statsDiv, "Statistics Section"],
-      [actionDiv, "Take Action Section"],
-    ]);
-  
-    const refEvents = new Map([
-      [videoDiv, "click_nav_hero_section"],
-      [productDiv, "click_nav_product_section"],
-      [statsDiv, "click_nav_statistics_section"],
-      [actionDiv, "click_nav_take_action"],
-    ]);
+  // Object mapping refs to labels
+  const refLabels = new Map([
+    [videoDiv, "Video/Hero Section"],
+    [productDiv, "Product Section"],
+    [statsDiv, "Statistics Section"],
+    [actionDiv, "Take Action Section"],
+  ]);
+
+  const refEvents = new Map([
+    [videoDiv, "click_nav_hero_section"],
+    [productDiv, "click_nav_product_section"],
+    [statsDiv, "click_nav_statistics_section"],
+    [actionDiv, "click_nav_take_action"],
+  ]);
 
 
-    // Scroll to the section
-    ref.current.scrollIntoView({ behavior: "smooth" });
-  
-    // Get the label for the ref
-    const label = refLabels.get(ref) || "Unknown Section";
-    const event = refEvents.get(ref) || "Unknown Event";
-    // Push event to GTM's dataLayer
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: event,
-      category: "User Interaction",
-      label: label,
-      value: 1,
-    });
+  // Scroll to the section
+  ref.current.scrollIntoView({ behavior: "smooth" });
+
+  // Get the label for the ref
+  const label = refLabels.get(ref) || "Unknown Section";
+  const event = refEvents.get(ref) || "Unknown Event";
+  // Push event to GTM's dataLayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: event,
+    category: "User Interaction",
+    label: label,
+    value: 1,
+  });
   };
 
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  // }, []);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 500;
+
+      if (!hasScrolledToTop) {
+          if (isMobile){
+            setTimeout(() => {
+              gsap.to(window, {
+                scrollTo:  (0),
+                duration: 2,
+                ease: "power3.inOut",
+              })
+            }, 1500);
+          } else {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: "instant"    
+            })
+          }
+
+          setHasScrolledToTop(true);
+      }
+  }, [hasScrolledToTop]);
+
   const handleHomeFadeIn = () => {
     // console.log("handleHomeFadeIn");
     setLoading(false);
@@ -211,7 +235,7 @@ export default function Home() {
           </div>
         </section>
 
-        <ProductScroll productRef={productDiv}/>
+        <ProductScroll productRef={productDiv} hasScrolledToTop={hasScrolledToTop}/>
         <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
         <StatisticsSlider statsRef={statsDiv}/>
         {/* <StatisticsScroll statsRef={statsDiv}/>
