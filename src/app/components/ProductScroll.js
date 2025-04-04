@@ -22,6 +22,7 @@ export default function ProductScroll({ productRef }) {
     const ids = Data[0].productPanels.map((item, index) => item.id);
 
     const lastTriggeredIndex = useRef(null); // Track the last triggered index
+    const imageSequenceRef = useRef(null); // Cache the timeline
 
     const handleNavToggle = useCallback(
         (index) => {
@@ -68,10 +69,21 @@ export default function ProductScroll({ productRef }) {
         [setSection]
     );
 
+    const handleButtonClick = (marker) => {
+        // Scroll to the corresponding panel
+        // console.log('scroll to panel', marker);
+        gsap.to(window, {
+            scrollTo:  ( document.getElementById(marker).offsetLeft * (wrap / (wrap - windowsize)) ),
+            duration: 2
+        })
+    };
+
+
     useLayoutEffect(() => {
         if (typeof window !== 'undefined') {
             const handleResize = () => {
-                // console.log('resize');
+                console.log('resize');
+                
                 setWindowsize(window.innerWidth);
             };
 
@@ -81,16 +93,16 @@ export default function ProductScroll({ productRef }) {
                 window.removeEventListener('resize', handleResize);
             };
         }
-    }, []);
+    }, [windowsize]);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
+            const isMobile = window.innerWidth <= 900;
             const totalScroll = wrapper.current.scrollWidth - window.innerWidth;
 
             // Ensure enough space is left after pinning
-            const ctx = gsap.context(() => {
+            // const ctx = gsap.context(() => {
                 document.getElementById("horizontal-spacer").style.height = `${totalScroll}px`;
                 setWrap(totalScroll);
 
@@ -105,9 +117,9 @@ export default function ProductScroll({ productRef }) {
                         scrub: 1,
                         snap: {
                             snapTo: 1 / (panel.current.length - 1),
-                            duration: 0.5,
-                            ease: "none",
-                            delay: 0,
+                            // duration: 0.5,
+                            // ease: "none",
+                            // delay: 0,
                         },
                         end: `+=${totalScroll}`, // Ensures smooth exit
                     },
@@ -141,16 +153,20 @@ export default function ProductScroll({ productRef }) {
                         }
                     });
                 });
-            }, wrapper.current);
+            // }, wrapper.current);
 
             const handleResize = () => {
+                console.log('handleResize');
                 ScrollTrigger.refresh();
             };
 
-            window.addEventListener('resize', handleResize);
+            // Add resize listener only for desktop
+            if (!isMobile) {
+                window.addEventListener('resize', handleResize);
+            }
 
             return () => {
-                ctx.revert();
+                // ctx.revert();
                 window.removeEventListener('resize', handleResize);
                 ScrollTrigger.refresh();
             };
@@ -180,6 +196,7 @@ export default function ProductScroll({ productRef }) {
             };
 
             const resizeCanvas = () => {
+                console.log('resize canvas');
                 const aspectRatio = isMobile ? 800 / 1080 : 800 / 1080; // Replace with your canvas aspect ratio
                 const containerWidth = canvas.parentElement.offsetWidth;
                 const containerHeight = canvas.parentElement.offsetHeight;
@@ -201,7 +218,11 @@ export default function ProductScroll({ productRef }) {
                 ScrollTrigger.refresh();
             };
 
-            window.addEventListener('resize', resizeCanvas);
+            // Add resize listener only for desktop
+            if (!isMobile) {
+                window.addEventListener('resize', resizeCanvas);
+            }
+            
             resizeCanvas(); // Initial resize
 
             const imageSequence = gsap.timeline({
@@ -221,6 +242,7 @@ export default function ProductScroll({ productRef }) {
                     }
                 }
             });
+        
 
             return () => {
                 window.removeEventListener('resize', resizeCanvas);
@@ -274,7 +296,7 @@ export default function ProductScroll({ productRef }) {
                     })}
                 </div>
             </section>
-            <ScrollNav active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav} markers={ids} scrolltype={"product"} />
+            <ScrollNav click={handleButtonClick} active={section} windowsize={windowsize} wrapsize={wrap} ref={productNav} markers={ids} scrolltype={"product"} />
         </div>
     );
 }

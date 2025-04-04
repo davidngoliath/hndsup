@@ -14,6 +14,7 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
     const [isActive, setIsActive] = useState(false);
     const mobileNavBg = useRef(null);
     const mobileButtons = useRef(null);
+    const mobileWrapper = useRef(null);
     const navContainer = useRef(null);
     const smalllogo = useRef(null);
     const logoSmallDesktopRef = useRef(null);
@@ -86,26 +87,32 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
 
     useEffect(() => {
         const tl = gsap.timeline();
+        const bodyTag = document.getElementsByTagName('body')[0];
 
         if (state.clicked === null) {
             // Initial state, do nothing
         }
         if (state.clicked === false) {
-            setOpen(false);
-            tl.to([mobileButtons.current, mobileNavBg.current], { display: 'none', autoAlpha: 0, duration: 2, ease: 'Expo.easeOut' });
             tl.set(navContainer.current, { css: { height: 'auto' } });
+            // tl.set(mobileButtons.current, { display: 'none'});
+            // tl.set(mobileNavBg.current, { display: 'none'});
+            bodyTag.classList.remove('no-scroll');
+            setOpen(false);
         } else if (state.clicked === true || (state.clicked === true && state.initial === null)) {
             setOpen(true);
+            bodyTag.classList.add('no-scroll');
             tl.set(navContainer.current, { css: { height: '100%' } });
-            tl.to([mobileNavBg.current, mobileButtons.current], { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+            // tl.to(mobileButtons.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
+            // tl.to(mobileNavBg.current, { display: 'flex', autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' });
         }
     }, [state]);
 
 
     return (
         <nav className={styles.navContainer} ref={navContainer}>
+        { isOpen && <div ref={mobileWrapper} className={styles.mobileWrapper}>
             <div className={styles.mobileNavBackground} ref={mobileNavBg}></div>
-
+            
             <div className={styles.mobileButtonContainer} ref={mobileButtons}>
                 <div className={styles.mobilePageLinks}>
                     <div>
@@ -133,15 +140,20 @@ export default function Nav({ scrollToSection, videoRef, productRef, statsRef, a
                         >DONATE</a>
                 </div>
             </div>
+            </div>
+            }
             <div className={styles.mobileNavContainer}>
-                <Image src="/images/logosmall.svg" alt="logo" width={77} height={51} className={styles.logoSmall} ref={smalllogo} />
+                <Image onClick={(e) => { e.preventDefault(); scrollToSection(videoRef)}} src="/images/logosmall.svg" alt="logo" width={77} height={51} className={styles.logoSmall} ref={smalllogo} />
                 <button aria-label="Toggle main menu" disabled={disabled} className={styles.hamburger} onClick={handleMenu}>
                     <span className={`${styles.line} ${state.clicked ? styles.isActiveOne : ''}`}></span>
                     <span className={`${styles.line} ${state.clicked ? styles.isActiveTwo : ''}`}></span>
                 </button>
             </div>
+            
+
+            
             <div className={styles.desktopButtonContainer}>
-                <Image src="/images/logosmall.svg" alt="logo" width={77} height={51} className={styles.logoSmallDesktop} ref={logoSmallDesktopRef} />
+                <Image onClick={(e) => { e.preventDefault(); scrollToSection(videoRef)}} src="/images/logosmall.svg" alt="logo" width={77} height={51} className={styles.logoSmallDesktop} ref={logoSmallDesktopRef} />
                 <div className={styles.desktopPageLinks}>
                     <div>
                         <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection(videoRef); }}>VIDEO</a>

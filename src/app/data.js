@@ -43,7 +43,7 @@ export const Data =  [
             content: {
                 'heroVideo': ['https://dng-com.s3.amazonaws.com/clients/hndsup/images/panels/product/hero-eye_2.mp4'],
                 'titleCopy': [],
-                'contentParagraph': ['<p><h3>REAL-TIME UPLOADS</h3><h2>UPLOADS FOOTAGE IN REAL TIME TO LOCAL NEWS STATIONS. SO<span>everyone</span> CAN BE AN EYEWITNESS.</h2></p>']
+                'contentParagraph': ['<p><h3>REAL-TIME UPLOADS</h3><h2>UPLOADS FOOTAGE IN REAL-TIME TO LOCAL NEWS STATIONS. SO<span>everyone</span> CAN BE AN EYEWITNESS.</h2></p>']
             }
         },
         // {

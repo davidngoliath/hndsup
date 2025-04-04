@@ -66,7 +66,7 @@ export default function Home() {
   //   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   // }, []);
   const handleHomeFadeIn = () => {
-    console.log("handleHomeFadeIn");
+    // console.log("handleHomeFadeIn");
     setLoading(false);
       
     const tl = gsap.timeline();
@@ -78,7 +78,7 @@ export default function Home() {
 
 
   const handleLoad = () => {
-    console.log("handleLoad");
+    // console.log("handleLoad");
     // Set a timeout to hide the loading screen after 5 seconds
     const timeout = setTimeout(handleHomeFadeIn, 5000);
 

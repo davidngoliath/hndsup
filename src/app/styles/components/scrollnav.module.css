@@ -35,6 +35,7 @@
     justify-content: start;
     align-items: center;
     flex-direction: column;
+    /* cursor: pointer; */
 }
 
 .scrollNavButton img {
@@ -53,7 +54,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.scrollNavButton button {
+.scrollNavButton div {
     width: 7px;
     height: 7px;
     max-width: 7px;
@@ -61,7 +62,6 @@
     background-color: #D9D9D9;
     border-radius: 50%;
     border: none;
-    cursor: pointer;
     opacity: 0.25;
     transition: all 0.3s ease-in-out;
     position: relative;
@@ -80,7 +80,7 @@
 
 }
 
-.scrollNavButton button.setActive {
+.scrollNavButton div.setActive {
     opacity: 1;
     transform: scale(1.5);
     transition: all 0.3s ease-in-out;

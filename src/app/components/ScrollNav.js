@@ -6,7 +6,7 @@ import Image from 'next/image';
 import useIsomorphicLayoutEffect from '../helpers/useIsomorphicLayoutEffect';
 
 
-export default function ScrollNav({active, ref, scrolltype, markers}) {
+export default function ScrollNav({active, ref, scrolltype, markers, click}) {
 
 
     return (
@@ -14,9 +14,9 @@ export default function ScrollNav({active, ref, scrolltype, markers}) {
             <div className={scrollNavStyles.scrollNav} ref={ref}>
                 {markers.map((marker, index) => {
                     return (
-                        <div className={scrollNavStyles.scrollNavButton} key={index}  >
+                        <div className={scrollNavStyles.scrollNavButton} key={index} >
                         <Image src={`/images/scrollnav/${marker}.svg`} alt="spacer" width={28} height={46} className={`${active === index ? scrollNavStyles.setActive : ''}`}/>
-                        <button className={`${active === index ? scrollNavStyles.setActive : ''}`} ></button>
+                        <div className={`${active === index ? scrollNavStyles.setActive : ''}`} ></div>
                         {/* { scrolltype === "product" ? <div className={scrollNavStyles.scrollNavButtonSpacer}></div> : null } */}
                         </div>
                     )
@@ -26,3 +26,5 @@ export default function ScrollNav({active, ref, scrolltype, markers}) {
         </>
     )
 }
+
+// onClick={(e) => {click(marker)}}
