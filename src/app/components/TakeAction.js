@@ -52,9 +52,9 @@ export default function TakeAction({actionRef}) {
                                 onClick={() => {
                                     window.dataLayer = window.dataLayer || [];
                                     window.dataLayer.push({
-                                        event: "click_donate",
+                                        event: "click_learn_more",
                                         category: "Button Click",
-                                        label: "homepage_donate_now_button",
+                                        label: "homepage_learn_more_button",
                                         value: 1,
                                     });
                                 }}
