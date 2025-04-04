@@ -47,7 +47,7 @@ export default function TakeAction({actionRef}) {
                                 <Image src="/images/singleton.png" alt="singleton" width={102} height={102} className={actionStyles.mobileSingleton}/>
                                 <h1>Founded by Glenn E. Singleton</h1>
                             </div>
-                            <p>A LIFELONG ADVOCATE FOR RACIAL EQUITY AND CREATOR OF THE COURAGEOUS CONVERSATION<span className={actionStyles.copyright}>{'\u00A9'}</span> FRAMEWORK. THE COURAGEOUS CONVERSATION<span className={actionStyles.copyright}>{'\u00A9'}</span> GLOBAL FOUNDATION PARTNERS WITH COMMUNITIES AND POLICE TO DRIVE TRANSFORMATIVE DIALOGUE, HEALING, AND LASTING SYSTEMIC CHANGE.</p>
+                            <p>A LIFELONG ADVOCATE FOR RACIAL EQUITY AND CREATOR OF THE COURAGEOUS CONVERSATION<span className={actionStyles.copyright}>{'\u00A9'}</span> PROTOCOL. COURAGEOUS CONVERSATION<span className={actionStyles.copyright}>{'\u00A9'}</span> GLOBAL FOUNDATION PARTNERS WITH COMMUNITIES AND POLICE TO DRIVE TRANSFORMATIVE DIALOGUE, HEALING, AND LASTING SYSTEMIC CHANGE.</p>
                             <a href="https://ccglobalfoundation.org/" target="_blank" rel="noreferrer" aria-label="Donate"
                                 onClick={() => {
                                     window.dataLayer = window.dataLayer || [];
