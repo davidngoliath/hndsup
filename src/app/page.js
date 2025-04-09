@@ -89,105 +89,73 @@ export default function Home() {
       }
   }, [hasScrolledToTop]);
 
-  const handleHomeFadeIn = () => {
-    // console.log("handleHomeFadeIn");
-    setLoading(false);
+
+  // login then load
+  // const handleHomeFadeIn = () => {
+  //   // console.log("handleHomeFadeIn");
+  //   setLoading(false);
       
-    const tl = gsap.timeline();
-    tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
-      .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
+  //   const tl = gsap.timeline();
+  //   tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
+  //     .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
     
 
-  }
+  // }
 
 
-  const handleLoad = () => {
-    // console.log("handleLoad");
-    // Set a timeout to hide the loading screen after 5 seconds
-    const timeout = setTimeout(handleHomeFadeIn, 5000);
-
-    // Wait for all images to load
-    // const images = document.querySelectorAll('img');
-    // let loadedImages = 0;
-    
-    // images.forEach((img) => {
-    //   if (img.complete) {
-    //     loadedImages++;
-    //   } else {
-    //     img.addEventListener('load', () => {
-    //       loadedImages++;
-    //       if (loadedImages === images.length) {
-    //         clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
-    //         handleLoad();
-    //       }
-    //     });
-    //     img.addEventListener('error', () => {
-    //       loadedImages++;
-    //       if (loadedImages === images.length) {
-    //         clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
-    //         handleLoad();
-    //       }
-    //     });
-    //   }
-    // });
-
-    // if (loadedImages === images.length) {
-    //   clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
-    //   handleLoad();
-    // }
-
-    return () => clearTimeout(timeout);
-
-      
-  };
+  // const handleLoad = () => {
+  //   // Set a timeout to hide the loading screen after 5 seconds
+  //   const timeout = setTimeout(handleHomeFadeIn, 5000);
+  //   return () => clearTimeout(timeout);
+  // };
 
   
-
-  // useEffect(() => {
-  //   const handleLoad = () => {
-  //     setLoading(false);
+  // Wait for all images to load no login
+  useEffect(() => {
+    const handleLoad = () => {
+      setLoading(false);
       
-  //     const tl = gsap.timeline();
-  //     tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
-  //       .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
+      const tl = gsap.timeline();
+      tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
+        .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
         
-  //   };
+    };
 
-  //   // Set a timeout to hide the loading screen after 5 seconds
-  //   const timeout = setTimeout(handleLoad, 5000);
+    // Set a timeout to hide the loading screen after 5 seconds
+    const timeout = setTimeout(handleLoad, 5000);
 
-  //   // Wait for all images to load
-  //   const images = document.querySelectorAll('img');
-  //   let loadedImages = 0;
+    // Wait for all images to load
+    const images = document.querySelectorAll('img');
+    let loadedImages = 0;
     
-  //   images.forEach((img) => {
-  //     if (img.complete) {
-  //       loadedImages++;
-  //     } else {
-  //       img.addEventListener('load', () => {
-  //         loadedImages++;
-  //         if (loadedImages === images.length) {
-  //           clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
-  //           handleLoad();
-  //         }
-  //       });
-  //       img.addEventListener('error', () => {
-  //         loadedImages++;
-  //         if (loadedImages === images.length) {
-  //           clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
-  //           handleLoad();
-  //         }
-  //       });
-  //     }
-  //   });
+    images.forEach((img) => {
+      if (img.complete) {
+        loadedImages++;
+      } else {
+        img.addEventListener('load', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
+            handleLoad();
+          }
+        });
+        img.addEventListener('error', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
+            handleLoad();
+          }
+        });
+      }
+    });
 
-  //   if (loadedImages === images.length) {
-  //     clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
-  //     handleLoad();
-  //   }
+    if (loadedImages === images.length) {
+      clearTimeout(timeout); // Clear the timeout if all images load before 5 seconds
+      handleLoad();
+    }
 
-  //   return () => clearTimeout(timeout); // Cleanup the timeout on component unmount
-  // }, []);
+    return () => clearTimeout(timeout); // Cleanup the timeout on component unmount
+  }, []);
 
   return (
     <>
@@ -305,7 +273,7 @@ export default function Home() {
       </main>
       
       <Modal/>
-      <LoginScreen setLoading={setLoading} handleLoad={handleLoad}/>
+      {/* <LoginScreen setLoading={setLoading} handleLoad={handleLoad}/> */}
     </>
   );
 }
