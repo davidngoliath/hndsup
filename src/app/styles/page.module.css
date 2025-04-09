@@ -127,6 +127,18 @@
 
 }
 
+@media (max-width: 800px) {
+  .heroDonate {
+    display: flex!important;
+  }
+}
+
+@media (max-width: 900px) {
+  .footerText p {
+    font-size: 0.45rem!important;
+  }
+}
+
 /* @media (max-width: 400px) {
   .fistMobile {
     display: flex;
@@ -251,6 +263,15 @@
   margin-bottom: 1rem;
 }
 
+.heroButtonContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
 .heroVideo {
   width: 300px;
   height: 85px;
@@ -262,6 +283,20 @@
   align-items: center;
   flex-direction: row;
 }
+
+.heroDonate {
+  width: 94px;
+  height: 52px;
+  font-size: 1rem;
+  background-color: black;
+  border: #ededed 1px solid;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  display: none;
+}
+
+
 
 .playGraphic {
   max-width: 82px;
@@ -291,7 +326,7 @@
   flex-direction: column;
 }
 
-.videoText span {
+.videoText span, .heroDonate span {
   font-family: var(--font-dm-sans);
   color: white;
 }
@@ -323,13 +358,6 @@
   height: auto;
 
   font-family: var(--font-rational-tw-display-light);
-}
-
-@media (max-width: 900px) {
-  .footerText p {
-    font-size: 0.45rem!important;
-  }
-
 }
 
 .footerLogoContainer {
