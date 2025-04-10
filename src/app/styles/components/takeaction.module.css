@@ -23,7 +23,7 @@
     /* top: 20%; */
 }
 
-.takeActionImageContainer video {
+.takeActionImageContainer video, .takeActionImageContainer img {
     width: 60%;
     height: auto;
 }
@@ -261,7 +261,7 @@
         /* top: 10%!important; */
     }
 
-    .takeActionImageContainer video {
+    .takeActionImageContainer video, .takeActionImageContainer img {
         width: 100%;
     }
 
