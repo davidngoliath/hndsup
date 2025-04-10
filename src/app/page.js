@@ -64,6 +64,12 @@ export default function Home() {
   });
   };
 
+  const [isSocialBrowser, setIsSocialBrowser] = useState(false);
+
+  useEffect(() => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      setIsSocialBrowser(/FBAN|FBAV|Instagram/.test(userAgent));
+  }, []);
 
   useEffect(() => {
     const isMobile = window.innerWidth <= 500;
@@ -98,8 +104,6 @@ export default function Home() {
   //   const tl = gsap.timeline();
   //   tl.to(mainDiv.current, { autoAlpha: 1, duration: 1 })
   //     .fromTo(fist.current, { autoAlpha: 0 }, { autoAlpha: 1, ease: "power3.out", duration: 2 }, 0)
-    
-
   // }
 
 
@@ -110,7 +114,7 @@ export default function Home() {
   // };
 
   
-  // Wait for all images to load no login
+  // Wait for all images to load - no login
   useEffect(() => {
     const handleLoad = () => {
       setLoading(false);
@@ -168,32 +172,76 @@ export default function Home() {
               <h3>COURAGEOUS CONVERSATION<sup>®</sup></h3><h3>GLOBAL FOUNDATION</h3>
               <span>presents</span>
               <Image src="/images/hndsup_logo.svg" alt="hndsup" width={319} height={209} className={styles.hndsup}/>
-              <div className={styles.fistContainerMobile}>
+
+
+              {/* <div className={styles.fistContainerMobile}>
                 <video src="/images/fistheader.mp4" ref={fistMobile} width="531" height="758" loop autoPlay playsInline muted 
                 className={styles.fistImageMobile} >
                 </video>
-              </div>
-              <h4 className={styles.titleSubline}>FIRST-OF-ITS-KIND CIVILIAN-WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
-              <button className={styles.heroVideo} onClick={(e) => {
-                      window.dataLayer = window.dataLayer || [];
-                  window.dataLayer.push({
-                    event: "click_watch_video",
-                    category: "Button Click",
-                    label: "homepage_watch_video_button",
-                    value: 1,
-                  });
-                  
-                  setVideo(vimeoId,handleModal())
+              </div> */}
 
-                }} 
-              >
-                <div className={styles.playGraphic}>
-                  <span></span>
-                </div>
-                <div className={styles.videoText}>
-                  <span>WATCH VIDEO</span>
-                </div>
-              </button>
+              <div className={styles.fistContainerMobile}>
+                  {isSocialBrowser ? (
+                      <img
+                          src="/images/fistheader.jpg"
+                          alt="Fallback Image"
+                          className={styles.fistImageMobile}
+                      />
+                  ) : (
+                      <video
+                          src="/images/fistheader.mp4"
+                          ref={fistMobile}
+                          width="531"
+                          height="758"
+                          loop
+                          autoPlay
+                          playsInline
+                          muted
+                          className={styles.fistImageMobile}
+                      ></video>
+                  )}
+              </div>
+
+
+              <h4 className={styles.titleSubline}>FIRST-OF-ITS-KIND CIVILIAN-WEARABLE CAMERA THAT RECORDS POLICE ENCOUNTERS.</h4>
+              
+              <div className={styles.heroButtonContainer}>
+                <button className={styles.heroVideo} onClick={(e) => {
+                        window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                      event: "click_watch_video",
+                      category: "Button Click",
+                      label: "homepage_watch_video_button",
+                      value: 1,
+                    });
+                    
+                    setVideo(vimeoId,handleModal())
+
+                  }} 
+                >
+                  <div className={styles.playGraphic}>
+                    <span></span>
+                  </div>
+                  <div className={styles.videoText}>
+                    <span>WATCH VIDEO</span>
+                  </div>
+                </button>
+                <a href="https://ccglobalfoundation.org/donate/" className={styles.heroDonate} target="_blank" rel="noreferrer" aria-label="Donate"
+                    onClick={() => {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            event: "click_hero_donate",
+                            category: "Button Click",
+                            label: "hero_donate_button",
+                            value: 1,
+                        });
+                    }}
+                
+                >
+                  <span>DONATE</span>
+                </a>
+
+              </div>
             </div>
             <div className={styles.fistContainer}>
               <video src="/images/fistheader.mp4" ref={fist} width="1062" height="1516" loop autoPlay playsInline muted 
