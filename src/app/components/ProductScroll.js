@@ -22,7 +22,7 @@ export default function ProductScroll({ productRef }) {
     const ids = Data[0].productPanels.map((item, index) => item.id);
 
     const lastTriggeredIndex = useRef(null); // Track the last triggered index
-
+    const [isSocialBrowser, setIsSocialBrowser] = useState(false);
 
     const handleNavToggle = useCallback(
         (index) => {
@@ -78,6 +78,11 @@ export default function ProductScroll({ productRef }) {
         })
     };
 
+    useEffect(() => {
+        // Detect if the user is on Facebook or Instagram browser
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        setIsSocialBrowser(/FBAN|FBAV|Instagram/.test(userAgent));
+    }, []);
 
     useLayoutEffect(() => {
         if (typeof window !== 'undefined') {
@@ -274,7 +279,10 @@ export default function ProductScroll({ productRef }) {
                                     </div>
                                 ) : (
                                     <div className={`${item.title === true ? productStyles.productSlideContent : productStyles.productSlideContentRow}`}>
-                                        <video
+                                        
+                                        
+                                        
+                                        {/* <video
                                             src={item.content.heroVideo[0]}
                                             width="960"
                                             height="1080"
@@ -283,7 +291,42 @@ export default function ProductScroll({ productRef }) {
                                             playsInline
                                             muted
                                             className={`${item.title === true ? productStyles.productImage100 : productStyles.productImage50}`}
-                                        ></video>
+                                        ></video> */}
+
+
+                                        {isSocialBrowser ? (
+                                            <img
+                                                src={item.content.heroVideo[0].replace(
+                                                    ".mp4",
+                                                    ".jpg"
+                                                )} // Replace video with fallback image
+                                                alt="Fallback Image"
+                                                className={`${
+                                                    item.title === true
+                                                        ? productStyles.productImage100
+                                                        : productStyles.productImage50
+                                                }`}
+                                            />
+                                        ) : (
+                                            <video
+                                                src={item.content.heroVideo[0]}
+                                                width="960"
+                                                height="1080"
+                                                loop
+                                                autoPlay
+                                                playsInline
+                                                muted
+                                                className={`${
+                                                    item.title === true
+                                                        ? productStyles.productImage100
+                                                        : productStyles.productImage50
+                                                }`}
+                                            ></video>
+                                        )}
+
+
+
+
                                         <div ref={addContentParagraph} dangerouslySetInnerHTML={{ __html: item.content.contentParagraph[0] }} className={productStyles.contentParagraph}></div>
                                     </div>
                                 )}

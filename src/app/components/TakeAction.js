@@ -7,6 +7,15 @@ export default function TakeAction({actionRef}) {
 
     const { state, setState, handleModal, contact, setContact, donate, setDonate  } = useContext(ModalContext);
 
+
+    const [isSocialBrowser, setIsSocialBrowser] = useState(false);
+
+    useEffect(() => {
+        // Detect if the user is on Facebook or Instagram browser
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        setIsSocialBrowser(/FBAN|FBAV|Instagram/.test(userAgent));
+    }, []);
+
     return (
         <>
             <section className={actionStyles.takeActionContainer} ref={actionRef}>
@@ -15,9 +24,32 @@ export default function TakeAction({actionRef}) {
                     {/* <Image src="/images/foundation_logo.png" alt="takeaction" width={562.5} height={176.5} className={actionStyles.foundationLogo}/> */}
                     <div className={actionStyles.takeActionImageContainer}>
                         <h1>TAKE ACTION</h1>
-                        <video src="/images/takeaction-bg.mp4" width="1544" height="876" loop autoPlay playsInline muted 
+                        {/* <video src="/images/takeaction-bg.mp4" width="1544" height="876" loop autoPlay playsInline muted 
                             className={actionStyles.takeActionImage} >
-                        </video>
+                        </video> */}
+
+                        {isSocialBrowser ? (
+                            <Image
+                                src="/images/takeaction-bg.jpg" // Replace video with fallback image
+                                alt="Take Action Background"
+                                width={1544}
+                                height={876}
+                                className={actionStyles.takeActionImage}
+                            />
+                        ) : (
+                            <video
+                                src="/images/takeaction-bg.mp4"
+                                width="1544"
+                                height="876"
+                                loop
+                                autoPlay
+                                playsInline
+                                muted
+                                className={actionStyles.takeActionImage}
+                            ></video>
+                        )}
+
+
                     </div>
                 </div>
                 <div className={actionStyles.takeActionContent}>
