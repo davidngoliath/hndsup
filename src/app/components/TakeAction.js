@@ -23,7 +23,7 @@ export default function TakeAction({actionRef}) {
                 <div className={actionStyles.takeActionHeader}>
                     {/* <Image src="/images/foundation_logo.png" alt="takeaction" width={562.5} height={176.5} className={actionStyles.foundationLogo}/> */}
                     <div className={actionStyles.takeActionImageContainer}>
-                        <h2>TECHNOLOGY LIKE THIS COULD RECORD IT, BUT IT <span>can’t prevent it</span>.</h2>
+                        <h2 className={actionStyles.h2TechCopy}>TECHNOLOGY LIKE THIS COULD RECORD IT, BUT IT <span>can’t prevent it</span>.</h2>
                         {/* <video src="/images/takeaction-bg.mp4" width="1544" height="876" loop autoPlay playsInline muted 
                             className={actionStyles.takeActionImage} >
                         </video> */}
@@ -38,9 +38,9 @@ export default function TakeAction({actionRef}) {
                             />
                         ) : (
                             <video
-                                src="/images/takeaction-bg.mp4"
+                                src="/images/takeaction-bg-2.mp4"
                                 width="1544"
-                                height="876"
+                                height="750"
                                 loop
                                 autoPlay
                                 playsInline

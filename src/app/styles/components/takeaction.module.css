@@ -54,12 +54,18 @@
     color: #EBEBEB;
     position: relative;
     margin-bottom: 2rem;
+    line-height: 110%;
+}
+
+.h2TechCopy {
+    font-size: 1.613rem!important;
+    line-height: 110%;
 }
 
 .takeActionContainer h2 {
     font-family: var(--font-dm-sans);
     color: #EBEBEB;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     text-align: center;
 }
 
