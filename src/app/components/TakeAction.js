@@ -23,7 +23,7 @@ export default function TakeAction({actionRef}) {
                 <div className={actionStyles.takeActionHeader}>
                     {/* <Image src="/images/foundation_logo.png" alt="takeaction" width={562.5} height={176.5} className={actionStyles.foundationLogo}/> */}
                     <div className={actionStyles.takeActionImageContainer}>
-                        <h1>TAKE ACTION</h1>
+                        <h2>TECHNOLOGY LIKE THIS COULD RECORD IT, BUT IT <span>can’t prevent it</span>.</h2>
                         {/* <video src="/images/takeaction-bg.mp4" width="1544" height="876" loop autoPlay playsInline muted 
                             className={actionStyles.takeActionImage} >
                         </video> */}
@@ -48,7 +48,7 @@ export default function TakeAction({actionRef}) {
                                 className={actionStyles.takeActionImage}
                             ></video>
                         )}
-
+                        <h1 className={actionStyles.btmTagline}>ONLY<span> police training</span> CAN STOP IT<br className={actionStyles.brRef}/>FROM EVER STARTING.</h1>
 
                     </div>
                 </div>
