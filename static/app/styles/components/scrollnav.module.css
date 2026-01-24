@@ -1,0 +1,91 @@
+.scrollNav {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: row;
+    width: 50%;
+    height: 100px;
+    position: absolute;
+    bottom: 0!important;
+
+    z-index: 1;
+}
+
+@media (max-width: 800px) {
+    /* .scrollNavButton {
+        height: auto!important;
+        justify-content: end!important;
+    }
+
+    .scrollNavButtonSpacer {
+        height: 40px!important;
+    } */
+
+    .scrollNavButton img {
+        /* width: 30%!important; */
+        /* margin-bottom: 20%; */
+        bottom: 10%!important;
+    } 
+}
+
+.scrollNavButton {
+    width: 60px;
+    height: 200px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    /* cursor: pointer; */
+}
+
+.scrollNavButton img {
+    max-width:41.5px;
+    width: 50%;
+    height: auto;
+    /* display: flex; */
+    opacity: 0;
+    position: relative;
+    bottom: 20%;
+}
+
+.scrollNavButton img.setActive {
+    opacity: 1;
+    transform: scale(1.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.scrollNavButton div {
+    width: 7px;
+    height: 7px;
+    max-width: 7px;
+    max-height: 7px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    border: none;
+    opacity: 0.25;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    /* bottom: 3%; */
+    /* margin-bottom: 60%; */
+    /* display: flex; */
+}
+
+.scrollNavButtonSpacer {
+    width: 60px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.scrollNavButton div.setActive {
+    opacity: 1;
+    transform: scale(1.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.hide {
+    display: none;
+}

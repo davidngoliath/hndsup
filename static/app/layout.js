@@ -1,0 +1,129 @@
+import localFont from "next/font/local";
+import "./globals.css";
+import ModalContextProvider from "./contexts/ModalContext";
+import Script from "next/script";
+import Head from 'next/head'
+
+const DMSans = localFont({
+  src: "./fonts/DMSans.woff",
+  variable: "--font-dm-sans",
+  weight: "100 900",
+});
+
+const DMSansItalic = localFont({
+  src: "./fonts/DMSans-Italic.woff",
+  variable: "--font-dm-sans-italic",
+  weight: "100 900",
+})
+
+const RationalTWDisplayLight = localFont({
+  src: "./fonts/Rational-TW-Display-Light.woff",
+  variable: "--font-rational-tw-display-light",
+  weight: "100 900",
+});
+
+const RationalTWDisplaySemibold = localFont({
+  src: "./fonts/Rational-TW-Display-Semibold.woff",
+  variable: "--font-rational-tw-display-semibold",
+  weight: "100 900",
+});
+
+const RationalTWTextLight = localFont({
+  src: "./fonts/Rational-TW-Text-Light.woff",
+  variable: "--font-rational-tw-text-light",
+  weight: "100 900",
+});
+
+const RationalTWTextSemibold = localFont({
+  src: "./fonts/Rational-TW-Text-Semibold.woff",
+  variable: "--font-rational-tw-text-semibold",
+  weight: "100 900",
+});
+
+const SilkSerifExtraLightItalic = localFont({
+  src: "./fonts/Silk-Serif-ExtraLight-Italic.woff",
+  variable: "--font-silk-serif-extra-light-italic",
+  weight: "100 900",
+});
+
+
+export const metadata = {
+  title: "Hndsup | The Product We Hope To Never Launch",
+  description: "Hndsup is the wearable that doesn't tell time—it protects lives. Designed to keep you safe during police encounters. Learn more and support the mission.",
+  keywords: "Social Justice & Advocacy, Crisis & Emergency Use Cases, Affiliated Organizations & Initiatives, Search & Media Optimization Terms, Notable Incidents & Names, Systemic Issues, Data & Record keeping Topics, Reform & Legislative Efforts police accountability technology, emergency alert wearable, Courageous Conversation Global Foundation, civilian rights technology, George Floyd, police use of force, police killing statistics, George Floyd Justice in Policing Act anti-police brutality tech, real-time broadcast of police stops, equity in policing partnerships, how to record a police stop, Breonna Taylor, racial profiling, Mapping Police Violence, body camera mandates racial justice technology, wearable for high-stakes encounters, nonprofit tech for social change, best police encounter recording devices, Eric Garner, systemic racism in law enforcement, Fatal Encounters database, police transparency laws wearable tech for social justice, SOS wearable for marginalized communities, justice-driven innovation, new wearable tech for safety, Tamir Rice, qualified immunity, all-time high police killings in the U.S., civilian complaint review boards empowering civilians during police encounters, technology for vulnerable populations, Sandra Bland, racial disparities in policing, lack of federal police oversight, de-escalation training requirements civilian protection device, public safety alert system, Philando Castile, implicit bias in law enforcement, underreporting of police violence, community-based public safety technology for racial equity, hands-up alert technology, Elijah McClain, lack of body cam accountability, civilian deaths in police custody, Black Lives Matter tech innovation, high-risk situation documentation, Michael Brown, failure to indict officers, community safety tech, wearable witness device, Daunte Wright, unarmed civilian safety, Tyre Nichols, de-escalation support tools, Rodney King, justice-oriented wearable tech, transparency in law enforcement",
+  openGraph: {
+    title: "This Wearable Doesn't Tell Time. It Protects Lives",
+    description: "Hndsup sends real-time alerts during police encounters. Help us protect lives—learn more and support the mission.",
+    url: "https://hndsup.com/",
+    siteName: "Hndsup",
+    type: "website",
+    logo: [
+      {
+        url: "/clients/hndsup/webbyawards/images/logosmall.jpg",
+        width: 500,
+        height: 500,
+      },
+    ],
+    images: [
+      {
+        url: "/clients/hndsup/webbyawards/images/shareimage.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "This Wearable Doesn't Tell Time. It Protects Lives",
+    description: "Hndsup sends real-time alerts during police encounters. Help us protect lives—learn more and support the mission.",
+    site: "@CCAboutRace",
+    images: [
+      {
+        url: "/clients/hndsup/webbyawards/images/shareimage.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
+
+export default function RootLayout({ children }) {
+  return (
+
+    <html lang="en">
+
+      {/*<!-- Global site tag (gtag.js) - Google Analytics -->*/}
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FWE02ZBMVR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FWE02ZBMVR');
+          `}
+        </Script>
+
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KDQCRZ7S');
+          `}
+        </Script>
+      <ModalContextProvider>
+        <body className={`${DMSans.variable} ${DMSansItalic.variable} ${RationalTWDisplayLight.variable} ${RationalTWDisplaySemibold.variable} ${RationalTWTextLight.variable} ${RationalTWTextSemibold.variable} ${SilkSerifExtraLightItalic.variable}`}>
+          {children}
+        </body>
+      </ModalContextProvider>
+    </html>
+
+  );
+}

@@ -1,0 +1,237 @@
+.statsContainer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: black;
+    /* scroll-snap-type: y mandatory; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.statsSlideContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* scroll-snap-type: y mandatory; */
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.scrollWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    /* scroll-snap-type: y mandatory; */
+    overflow: hidden;
+}
+
+.statsSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 100%;
+    height: 100%;
+    /* scroll-snap-align: start; */
+    width: 100%;
+    /* flex-shrink: 0; */
+    position: relative;
+}
+
+.statsSlide h4 {
+    font-family: var(--font-dm-sans);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.statsSlideContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.statsSlideContentRow {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.statsTitle {
+    font-family: var(--font-dm-sans);
+    font-size: 2.875rem;
+    text-align: center;
+    color: #ebebeb;
+    position: absolute;
+    bottom: 20%;
+}
+
+.statsTitle span {
+    font-family: var(--font-silk-serif-extra-light-italic);
+    font-size: 1.313rem;
+}
+
+.blueFrame {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    display: flex;
+    object-fit: cover;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contentParagraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    text-align: center;
+    opacity: 1;
+    margin-top: 1rem;
+    color: #fff;
+    text-align: center;
+}
+
+.contentParagraph h1 {
+    font-family: var(--font-dm-sans);
+    text-align: center;
+    color: #ebebeb;
+    line-height: 120%;
+}
+
+@media (max-width: 800px) {
+
+    .contentParagraph h1 {
+        font-size: 1.5rem !important;
+        line-height: 1;
+    }
+
+    .contentParagraph {
+        width: 90%!important;
+    }
+
+    .contentParagraph h1 > span {
+        font-size: 2rem!important;
+        padding: 0.3rem!important;
+        letter-spacing: 0.005rem;
+    }
+
+    .blueFrame {
+        width: 100%!important;
+        height: 100%!important;
+    }
+
+    .navButton {
+        /* top: 70%!important; */
+        bottom: 0!important;
+        top: auto!important;
+    }
+
+    .statsSlideContainer > .statsSlide:first-child .statsSlideContent .contentParagraph h5 {
+        width: 70%!important;
+    }
+
+    .statsSlideContainer > .statsSlide:last-child .statsSlideContent .contentParagraph br {
+        display: none!important;
+    }
+
+}
+
+.contentParagraph h5 {
+    font-family: var(--font-rational-tw-display-light);
+    text-align: center;
+    color: #ebebeb;
+    display: flex;
+}
+
+/* x */
+
+
+.contentParagraph span {
+    font-family: var(--font-silk-serif-extra-light-italic);
+    text-align: center;
+    display: contents;
+    font-size: 3.875rem;
+    letter-spacing: -0.25rem;
+}
+
+.statsImage100 {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.statsImage50 {
+    max-width: 1512px;
+    width: 40%;
+    height: auto;
+}
+
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.navButton:hover {
+    background-color: none;
+}
+
+.navButton:first-of-type {
+    left: 1rem;
+}
+
+.navButton:last-of-type {
+    right: 1rem;
+}
+
+
+.navButtonLeft {
+    left: 1rem;
+    background: url('/clients/hndsup/webbyawards/images/arrowleft.svg') no-repeat center;
+    width: 48px;
+    height: 48px;
+}
+
+.navButtonRight {
+    right: 1rem;
+    background: url('/clients/hndsup/webbyawards/images/arrowright.svg') no-repeat center;
+    width: 48px;
+    height: 48px;
+}
+

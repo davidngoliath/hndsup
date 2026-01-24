@@ -1,0 +1,339 @@
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  color: #ebebeb;
+  /* margin: 4rem 0; */
+  overflow-y: auto;
+}
+
+.contactForm h1 {
+  font-family: var(--font-dm-sans);
+  top: 2%;
+  position: relative;
+  width: 70%;
+  height: auto;
+  text-align: center;
+}
+
+.contactForm h5 {
+  font-family: var(--font-rational-tw-display-light);
+  position: relative;
+  width: 100%;
+  height: auto;
+  text-align: center;
+
+}
+
+.stepsContainer, .stepTwo, .stepOne {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.stepOne {
+  padding-top: 1rem;
+}
+
+.stepTwo {
+  /* padding-top: 10rem; */
+}
+
+.headlineContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.stepsContainer {
+  /* margin-top: 2rem; */
+}
+
+.copyClipboardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: auto;
+  margin-top: 2rem;
+  max-width: 234px;
+}
+
+.topAnchor {
+  width: 100%;
+  height: 10px;
+  display: block;
+  
+}
+
+@media (max-width: 800px) {
+  .contactContainer h1 {
+    font-size: 1.5rem!important;
+    line-height: 1.5rem!important;
+    width: 90%!important;
+  }
+
+  .contactContainer h1 > span {
+    font-size: 2rem!important;
+  }
+
+  .contactForm {
+    flex-direction: column!important;
+    overflow-y: scroll;
+    padding: 15rem 0;
+  }
+
+  .stepTwo {
+    padding-top: 4rem;
+  }
+
+  .userContainer {
+    max-width: 100%!important;
+    margin-bottom: 2rem;
+  }
+
+  .inputContainer {
+    flex-direction: column!important;
+  }
+
+}
+
+.contactContainer h1 > span {
+  font-family: var(--font-silk-serif-extra-light-italic);
+  font-size: 3.875rem;
+}
+
+.contactContainer label {
+  font-family: var(--font-dm-sans);
+}
+
+.textarea {
+  font-size: 1rem;
+  font-family: var(--font-dm-sans);
+  color: #dbdbdb;
+  max-height: 605px;
+  background-color: #282828;
+  border-radius: 4px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  /* max-height: 1033px; */
+  position: relative;
+ /* Add padding to prevent cutting off */
+  overflow-y: auto; /* Ensure the form is scrollable */
+}
+
+.inputContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  width: 100%;
+  height: auto;
+  top: 0;
+}
+/* .contactForm > div {
+width: 50%;
+height: 50%;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: center;
+} */
+
+.messageContainer {
+  max-width: 827px;
+  width: 100%;
+  max-height: 633px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 343px;
+  width: 100%;
+  height: 100%;
+  max-height: 408px;
+}
+
+.formGroup {
+  width: 90%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #111;
+  border-radius: 4px;
+  background-color: #282828;
+  color: #dbdbdb;
+}
+
+
+.formGroup textarea {
+  white-space: pre-wrap;
+  text-align: left;
+  width: 100%;
+  height: 100vh;
+  max-width: 827px;
+  max-height: 633px;
+  overflow-y: auto;
+}
+.input {
+  width: 100%;
+  min-height: 61px;
+  color: #dbdbdb;
+  font-size: 1rem;
+  background-color: #282828;
+}
+/* .submitButton {
+padding: 10px 20px;
+background-color: #0070f3;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+} */
+
+.submitButton, .copyButtonBtm {
+  max-width: 343px;
+  width: 90%;
+  height: 61px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ededed;
+  border-radius: 2rem;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-dm-sans);
+  background-color: #111111;
+  color: #ebebeb;
+}
+
+.backButton {
+  width: 100%;
+  height: 61px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-dm-sans);
+  background-color: #000000;
+  color: #ebebeb;
+}
+
+.backButton img {
+  width: 12px;
+  height: 13px;
+  margin-right: 10px;
+}
+
+.backButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 343px;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.copyButton {
+  max-width: 243px;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-family: var(--font-dm-sans);
+  background-color: transparent;
+  color: #ebebeb;
+  border: none;
+}
+
+.submitButton:hover {
+  background-color: #282828;
+}
+
+.preWrittenLetter {
+  width: 100%;
+  max-width: 633px;
+  height: auto;
+  max-height: 827px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #111;
+  border-radius: 4px;
+  background-color: #282828;
+  color: #dbdbdb;
+  font-family: var(--font-dm-sans);
+}
+
+
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, .65);
+  color: #dbdbdb;
+  font-family: var(--font-rational-tw-display-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.loadingScreen h2 {
+  width: 70%;
+  margin: auto;
+}
