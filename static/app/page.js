@@ -4,6 +4,7 @@ import styles from "./styles/page.module.css";
 import "./globals.css";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProductScroll from "./components/ProductScroll";
 import StatisticsScroll from "./components/StatisticsScroll";
 import StatisticsSlider from "./components/StatisticsSlider";
@@ -16,7 +17,7 @@ import { Data } from "./data.js";
 import { getAssetPath } from "./config";
 import LoadingScreen from "./components/LoadingScreen";
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export default function Home() {
   const { state, setState, handleModal, video, setVideo  } = useContext(ModalContext);
@@ -27,6 +28,11 @@ export default function Home() {
   const mainDiv = useRef();
   const fist = useRef();
   const fistMobile = useRef();
+  const statValue1 = useRef();
+  const statValue2 = useRef();
+  const statValue3 = useRef();
+  const statValue4 = useRef();
+  const resultsQuotesContainer = useRef();
   const [loading, setLoading] = useState(true);
   const [hasScrolledToTop, setHasScrolledToTop] = useState(false);
   const vimeoId = Data[0].videoId;
@@ -94,6 +100,57 @@ export default function Home() {
           setHasScrolledToTop(true);
       }
   }, [hasScrolledToTop]);
+
+  // Counter animation for stats
+  useEffect(() => {
+    const animateCounter = (element, endValue) => {
+      const obj = { value: 0 };
+      gsap.to(obj, {
+        value: endValue,
+        duration: 2,
+        ease: "power1.out",
+        onUpdate: () => {
+          const formatted = Math.floor(obj.value).toLocaleString('en-US');
+          element.textContent = formatted;
+        },
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          once: true
+        }
+      });
+    };
+
+    if (!loading && statValue1.current && statValue2.current && statValue3.current && statValue4.current) {
+      animateCounter(statValue1.current, 1173);
+      animateCounter(statValue2.current, 340);
+      animateCounter(statValue3.current, 164);
+      animateCounter(statValue4.current, 410);
+    }
+  }, [loading]);
+
+  // Staggered fade-in for results quotes
+  useEffect(() => {
+    if (!loading && resultsQuotesContainer.current) {
+      const quotes = resultsQuotesContainer.current.querySelectorAll('img');
+      
+      gsap.fromTo(quotes, 
+        { autoAlpha: 0, y: 30 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: resultsQuotesContainer.current,
+            start: "top 80%",
+            once: true
+          }
+        }
+      );
+    }
+  }, [loading]);
 
 
   // login then load
@@ -266,6 +323,43 @@ export default function Home() {
           <video src={getAssetPath('/images/screens.mp4')} loop autoPlay playsInline muted 
             className={styles.screensVideo} >
           </video>
+        </div>
+        <div className={styles.resultsContainer}>
+            <div className={styles.resultsContent}>
+              <div className={styles.resultsText}>
+                <h1>results</h1>
+                <p>
+                  Despite $0 media budget, Courageous Conversation received a 1,173% increase in donations since the campaign launched.
+                </p>
+                <p>
+                  The campaign spread quickly through culture. It was shared by voices in hip-hop like Doug E. Fresh and organically amplified within the Divine Nine, one of the most influential cultural networks in the US. Its significance is underscored by the fact that the Divine Nine includes members such as Kamala Harris and Alicia Keys, highlighting the level of cultural relevance and reach the campaign achieved.
+                </p>
+              </div>
+              <img src={getAssetPath('/images/results/results_fist.png')} alt="results" width="896" height="1508" className={styles.resultsImage}/>
+              <div className={styles.resultsStats}>
+                    <div className={styles.stat}>
+                      <h1 className={styles.statValue}><span ref={statValue1}>1,173</span><span>%</span></h1><h3>INCREASE<br/>IN DONATIONS</h3>
+                    </div>
+                    <div className={styles.stat}>
+                      <h1 className={styles.statValue}><span ref={statValue2}>340</span><span>%</span></h1><h3>INCREASE IN<br/>SOCIAL MEDIA IMPRESSIONS</h3>
+                    </div>
+                    <div className={styles.stat}>
+                      <h1 className={styles.statValue}><span ref={statValue3}>164</span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br/>ENGAGEMENT</h3>
+                    </div>
+                    <div className={styles.stat}>
+                      <h1 className={styles.statValue}><span ref={statValue4}>410</span><span>M+</span></h1><h3>TOTAL EARNED<br/>PR IMPRESSIONS</h3>
+                    </div>
+              </div>
+            </div>
+            <div className={styles.resultsQuotesContainer} ref={resultsQuotesContainer}>
+                <img src={getAssetPath('/images/results/result1.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result2.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result3.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result4.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result5.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result6.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+
+            </div>
         </div>
         {/* <StatisticsSlider statsRef={statsDiv}/> */}
         {/* <StatisticsScroll statsRef={statsDiv}/>
