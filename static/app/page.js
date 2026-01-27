@@ -32,7 +32,16 @@ export default function Home() {
   const statValue2 = useRef();
   const statValue3 = useRef();
   const statValue4 = useRef();
+  const statContainer1 = useRef();
+  const statContainer2 = useRef();
+  const statContainer3 = useRef();
+  const statContainer4 = useRef();
   const resultsQuotesContainer = useRef();
+  const problemTextContainerRef = useRef();
+  const resultsTextRef = useRef();
+  const resultsImageRef = useRef();
+  const resultsContentRef = useRef();
+  const resultsContainerRef = useRef();
   const [loading, setLoading] = useState(true);
   const [hasScrolledToTop, setHasScrolledToTop] = useState(false);
   const vimeoId = Data[0].videoId;
@@ -101,54 +110,195 @@ export default function Home() {
       }
   }, [hasScrolledToTop]);
 
-  // Counter animation for stats
+  // Pinned results section with sequential animations
   useEffect(() => {
-    const animateCounter = (element, endValue) => {
-      const obj = { value: 0 };
-      gsap.to(obj, {
-        value: endValue,
-        duration: 2,
-        ease: "power1.out",
-        onUpdate: () => {
-          const formatted = Math.floor(obj.value).toLocaleString('en-US');
-          element.textContent = formatted;
-        },
-        scrollTrigger: {
-          trigger: element,
-          start: "top 80%",
-          once: true
-        }
-      });
-    };
+    if (!loading && resultsContentRef.current && resultsTextRef.current && resultsImageRef.current && 
+        statValue1.current && statValue2.current && statValue3.current && statValue4.current && 
+        statContainer1.current && statContainer2.current && statContainer3.current && statContainer4.current &&
+        resultsQuotesContainer.current) {
+      
+      const isMobile = window.innerWidth <= 1000;
+      
+      console.log('Results animation - isMobile:', isMobile, 'width:', window.innerWidth);
+      
+      const animateCounter = (element, endValue) => {
+        const obj = { value: 0 };
+        gsap.to(obj, {
+          value: endValue,
+          duration: 1.5,
+          ease: "power1.out",
+          onUpdate: () => {
+            const formatted = Math.floor(obj.value).toLocaleString('en-US');
+            element.textContent = formatted;
+          }
+        });
+      };
 
-    if (!loading && statValue1.current && statValue2.current && statValue3.current && statValue4.current) {
-      animateCounter(statValue1.current, 1173);
-      animateCounter(statValue2.current, 340);
-      animateCounter(statValue3.current, 164);
-      animateCounter(statValue4.current, 410);
+      if (isMobile) {
+        // Set initial states for mobile
+        gsap.set(resultsTextRef.current, { opacity: 0, y: 30 });
+        gsap.set(resultsImageRef.current, { opacity: 0, scale: 0.9 });
+        gsap.set([statContainer1.current, statContainer2.current, statContainer3.current, statContainer4.current], { opacity: 0, y: 20 });
+        gsap.set(resultsQuotesContainer.current.querySelectorAll('img'), { autoAlpha: 0, y: 30 });
+        // Mobile: Simple scroll-triggered animations
+        gsap.fromTo(resultsTextRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: resultsTextRef.current,
+              start: 'top 80%',
+              once: true
+            }
+          }
+        );
+
+        gsap.fromTo(resultsImageRef.current,
+          { opacity: 0, scale: 0.9 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: resultsImageRef.current,
+              start: 'top 80%',
+              once: true
+            }
+          }
+        );
+
+        // Animate stat containers sequentially
+        [
+          { container: statContainer1.current, value: statValue1.current, end: 1173 },
+          { container: statContainer2.current, value: statValue2.current, end: 340 },
+          { container: statContainer3.current, value: statValue3.current, end: 164 },
+          { container: statContainer4.current, value: statValue4.current, end: 410 }
+        ].forEach((stat) => {
+          gsap.fromTo(stat.container,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: stat.container,
+                start: 'top 85%',
+                once: true,
+                onEnter: () => animateCounter(stat.value, stat.end)
+              }
+            }
+          );
+        });
+
+        // Staggered fade-in for results quotes
+        gsap.fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
+          { autoAlpha: 0, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: resultsQuotesContainer.current,
+              start: "top 80%",
+              once: true
+            }
+          }
+        );
+      } else {
+        // Desktop: Pinned timeline animation
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: resultsContainerRef.current,
+            start: "top top",
+            end: "+=1100%",
+            pin: true,
+            pinSpacing: true,
+            scrub: 1,
+            anticipatePin: 1,
+            invalidateOnRefresh: false
+          }
+        });
+
+        // Fade in resultsText and hold
+        tl.fromTo(resultsTextRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 1 }
+        )
+        .to({}, { duration: 1 }) // Hold for 1 second
+        
+        // Fade in resultsImage and hold
+        .fromTo(resultsImageRef.current,
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 0.5 }
+        )
+        .to({}, { duration: 0.5 }) // Hold for 1 second
+        
+        // Animate counters sequentially with container fade-ins
+        .fromTo(statContainer1.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 })
+        .call(() => animateCounter(statValue1.current, 1173), null, "<")
+        .fromTo(statContainer2.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.3")
+        .call(() => animateCounter(statValue2.current, 340), null, "<")
+        .fromTo(statContainer3.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.3")
+        .call(() => animateCounter(statValue3.current, 164), null, "<")
+        .fromTo(statContainer4.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.3")
+        .call(() => animateCounter(statValue4.current, 410), null, "<")
+        
+        // Hold for 1 second then staggered quotes
+        .to({}, { duration: 1 })
+        .fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
+          { autoAlpha: 0, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.15,
+            ease: "power2.out"
+          }
+        );
+
+        // Cleanup
+        return () => {
+          tl.scrollTrigger?.kill();
+          tl.kill();
+        };
+      }
     }
   }, [loading]);
 
-  // Staggered fade-in for results quotes
+  // Fade-in for problem text container
   useEffect(() => {
-    if (!loading && resultsQuotesContainer.current) {
-      const quotes = resultsQuotesContainer.current.querySelectorAll('img');
-      
-      gsap.fromTo(quotes, 
-        { autoAlpha: 0, y: 30 },
+    if (!loading && problemTextContainerRef.current) {
+      gsap.fromTo(
+        problemTextContainerRef.current,
         {
-          autoAlpha: 1,
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
           y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power2.out",
+          duration: 1,
+          ease: 'power2.out',
           scrollTrigger: {
-            trigger: resultsQuotesContainer.current,
-            start: "top 80%",
-            once: true
+            trigger: problemTextContainerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
           }
         }
       );
+
+      // Cleanup
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+      };
     }
   }, [loading]);
 
@@ -308,13 +458,19 @@ export default function Home() {
           </div>
         </section>
         <div className={styles.problemContainer}>
-          <video src={getAssetPath('/images/problem_video.mp4')} width="1920" height="1080" loop autoPlay playsInline muted 
-            className={styles.problemVideo} >
-          </video>
-          <h1 className={styles.problemText}>problem</h1>
-          <p className={styles.problemSubtext}>
-            With police killings reaching an alarming record of 326 fatalities in 2024 and with only 20% of fatal police-civilian encounters being captured by police body cameras, there's an urgent need for transparency and accountability.
-          </p>
+          {isSocialBrowser ? (
+            <div className={styles.problemVideo} style={{ backgroundColor: '#000' }}></div>
+          ) : (
+            <video src={getAssetPath('/images/problem_video.mp4')} width="1920" height="1080" loop autoPlay playsInline muted 
+              className={styles.problemVideo} >
+            </video>
+          )}
+          <div className={styles.problemTextContainer} ref={problemTextContainerRef}>
+            <h1 className={styles.problemText}>problem</h1>
+            <p className={styles.problemSubtext}>
+              With police killings reaching an alarming record of 326 fatalities in 2024 and with only 20% of fatal police-civilian encounters being captured by police body cameras, there's an urgent need for transparency and accountability.
+            </p>
+          </div>
         </div>
         <TakeAction actionRef={actionDiv}/>
         <ProductScroll productRef={productDiv} hasScrolledToTop={hasScrolledToTop}/>
@@ -324,9 +480,9 @@ export default function Home() {
             className={styles.screensVideo} >
           </video>
         </div>
-        <div className={styles.resultsContainer}>
-            <div className={styles.resultsContent}>
-              <div className={styles.resultsText}>
+        <div className={styles.resultsContainer} ref={resultsContainerRef}>
+            <div className={styles.resultsContent} ref={resultsContentRef}>
+              <div className={styles.resultsText} ref={resultsTextRef}>
                 <h1>results</h1>
                 <p>
                   Despite $0 media budget, Courageous Conversation received a 1,173% increase in donations since the campaign launched.
@@ -335,18 +491,18 @@ export default function Home() {
                   The campaign spread quickly through culture. It was shared by voices in hip-hop like Doug E. Fresh and organically amplified within the Divine Nine, one of the most influential cultural networks in the US. Its significance is underscored by the fact that the Divine Nine includes members such as Kamala Harris and Alicia Keys, highlighting the level of cultural relevance and reach the campaign achieved.
                 </p>
               </div>
-              <img src={getAssetPath('/images/results/results_fist.png')} alt="results" width="896" height="1508" className={styles.resultsImage}/>
+              <img src={getAssetPath('/images/results/results_fist.png')} alt="results" width="853" height="1537" className={styles.resultsImage} ref={resultsImageRef}/>
               <div className={styles.resultsStats}>
-                    <div className={styles.stat}>
+                    <div className={styles.stat} ref={statContainer1}>
                       <h1 className={styles.statValue}><span ref={statValue1}></span><span>%</span></h1><h3>INCREASE<br/>IN DONATIONS</h3>
                     </div>
-                    <div className={styles.stat}>
+                    <div className={styles.stat} ref={statContainer2}>
                       <h1 className={styles.statValue}><span ref={statValue2}></span><span>%</span></h1><h3>INCREASE IN<br/>SOCIAL MEDIA IMPRESSIONS</h3>
                     </div>
-                    <div className={styles.stat}>
+                    <div className={styles.stat} ref={statContainer3}>
                       <h1 className={styles.statValue}><span ref={statValue3}></span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br/>ENGAGEMENT</h3>
                     </div>
-                    <div className={styles.stat}>
+                    <div className={styles.stat} ref={statContainer4}>
                       <h1 className={styles.statValue}><span ref={statValue4}></span><span>M+</span></h1><h3>TOTAL EARNED<br/>PR IMPRESSIONS</h3>
                     </div>
               </div>
