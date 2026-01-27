@@ -338,16 +338,16 @@ export default function Home() {
               <img src={getAssetPath('/images/results/results_fist.png')} alt="results" width="896" height="1508" className={styles.resultsImage}/>
               <div className={styles.resultsStats}>
                     <div className={styles.stat}>
-                      <h1 className={styles.statValue}><span ref={statValue1}>1,173</span><span>%</span></h1><h3>INCREASE<br/>IN DONATIONS</h3>
+                      <h1 className={styles.statValue}><span ref={statValue1}></span><span>%</span></h1><h3>INCREASE<br/>IN DONATIONS</h3>
                     </div>
                     <div className={styles.stat}>
-                      <h1 className={styles.statValue}><span ref={statValue2}>340</span><span>%</span></h1><h3>INCREASE IN<br/>SOCIAL MEDIA IMPRESSIONS</h3>
+                      <h1 className={styles.statValue}><span ref={statValue2}></span><span>%</span></h1><h3>INCREASE IN<br/>SOCIAL MEDIA IMPRESSIONS</h3>
                     </div>
                     <div className={styles.stat}>
-                      <h1 className={styles.statValue}><span ref={statValue3}>164</span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br/>ENGAGEMENT</h3>
+                      <h1 className={styles.statValue}><span ref={statValue3}></span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br/>ENGAGEMENT</h3>
                     </div>
                     <div className={styles.stat}>
-                      <h1 className={styles.statValue}><span ref={statValue4}>410</span><span>M+</span></h1><h3>TOTAL EARNED<br/>PR IMPRESSIONS</h3>
+                      <h1 className={styles.statValue}><span ref={statValue4}></span><span>M+</span></h1><h3>TOTAL EARNED<br/>PR IMPRESSIONS</h3>
                     </div>
               </div>
             </div>

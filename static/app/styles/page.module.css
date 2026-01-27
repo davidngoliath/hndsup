@@ -132,9 +132,7 @@
     display: flex!important;
   }
 
-  .problemSubtext {
-    font-size: 1.05rem!important;
-  }
+
 
 }
 
@@ -589,9 +587,11 @@
   align-items: center;
   width: 80%;
   height: auto;
-  position: relative;
+  position: absolute;
+  bottom: 3%;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  z-index: 1;
 }
 
 .resultsQuote {
@@ -610,6 +610,18 @@
 
   .resultsText p {
     font-size: 1rem!important;
+  }
+
+    .problemSubtext {
+    font-size: 1rem!important;
+  }
+
+  .problemText {
+    font-size: 3.5rem!important;
+  }
+
+  .resultsQuotesContainer {
+      bottom: 12%;
   }
 }
 
@@ -663,6 +675,8 @@
     flex-direction: row!important;
     justify-content: center!important;
     width: 100%!important;
+    bottom: 0!important;
+    position: relative!important;
   }
 
   .resultsQuote {

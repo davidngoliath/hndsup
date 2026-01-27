@@ -3,7 +3,7 @@
     background-size: contain;
     background-position: center; */
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     position: relative;
@@ -100,7 +100,7 @@ font-family: var(--font-dm-sans);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: start;
+    align-items: flex-start;
     z-index: 1;
 }
 
@@ -170,7 +170,7 @@ font-family: var(--font-dm-sans);
 .singletonText {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
     width: 100%;
     height: auto;
@@ -214,12 +214,21 @@ font-family: var(--font-dm-sans);
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding-top: 7rem;
 }
 
+@media (max-width: 1500px) {
+  .takeActionContainer h2 {
+    font-size: 3.5rem!important;
+  }
 
+  .takeActionContainer p {
+    font-size: 1rem!important;
+  }
+
+}
 
 @media (max-width: 1400px) {
     .takeActionContent {
@@ -253,16 +262,9 @@ font-family: var(--font-dm-sans);
 
 }
 
-@media (max-width: 1024px) {
-    .takeActionHeader {
-        /* flex-direction: column-reverse!important; */
-    }
-}
+
 
 @media (max-width: 1024px) and (max-height: 1400px) {
-    .takeActionContainer {
-        /* justify-content: space-evenly!important; */
-    }
 
     .takeActionImageContainer {
         top: 30%!important;
@@ -270,9 +272,6 @@ font-family: var(--font-dm-sans);
 }
 
 @media (max-width: 800px) {
-    .takeActionContainer {
-        /* justify-content: space-evenly!important; */
-    }
 
     .brRef {
         display: none!important;
@@ -297,13 +296,6 @@ font-family: var(--font-dm-sans);
         max-width: 117px!important;
     }
 
-    .takeActionContainer h1 {
-        font-size: 1.5rem!important;
-    }
-
-    .takeActionImageContainer {
-        /* top: 10%!important; */
-    }
 
     .takeActionImageContainer video, .takeActionImageContainer img {
         width: 100%;
@@ -329,9 +321,6 @@ font-family: var(--font-dm-sans);
         top: 15%!important
     }
 
-    .takeActionHeader {
-        /* padding-bottom: 1rem!important; */
-    }
 }
 
 .copyright {
