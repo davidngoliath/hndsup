@@ -57,16 +57,7 @@ export default function TakeAction({actionRef}) {
                         <p>
                             The device was packed with life-saving features: it could livestream footage to local news outlets in real time, perform a body scan to confirm the user is unarmed, and even call for an ambulance—because every second counts.
                         </p>
-                        <p>
-                            But here’s the twist: HndsUp was never meant to hit the market.
-                            Because in the end, technology isn’t the answer. Conversation is.
-                        </p>
-                        <p>
-                            We asked people to support Courageous Conversation, an organization offering racial equity and de-escalation training. Their programs give officers the tools to build trust and handle difficult situations with care.
-                        </p>
-                        <p>
-                            Because while technology can record what happens, only education and conversation can prevent it from happening in the first place.
-                        </p>
+                        
                         {/* <video src={getAssetPath('/images/takeaction-bg.mp4')} width="1544" height="876" loop autoPlay playsInline muted 
                             className={actionStyles.takeActionImage} >
                         </video> */}

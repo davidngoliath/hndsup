@@ -110,16 +110,12 @@ export default function Home() {
       }
   }, [hasScrolledToTop]);
 
-  // Pinned results section with sequential animations
+  // Results section viewport-triggered animations
   useEffect(() => {
     if (!loading && resultsContentRef.current && resultsTextRef.current && resultsImageRef.current && 
         statValue1.current && statValue2.current && statValue3.current && statValue4.current && 
         statContainer1.current && statContainer2.current && statContainer3.current && statContainer4.current &&
         resultsQuotesContainer.current) {
-      
-      const isMobile = window.innerWidth <= 1000;
-      
-      console.log('Results animation - isMobile:', isMobile, 'width:', window.innerWidth);
       
       const animateCounter = (element, endValue) => {
         const obj = { value: 0 };
@@ -134,141 +130,65 @@ export default function Home() {
         });
       };
 
-      if (isMobile) {
-        // Set initial states for mobile
-        gsap.set(resultsTextRef.current, { opacity: 0, y: 30 });
-        gsap.set(resultsImageRef.current, { opacity: 0, scale: 0.9 });
-        gsap.set([statContainer1.current, statContainer2.current, statContainer3.current, statContainer4.current], { opacity: 0, y: 20 });
-        gsap.set(resultsQuotesContainer.current.querySelectorAll('img'), { autoAlpha: 0, y: 30 });
-        // Mobile: Simple scroll-triggered animations
-        gsap.fromTo(resultsTextRef.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: resultsTextRef.current,
-              start: 'top 80%',
-              once: true
-            }
-          }
-        );
-
-        gsap.fromTo(resultsImageRef.current,
-          { opacity: 0, scale: 0.9 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: resultsImageRef.current,
-              start: 'top 80%',
-              once: true
-            }
-          }
-        );
-
-        // Animate stat containers sequentially
-        [
-          { container: statContainer1.current, value: statValue1.current, end: 1173 },
-          { container: statContainer2.current, value: statValue2.current, end: 340 },
-          { container: statContainer3.current, value: statValue3.current, end: 164 },
-          { container: statContainer4.current, value: statValue4.current, end: 410 }
-        ].forEach((stat) => {
-          gsap.fromTo(stat.container,
-            { opacity: 0, y: 20 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: stat.container,
-                start: 'top 85%',
-                once: true,
-                onEnter: () => animateCounter(stat.value, stat.end)
-              }
-            }
-          );
-        });
-
-        // Staggered fade-in for results quotes
-        gsap.fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
-          { autoAlpha: 0, y: 30 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: resultsQuotesContainer.current,
-              start: "top 80%",
-              once: true
-            }
-          }
-        );
-      } else {
-        // Desktop: Pinned timeline animation
-        const tl = gsap.timeline({
+      // Fade in resultsText when in viewport
+      gsap.fromTo(resultsTextRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
           scrollTrigger: {
-            trigger: resultsContainerRef.current,
-            start: "top top",
-            end: "+=1100%",
-            pin: true,
-            pinSpacing: true,
-            scrub: 1,
-            anticipatePin: 1,
-            invalidateOnRefresh: false
+            trigger: resultsTextRef.current,
+            start: 'top 80%',
+            once: true
           }
-        });
+        }
+      );
 
-        // Fade in resultsText and hold
-        tl.fromTo(resultsTextRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 1 }
-        )
-        .to({}, { duration: 1 }) // Hold for 1 second
-        
-        // Fade in resultsImage and hold
-        .fromTo(resultsImageRef.current,
-          { opacity: 0, scale: 0.9 },
-          { opacity: 1, scale: 1, duration: 0.5 }
-        )
-        .to({}, { duration: 0.5 }) // Hold for 1 second
-        
-        // Animate counters sequentially with container fade-ins
-        .fromTo(statContainer1.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 })
-        .call(() => animateCounter(statValue1.current, 1173), null, "<")
-        .fromTo(statContainer2.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.3")
-        .call(() => animateCounter(statValue2.current, 340), null, "<")
-        .fromTo(statContainer3.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.3")
-        .call(() => animateCounter(statValue3.current, 164), null, "<")
-        .fromTo(statContainer4.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.3")
-        .call(() => animateCounter(statValue4.current, 410), null, "<")
-        
-        // Hold for 1 second then staggered quotes
-        .to({}, { duration: 1 })
-        .fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
-          { autoAlpha: 0, y: 30 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1.5,
-            stagger: 0.15,
-            ease: "power2.out"
+      // Animate all stat containers at once when in viewport
+      const statContainers = [statContainer1.current, statContainer2.current, statContainer3.current, statContainer4.current];
+      const statValues = [
+        { value: statValue1.current, end: 1173 },
+        { value: statValue2.current, end: 340 },
+        { value: statValue3.current, end: 164 },
+        { value: statValue4.current, end: 410 }
+      ];
+
+      gsap.fromTo(statContainers,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: statContainer1.current,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+              statValues.forEach(stat => animateCounter(stat.value, stat.end));
+            }
           }
-        );
+        }
+      );
 
-        // Cleanup
-        return () => {
-          tl.scrollTrigger?.kill();
-          tl.kill();
-        };
-      }
+      // Animate resultsQuotesContainer when in viewport
+      gsap.fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
+        { autoAlpha: 0, y: 30 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: resultsQuotesContainer.current,
+            start: "top 80%",
+            once: true
+          }
+        }
+      );
     }
   }, [loading]);
 
@@ -461,7 +381,7 @@ export default function Home() {
           {isSocialBrowser ? (
             <div className={styles.problemVideo} style={{ backgroundColor: '#000' }}></div>
           ) : (
-            <video src={getAssetPath('/images/problem_video.mp4')} width="1920" height="1080" loop autoPlay playsInline muted 
+            <video src={getAssetPath('/images/problem_video_1.mp4')} width="1920" height="1080" loop autoPlay playsInline muted 
               className={styles.problemVideo} >
             </video>
           )}
@@ -476,9 +396,18 @@ export default function Home() {
         <ProductScroll productRef={productDiv} hasScrolledToTop={hasScrolledToTop}/>
         <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
         <div className={styles.screensContainer}>
+          <p className={styles.screensText}>A series of short social videos teased the HndsUp innovation, building curiosity and momentum before the reveal.</p>
           <video src={getAssetPath('/images/screens.mp4')} loop autoPlay playsInline muted 
             className={styles.screensVideo} >
           </video>
+          <h1 className={styles.twistText}>the twist</h1>
+          <p className={styles.twistSubtext}>
+            We surprised people by not actually launching HndsUp. Because technology is not the answer. Education is. 
+          </p>
+          <p className={styles.twistSubtext}>
+            Instead, we invited them to support Courageous Conversation, an organization dedicated to equity and de-escalation training.Because while technology can record what happens, only education and conversation can prevent it from happening in the first place.
+          </p>
+
         </div>
         <div className={styles.resultsContainer} ref={resultsContainerRef}>
             <div className={styles.resultsContent} ref={resultsContentRef}>
@@ -500,7 +429,7 @@ export default function Home() {
                       <h1 className={styles.statValue}><span ref={statValue2}></span><span>%</span></h1><h3>INCREASE IN<br/>SOCIAL MEDIA IMPRESSIONS</h3>
                     </div>
                     <div className={styles.stat} ref={statContainer3}>
-                      <h1 className={styles.statValue}><span ref={statValue3}></span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br/>ENGAGEMENT</h3>
+                      <h1 className={styles.statValue}><span ref={statValue3}></span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br className={styles.breakVisible}/>ENGAGEMENT</h3>
                     </div>
                     <div className={styles.stat} ref={statContainer4}>
                       <h1 className={styles.statValue}><span ref={statValue4}></span><span>M+</span></h1><h3>TOTAL EARNED<br/>PR IMPRESSIONS</h3>
@@ -514,6 +443,8 @@ export default function Home() {
                 <img src={getAssetPath('/images/results/result4.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
                 <img src={getAssetPath('/images/results/result5.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
                 <img src={getAssetPath('/images/results/result6.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result7.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
+                <img src={getAssetPath('/images/results/result8.png')} alt="results quotes" width="400" height="173" className={styles.resultsQuote}/>
 
             </div>
         </div>

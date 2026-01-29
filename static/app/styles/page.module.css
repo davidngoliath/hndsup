@@ -28,7 +28,9 @@
   /* background: radial-gradient(circle, rgba(25,25,25,1) 0%, rgba(25,25,25,0) 85%); */
 }
 
-
+.breakVisible {
+  display: inline!important;
+}
 
 @media (max-width: 2200px) {
   .heroContainer {
@@ -45,6 +47,14 @@
 
   .fistImage  {
     width: 90%!important;
+  }
+
+}
+
+@media (max-width: 1470px) {
+
+  .breakVisible  {
+    display: none!important;
   }
 
 }
@@ -437,7 +447,7 @@
 
 .screensContainer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,7 +455,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-
+  margin: 2rem 0;
 }
 
 
@@ -463,31 +473,32 @@
 }
 
 .screensVideo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   width: 100%;
   height: auto;
-  transform: translate(-50%, -50%);
   z-index: 0;
   object-fit: contain
 }
 
 
-.problemText {
+.problemText, .twistText {
     font-family: var(--font-silk-serif-extra-light-italic);
     font-size: 5rem!important;
-    padding: 0.65rem;
+    /* padding: 0.65rem; */
     z-index: 1;
     position: relative;
     color: white;
 }
 
-.problemSubtext {
+
+.screensContainer p:nth-of-type(2) {
+    margin-bottom: 1rem;
+}
+
+.problemSubtext, .twistSubtext, .screensText {
     font-family: var(--font-dm-sans);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     max-width: 800px;
-    margin-top: 1rem;
     color: white;
     z-index: 1;
     position: relative;
@@ -524,7 +535,7 @@
   align-items: flex-end;
   width: 30%;
   height: auto;
-  margin-right: 2rem;
+  margin-right: 4rem;
   margin-top: 4rem;
   z-index: 1;
   position: relative;
@@ -541,7 +552,6 @@
   align-items: flex-start;
   width: 30%;
   height: auto;
-  margin-left: 2rem;
   margin-top: 7rem;
   z-index: 1;
   position: relative;  
@@ -572,6 +582,7 @@
   text-align: left;
   width: 100%;
   max-width: 260px;
+  line-height: 1;
 }
 
 
@@ -584,7 +595,7 @@
 
 .resultsText p {
   font-family: var(--font-dm-sans);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   max-width: 600px;
   margin-top: 1rem;
   color: white;
@@ -596,7 +607,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  width: 80%;
+  width: 90%;
   height: auto;
   position: absolute;
   bottom: 3%;
@@ -606,7 +617,7 @@
 }
 
 .resultsQuote {
-  width: 15%;
+  width: 13%;
   height: auto;
 }
 
@@ -623,11 +634,11 @@
     font-size: 1rem!important;
   }
 
-    .problemSubtext {
+    .problemSubtext, .twistSubtext, .screensText {
     font-size: 1rem!important;
   }
 
-  .problemText {
+  .problemText, .twistText {
     font-size: 3.5rem!important;
   }
 
@@ -651,6 +662,7 @@
   .resultsStats {
     width: 100%!important;
     align-items: center!important;
+      margin-top: 0rem!important;
   }
   .resultsText {
     width: 100%!important;
@@ -660,7 +672,7 @@
 
   .resultsText p {
     text-align: center!important;
-    font-size: 1.05rem!important;
+    font-size: 1rem!important;
     
   }
 
@@ -678,7 +690,7 @@
     padding: 0px!important;
   }
 
-  .problemSubtext {
+  .problemSubtext, .twistSubtext, .screensText {
     width: 90%!important;
   }
 
@@ -697,10 +709,18 @@
   }
 
   .screensContainer {
-    height: 70vh!important;
+    /* height: 70vh!important; */
     padding: 0px!important;
   }
 
+}
 
-
+.screensText {
+  font-family: var(--font-dm-sans);
+  font-size: 1.2rem;
+  width: 90%;
+  color: white;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 2rem;
 }

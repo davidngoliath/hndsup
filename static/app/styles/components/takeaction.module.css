@@ -25,7 +25,7 @@
 
 .takeActionImageContainer p {
 font-family: var(--font-dm-sans);
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important;
     max-width: 900px;
     margin-top: 1rem;
     color: white;
@@ -83,9 +83,13 @@ font-family: var(--font-dm-sans);
     font-size: 2rem;
 }
 
+.takeActionContainer p:nth-child(2) {
+    margin-top: 0;
+}
+
 .idea p {
     font-family: var(--font-dm-sans);
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important;
     max-width: 900px;
     margin-top: 1rem;
     color: white;
@@ -288,7 +292,7 @@ font-family: var(--font-dm-sans);
     }
 
     .takeActionContainer p {
-        font-size: 1.05rem!important;
+        font-size:1rem!important;
         margin-bottom: 0.6rem!important;
     }
 
