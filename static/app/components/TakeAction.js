@@ -52,7 +52,7 @@ export default function TakeAction({actionRef}) {
                     <div className={actionStyles.takeActionImageContainer} ref={imageContainerRef}>
                         <h2>idea</h2>
                         <p>
-                            We introduced HndsUp, a wearable camera prototype designed to protect Black civilians during police encounters. Like any major tech launch, we began with a mysterious teaser to spark curiosity and build anticipation.
+                            We introduced HndsUp, a wearable camera prototype designed to protect Black civilians during police encounters.<br />Like any major tech launch, we began with a mysterious teaser to spark curiosity and build anticipation.
                         </p>
                         <p>
                             The device was packed with life-saving features: it could livestream footage to local news outlets in real time, perform a body scan to confirm the user is unarmed, and even call for an ambulance—because every second counts.

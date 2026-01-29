@@ -51,7 +51,7 @@
 
 }
 
-@media (max-width: 1470px) {
+@media (max-width: 1469px) {
 
   .breakVisible  {
     display: none!important;
@@ -455,7 +455,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
 
 
@@ -477,7 +477,8 @@
   width: 100%;
   height: auto;
   z-index: 0;
-  object-fit: contain
+  object-fit: contain;
+  margin-bottom: 5rem;
 }
 
 
@@ -498,7 +499,7 @@
 .problemSubtext, .twistSubtext, .screensText {
     font-family: var(--font-dm-sans);
     font-size: 1.2rem;
-    max-width: 800px;
+    width: 85%;
     color: white;
     z-index: 1;
     position: relative;

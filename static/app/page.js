@@ -130,23 +130,6 @@ export default function Home() {
         });
       };
 
-      // Fade in resultsText when in viewport
-      gsap.fromTo(resultsTextRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: resultsTextRef.current,
-            start: 'top 80%',
-            once: true
-          }
-        }
-      );
-
-      // Animate all stat containers at once when in viewport
       const statContainers = [statContainer1.current, statContainer2.current, statContainer3.current, statContainer4.current];
       const statValues = [
         { value: statValue1.current, end: 1173 },
@@ -155,40 +138,60 @@ export default function Home() {
         { value: statValue4.current, end: 410 }
       ];
 
-      gsap.fromTo(statContainers,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: statContainer1.current,
-            start: 'top 80%',
-            once: true,
-            onEnter: () => {
-              statValues.forEach(stat => animateCounter(stat.value, stat.end));
-            }
-          }
-        }
-      );
+      // Set initial state to hidden to prevent flash of content
+      gsap.set(resultsTextRef.current, { opacity: 0, y: 30 });
+      gsap.set(statContainers, { opacity: 0, y: 20 });
+      gsap.set(resultsQuotesContainer.current.querySelectorAll('img'), { autoAlpha: 0, y: 30 });
 
-      // Animate resultsQuotesContainer when in viewport
-      gsap.fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
-        { autoAlpha: 0, y: 30 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: resultsQuotesContainer.current,
-            start: "top 80%",
-            once: true
-          }
+      // Create a timeline that chains all animations with delays
+      ScrollTrigger.create({
+        trigger: resultsTextRef.current,
+        start: 'top 80%',
+        once: true,
+        onEnter: () => {
+          const tl = gsap.timeline();
+          
+          // 1. Fade in resultsText with 1 second delay
+          tl.fromTo(resultsTextRef.current,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.inOut',
+              delay: 0.25
+            }
+          );
+
+          // 2. Animate stat containers 1 second after resultsText completes
+          tl.fromTo(statContainers,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.inOut',
+              onStart: () => {
+                statValues.forEach(stat => animateCounter(stat.value, stat.end));
+              }
+            },
+            "+=0.5"
+          );
+
+          // 3. Animate resultsQuotesContainer 1 second after statContainers completes
+          tl.fromTo(resultsQuotesContainer.current.querySelectorAll('img'),
+            { autoAlpha: 0, y: 30 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power2.inOut"
+            },
+            "+=0.5"
+          );
         }
-      );
+      });
     }
   }, [loading]);
 
@@ -388,7 +391,7 @@ export default function Home() {
           <div className={styles.problemTextContainer} ref={problemTextContainerRef}>
             <h1 className={styles.problemText}>problem</h1>
             <p className={styles.problemSubtext}>
-              With police killings reaching an alarming record of 326 fatalities in 2024 and with only 20% of fatal police-civilian encounters being captured by police body cameras, there's an urgent need for transparency and accountability.
+              With police killings reaching an alarming record of 326 fatalities in 2024 and with only 20% of fatal <br className={styles.breakVisible}/>police-civilian encounters being captured by police body cameras, there's an urgent need for transparency and accountability.
             </p>
           </div>
         </div>
@@ -405,7 +408,7 @@ export default function Home() {
             We surprised people by not actually launching HndsUp. Because technology is not the answer. Education is. 
           </p>
           <p className={styles.twistSubtext}>
-            Instead, we invited them to support Courageous Conversation, an organization dedicated to equity and de-escalation training.Because while technology can record what happens, only education and conversation can prevent it from happening in the first place.
+            Instead, we invited them to support Courageous Conversation, an organization dedicated to equity and de-escalation training. Because while technology can record what happens, only education and conversation can prevent it from happening in the first place.
           </p>
 
         </div>
