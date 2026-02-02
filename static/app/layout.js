@@ -41,7 +41,7 @@ const RationalTWTextSemibold = localFont({
 });
 
 const SilkSerifExtraLightItalic = localFont({
-  src: "./fonts/Silk-Serif-ExtraLight-Italic.woff",
+  src: "./fonts/Silk-Serif-Regular-Italic.woff",
   variable: "--font-silk-serif-extra-light-italic",
   weight: "100 900",
 });

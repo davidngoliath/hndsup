@@ -46,38 +46,38 @@ export default function Home() {
   const [hasScrolledToTop, setHasScrolledToTop] = useState(false);
   const vimeoId = Data[0].videoId;
 
-  const scrollToSection = (ref) => {
-  // Object mapping refs to labels
-  const refLabels = new Map([
-    [videoDiv, "Video/Hero Section"],
-    [productDiv, "Product Section"],
-    [statsDiv, "Statistics Section"],
-    [actionDiv, "Take Action Section"],
-  ]);
+  // const scrollToSection = (ref) => {
+  // // Object mapping refs to labels
+  // const refLabels = new Map([
+  //   [videoDiv, "Video/Hero Section"],
+  //   [productDiv, "Product Section"],
+  //   [statsDiv, "Statistics Section"],
+  //   [actionDiv, "Take Action Section"],
+  // ]);
 
-  const refEvents = new Map([
-    [videoDiv, "click_nav_hero_section"],
-    [productDiv, "click_nav_product_section"],
-    [statsDiv, "click_nav_statistics_section"],
-    [actionDiv, "click_nav_take_action"],
-  ]);
+  // const refEvents = new Map([
+  //   [videoDiv, "click_nav_hero_section"],
+  //   [productDiv, "click_nav_product_section"],
+  //   [statsDiv, "click_nav_statistics_section"],
+  //   [actionDiv, "click_nav_take_action"],
+  // ]);
 
 
-  // Scroll to the section
-  ref.current.scrollIntoView({ behavior: "smooth" });
+  // // Scroll to the section
+  // ref.current.scrollIntoView({ behavior: "smooth" });
 
-  // Get the label for the ref
-  const label = refLabels.get(ref) || "Unknown Section";
-  const event = refEvents.get(ref) || "Unknown Event";
-  // Push event to GTM's dataLayer
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: event,
-    category: "User Interaction",
-    label: label,
-    value: 1,
-  });
-  };
+  // // Get the label for the ref
+  // const label = refLabels.get(ref) || "Unknown Section";
+  // const event = refEvents.get(ref) || "Unknown Event";
+  // // Push event to GTM's dataLayer
+  // window.dataLayer = window.dataLayer || [];
+  // window.dataLayer.push({
+  //   event: event,
+  //   category: "User Interaction",
+  //   label: label,
+  //   value: 1,
+  // });
+  // };
 
   const [isSocialBrowser, setIsSocialBrowser] = useState(false);
 
@@ -86,29 +86,29 @@ export default function Home() {
       setIsSocialBrowser(/FBAN|FBAV|Instagram/.test(userAgent));
   }, []);
 
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 500;
+  // useEffect(() => {
+  //   const isMobile = window.innerWidth <= 500;
 
-      if (!hasScrolledToTop) {
-          if (isMobile){
-            setTimeout(() => {
-              gsap.to(window, {
-                scrollTo:  (0),
-                duration: 2,
-                ease: "power3.inOut",
-              })
-            }, 1500);
-          } else {
-            window.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "instant"    
-            })
-          }
+  //     if (!hasScrolledToTop) {
+  //         if (isMobile){
+  //           setTimeout(() => {
+  //             gsap.to(window, {
+  //               scrollTo:  (0),
+  //               duration: 2,
+  //               ease: "power3.inOut",
+  //             })
+  //           }, 1500);
+  //         } else {
+  //           window.scrollTo({
+  //             top: 0,
+  //             left: 0,
+  //             behavior: "instant"    
+  //           })
+  //         }
 
-          setHasScrolledToTop(true);
-      }
-  }, [hasScrolledToTop]);
+  //         setHasScrolledToTop(true);
+  //     }
+  // }, [hasScrolledToTop]);
 
   // Results section viewport-triggered animations
   useEffect(() => {
@@ -396,7 +396,8 @@ export default function Home() {
           </div>
         </div>
         <TakeAction actionRef={actionDiv}/>
-        <ProductScroll productRef={productDiv} hasScrolledToTop={hasScrolledToTop}/>
+        {/* <ProductScroll productRef={productDiv} hasScrolledToTop={hasScrolledToTop}/> */}
+        <ProductScroll productRef={productDiv} />
         <div id="horizontal-spacer" style={{ height: "100vh" }}></div>
         <div className={styles.screensContainer}>
           <p className={styles.screensText}>A series of short social videos teased the HndsUp innovation, building curiosity and momentum before the reveal.</p>
@@ -432,7 +433,7 @@ export default function Home() {
                       <h1 className={styles.statValue}><span ref={statValue2}></span><span>%</span></h1><h3>INCREASE IN<br/>SOCIAL MEDIA IMPRESSIONS</h3>
                     </div>
                     <div className={styles.stat} ref={statContainer3}>
-                      <h1 className={styles.statValue}><span ref={statValue3}></span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA<br className={styles.breakVisible}/>ENGAGEMENT</h3>
+                      <h1 className={styles.statValue}><span ref={statValue3}></span><span>%</span></h1><h3>INCREASE IN SOCIAL MEDIA <br className={styles.breakVisible}/>ENGAGEMENT</h3>
                     </div>
                     <div className={styles.stat} ref={statContainer4}>
                       <h1 className={styles.statValue}><span ref={statValue4}></span><span>M+</span></h1><h3>TOTAL EARNED<br/>PR IMPRESSIONS</h3>
